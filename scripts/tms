@@ -1,0 +1,34 @@
+#!/usr/bin/env bash
+
+# Tmux sessionizer, based on https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+
+if [[ $# -eq 1 ]]; then
+    selected=$1
+else
+    depth_0=$(find ~/configs ~/scratch ~/org -mindepth 0 -maxdepth 0 -type d)
+    depth_1=$(find ~/projects ~/gits ~/u410 -mindepth 1 -maxdepth 1 -type d)
+    # Replace $HOME with ~ for brevity
+    dirs=$(echo -e "$depth_0\n$depth_1" | sed "s|^$HOME|~|g")
+    selected=$(echo "$dirs" | fzf)
+fi
+
+if [[ -z $selected ]]; then
+    exit 0
+fi
+
+selected_name=$(basename "$selected" | tr . _)
+
+if ! tmux has-session -t=$selected_name 2> /dev/null; then
+    # Tmux doesn't have this session, so create
+    # Replace ~ back to $HOME so tmux can understand the path
+    full_path=$(echo "$selected" | sed "s|^~|$HOME|")
+    tmux new-session -ds "$selected_name" -c "$full_path"
+fi
+
+if [[ -z $TMUX ]]; then
+    # We're not in tmux, so attach
+    tmux attach -t "$selected_name"
+else
+    # We're in tmux, so switch
+    tmux switch-client -t "$selected_name"
+fi

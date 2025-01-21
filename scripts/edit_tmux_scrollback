@@ -1,0 +1,5 @@
+#!/usr/bin/env bash
+
+tmp_file=$(mktemp -t scrollback)
+tmux capture-pane -JepS -1000000 > "$tmp_file"
+tmux new-window -n 'scrollback' -c "$HOME/scratch" "nvim -c 'silent BaleiaColorize' -c 'silent sleep 5m' -c 'w' + $tmp_file && rm $tmp_file"

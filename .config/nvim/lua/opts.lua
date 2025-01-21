@@ -1,0 +1,19 @@
+vim.o.showcmd = true
+vim.o.number = true
+vim.o.signcolumn = "yes"
+vim.opt.clipboard:append("unnamedplus")
+vim.o.cursorline = true
+vim.o.splitbelow = true
+vim.o.splitright = true
+-- vim.o.mouse = ""
+vim.o.mouse = "a"
+vim.o.mousescroll = "ver:5,hor:1"
+vim.o.guicursor = "r-cr-o:hor20,n-v-c-sm:block-blinkon100,i-ci-ve:ver10-blinkon100"
+vim.o.tabstop = 4
+vim.o.shiftwidth = 4
+vim.o.expandtab = true
+vim.o.foldmethod = "expr"
+vim.o.foldexpr = "nvim_treesitter#foldexpr()"
+vim.o.foldenable = false
+vim.opt.swapfile = false
+vim.o.termsync = false

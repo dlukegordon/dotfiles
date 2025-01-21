@@ -1,0 +1,12 @@
+.DS_STORE
+node_modules
+.config/fish/additional_config.fish
+.config/nvim/plugin/packer_compiled.lua
+.config/zsh/.zcompdump*
+.config/zsh/.zsh_history
+.config/zsh/.zhistory
+.config/zsh/.zim
+.config/zsh/.zsh_sessions/
+.config/zsh/.zcompcache/
+.config/zsh/gitignored.sh
+nixos/nixos/hardware-configuration.nix

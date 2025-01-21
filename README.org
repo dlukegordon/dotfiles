@@ -1,0 +1,14 @@
+* dotfiles
+
+My personal dotfiles including configs for NixOS, emacs, and zsh.
+
+** NixOS setup
+
+- Download the latest [[https://nixos.org/download/][NixOS Plasma ISO]]
+- Flash it to a USB drive
+- Boot into it and install as normal. Be sure to pick the Plasma desktop environment and set the username to =luke=.
+- TBD
+
+** MacOS Setup
+
+This is a work in progress. For now, refer to [[file:README-old.md][README-old.md]]. Eventually this will be implemented with [[https://github.com/LnL7/nix-darwin][nix-darwin]].

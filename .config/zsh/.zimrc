@@ -1,0 +1,21 @@
+# Modules
+zmodule environment
+zmodule input
+zmodule utility
+zmodule termtitle
+
+# Prompt
+zmodule prompt-pwd
+zmodule duration-info
+zmodule git-info
+zmodule romkatv/powerlevel10k --use degit
+
+# Completion
+zmodule zsh-users/zsh-completions --fpath src
+zmodule completion
+
+# Modules that must be initialized last
+zmodule ohmyzsh/ohmyzsh --root plugins/git
+zmodule zsh-users/zsh-syntax-highlighting
+zmodule zsh-users/zsh-history-substring-search
+zmodule zsh-users/zsh-autosuggestions
