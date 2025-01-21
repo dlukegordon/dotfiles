@@ -24,7 +24,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ./nixos/valhalla.nix
+          ./os/valhalla.nix
 
           home-manager.nixosModules.home-manager
           {
@@ -42,7 +42,7 @@
         system = "x86_64-linux";
 
         modules = [
-          ./nixos/niflheim.nix
+          ./os/niflheim.nix
 
           home-manager.nixosModules.home-manager
           {

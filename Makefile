@@ -46,4 +46,4 @@ emacs-restart:
 
 doom-reload: doom-sync emacs-restart
 
-install: stow nix-os-cp-hardware nixos-switch asdf-install doom-install doom-reload
+install: check-host stow nix-os-cp-hardware nixos-switch asdf-install doom-install doom-reload

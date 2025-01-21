@@ -1,6 +1,6 @@
 * dotfiles
 
-My personal dotfiles including configs for NixOS, emacs, and zsh.
+My personal dotfiles including configs for nixos, emacs, tmux, wezterm, neovim, and zsh.
 
 ** NixOS setup
 
@@ -30,6 +30,7 @@ cd ~
 git clone https://github.com/dlukegordon/dotfiles.git
 cd dotfiles
 make install host=$new_host
+reboot
 #+end_src
 
 *** Post install

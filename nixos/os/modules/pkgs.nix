@@ -24,6 +24,8 @@
     libsForQt5.kdbusaddons
     gnumake
     gnupg
+    ivpn
+    ivpn-service
     less
     libtool
     lsd
@@ -44,15 +46,12 @@
     uv
     unzip
     wget
-    wezterm
     wireguard-tools
     xclip
     xkeysnail
     xorg.xhost
     zoxide
   ];
-
-  nixpkgs.config.permittedInsecurePackages = [ "openssl-1.1.1w" ];
 
   # Zsh
   programs.zsh = {
@@ -61,6 +60,10 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
+  # IVPN
+  services.ivpn.enable = true;
+
+  # Fonts
   fonts.packages = with pkgs; [
     font-awesome
     roboto-mono

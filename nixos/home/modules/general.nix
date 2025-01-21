@@ -5,7 +5,17 @@
   home.homeDirectory = "/home/luke";
 
   # Packages that should be installed to the user profile.
-  home.packages = with pkgs; [ ];
+  # In general, GUI apps should be added here.
+  home.packages = with pkgs; [
+    keepassxc
+    obsidian
+    signal-desktop
+    sparrow
+    thunderbird
+    transmission_4-qt
+    vlc
+    wezterm
+  ];
 
   programs.git = {
     enable = true;
