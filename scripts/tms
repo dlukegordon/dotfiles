@@ -5,7 +5,7 @@
 if [[ $# -eq 1 ]]; then
     selected=$1
 else
-    depth_0=$(find ~/configs ~/scratch ~/org -mindepth 0 -maxdepth 0 -type d)
+    depth_0=$(find ~/dotfiles ~/scratch ~/org -mindepth 0 -maxdepth 0 -type d)
     depth_1=$(find ~/projects ~/gits ~/u410 -mindepth 1 -maxdepth 1 -type d)
     # Replace $HOME with ~ for brevity
     dirs=$(echo -e "$depth_0\n$depth_1" | sed "s|^$HOME|~|g")
@@ -18,7 +18,7 @@ fi
 
 selected_name=$(basename "$selected" | tr . _)
 
-if ! tmux has-session -t=$selected_name 2> /dev/null; then
+if ! tmux has-session -t=$selected_name 2>/dev/null; then
     # Tmux doesn't have this session, so create
     # Replace ~ back to $HOME so tmux can understand the path
     full_path=$(echo "$selected" | sed "s|^~|$HOME|")

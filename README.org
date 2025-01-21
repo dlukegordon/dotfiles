@@ -4,10 +4,41 @@ My personal dotfiles including configs for NixOS, emacs, and zsh.
 
 ** NixOS setup
 
-- Download the latest [[https://nixos.org/download/][NixOS Plasma ISO]]
-- Flash it to a USB drive
+*** Install the base os
+
+- Download the latest [[https://nixos.org/download/][NixOS Plasma ISO]].
+- Flash it to a USB drive.
 - Boot into it and install as normal. Be sure to pick the Plasma desktop environment and set the username to =luke=.
-- TBD
+
+*** Prepare the system for setup
+
+We are in a fresh NixOS system, but we must do a few things before we can clone this repo and install everything. These commands will setup the necessary packages and settings.
+
+#+begin_src bash
+wget -O ~/Downloads/configuration.nix "https://github.com/dlukegordon/dotfiles/blob/master/nixos/setup/configuration.nix?raw=true"
+sudo cp ~/Downloads/configuration.nix /etc/nixos/configuration.nix
+sudo nixos-rebuild switch
+#+end_src
+
+*** Install the full system
+
+We can now install the full system. These commands will clone the repo, link the dotfiles into =~=, apply the NixOs configuration, setup asdf, and install Doom emacs. Set =new_host= to the hostname for the configuration from [[file:nixos/flake.nix][flake.nix]] you are installing.
+
+#+begin_src bash
+new_host="<set hostname from flake.nix>"
+cd ~
+git clone https://github.com/dlukegordon/dotfiles.git
+cd dotfiles
+make install host=$new_host
+#+end_src
+
+*** Post install
+
+There are a few things that we can't (currently) setup through NixOS, you'll need to set these up manually.
+- Setup Librewolf extensions like Bitwarden, Tree Style Tabs, uBlock.
+- Customize Librewolf settings such as search engines, search shortcuts, and appearance (theme is already installed).
+- Customize the Plasma panel and task switcher settings.
+- Generate an ssh key for git. Follow instructions [[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent][here]].
 
 ** MacOS Setup
 
