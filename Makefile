@@ -15,7 +15,7 @@ stow:
 	stow . --target=$(HOME)
 
 nixos-cp-hardware:
-	cp /etc/nixos/hardware-configuration.nix nixos/nixos/hardware-configuration.nix
+	cp /etc/nixos/hardware-configuration.nix nixos/os/hardware-configuration.nix
 
 nixos-test: check-host
 	sudo nixos-rebuild test --flake path:./nixos#$(host)
@@ -46,4 +46,4 @@ emacs-restart:
 
 doom-reload: doom-sync emacs-restart
 
-install: check-host stow nix-os-cp-hardware nixos-switch asdf-install doom-install doom-reload
+install: check-host stow nixos-cp-hardware nixos-switch asdf-install doom-install doom-reload

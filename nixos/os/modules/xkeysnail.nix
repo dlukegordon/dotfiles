@@ -3,6 +3,7 @@
 {
   environment.etc = {
     xkeysnail = {
+      # TODO: implement for other apps, like Signal, etc
       text = ''
         import re
         from xkeysnail.transform import *

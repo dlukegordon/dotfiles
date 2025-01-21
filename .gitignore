@@ -9,4 +9,4 @@ node_modules
 .config/zsh/.zsh_sessions/
 .config/zsh/.zcompcache/
 .config/zsh/gitignored.sh
-nixos/nixos/hardware-configuration.nix
+nixos/os/hardware-configuration.nix
