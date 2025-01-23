@@ -10,5 +10,5 @@
     ./modules/xkeysnail.nix
   ];
 
-  networking.hostName = "niflheim";
+  networking.hostName = "asgard";
 }

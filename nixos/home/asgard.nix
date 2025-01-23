@@ -12,5 +12,5 @@
   ];
 
   # The rest of the git configs are in modules/general.nix
-  programs.git.userEmail = "luke@niflheim";
+  programs.git.userEmail = "luke@asgard";
 }
