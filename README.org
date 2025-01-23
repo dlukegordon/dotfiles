@@ -18,23 +18,14 @@ My personal dotfiles including configs for nixos, emacs, tmux, wezterm, neovim, 
 - Flash it to a USB drive.
 - Boot into it and install as normal. Be sure to pick the Plasma 6 desktop environment and set the username to =luke=.
 
-*** Prepare the system for setup
-
-We are in a fresh NixOS system, but we must do a few things before we can clone this repo and install everything. These commands will setup the necessary packages and settings.
-
-#+begin_src bash
-curl -o ~/Downloads/configuration.nix "https://raw.githubusercontent.com/dlukegordon/dotfiles/master/nixos/setup/configuration.nix"
-sudo cp ~/Downloads/configuration.nix /etc/nixos/configuration.nix
-sudo nixos-rebuild switch
-#+end_src
-
 *** Install the full system
 
 We can now install the full system. These commands will clone the repo, link the dotfiles into =~=, apply the NixOs configuration, setup asdf, and install Doom emacs. Set =new_host= to the hostname for the configuration from [[file:nixos/flake.nix][flake.nix]] you are installing.
 
 #+begin_src bash
-new_host="<set hostname from flake.nix>"
 cd ~
+nix-shell -p git gnumake stow --extra-experimental-features 'nix-command flakes'
+new_host="<set hostname from flake.nix>"
 git clone https://github.com/dlukegordon/dotfiles.git
 cd dotfiles
 make install host=$new_host
