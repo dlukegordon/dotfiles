@@ -31,6 +31,8 @@
     lsd
     lsof
     neovim
+    neofetch
+    nil
     nixfmt-classic
     nvimpager
     opensc
@@ -50,6 +52,7 @@
     xclip
     xkeysnail
     xorg.xhost
+    yubikey-manager
     zoxide
   ];
 
@@ -62,6 +65,9 @@
 
   # IVPN
   services.ivpn.enable = true;
+
+  # Yubikeys
+  services.pcscd.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [

@@ -2,6 +2,14 @@
 
 My personal dotfiles including configs for nixos, emacs, tmux, wezterm, neovim, and zsh.
 
+** Software
+
+*** TODO list software
+
+** NixOS setup (remote)
+
+*** TODO Implement with nix-anywhere
+
 ** NixOS setup
 
 *** Install the base os
