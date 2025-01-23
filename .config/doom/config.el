@@ -93,26 +93,25 @@
 (setq emojify-display-style 'unicode)
 (setq line-spacing 0.1)
 (setq tab-width 4)
+(setq +doom-dashboard-menu-sections '())
 ;; Set up fonts so that variable is bigger than fixed in mixed-pitch mode
 ;; (setq doom-font (font-spec :family "TX-02-Trial" :size +my/font-size :height 1.0))
 (setq doom-font (font-spec :family "Roboto Mono" :size +my/font-size :height 1.0))
 (setq doom-variable-pitch-font (font-spec :family "ETBembo" :height 1.25))
-(setq +doom-dashboard-menu-sections '())
+;; If we don't do the below custom-set-faces, for some reason the correct height of the variable
+;; font will not be applied in mixed-pitch-mode.
+(custom-set-faces!
+  '(variable-pitch :family "ETBembo" :height 1.25))
 (use-package mixed-pitch
   :config
-  (setq mixed-pitch-set-height t)
-  (set-face-attribute 'variable-pitch nil :height 1.25))
+  (setq mixed-pitch-set-height t))
+
 ;; Set some faces
 (after! org
   (custom-set-faces!
     `(org-block :background ,(doom-color 'bg))
     `(org-block-begin-line :background ,(doom-color 'bg))
     `(org-block-end-line :background ,(doom-color 'bg))))
-;; (after! org
-;;   (let ((bg-color (nth 0 (alist-get 'bg doom-themes--colors))))
-;;     (set-face-background 'org-block bg-color)
-;;     (set-face-background 'org-block-begin-line bg-color)
-;;     (set-face-background 'org-block-end-line bg-color)))
 
 ;;;;;;;; Modeline style for doom-dark+ theme
 ;; To improve the crappy default
