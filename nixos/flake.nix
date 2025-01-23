@@ -16,9 +16,13 @@
     };
   };
 
-  outputs = inputs@{ nixpkgs, home-manager, plasma-manager, ... }: {
+  outputs = inputs @ {
+    nixpkgs,
+    home-manager,
+    plasma-manager,
+    ...
+  }: {
     nixosConfigurations = {
-
       # Desktop
       valhalla = nixpkgs.lib.nixosSystem {
         system = "x86_64-linux";
@@ -31,8 +35,7 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.luke = import ./home/valhalla.nix;
-            home-manager.sharedModules =
-              [ plasma-manager.homeManagerModules.plasma-manager ];
+            home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
           }
         ];
       };
@@ -49,13 +52,10 @@
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.luke = import ./home/niflheim.nix;
-            home-manager.sharedModules =
-              [ plasma-manager.homeManagerModules.plasma-manager ];
+            home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
           }
         ];
       };
-
     };
-
   };
 }

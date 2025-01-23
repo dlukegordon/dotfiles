@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   environment.etc = {
     xkeysnail = {
       # TODO: implement for other apps, like Signal, etc
@@ -19,14 +21,16 @@
             K("Super-v"): K("C-v"),
             K("Super-w"): K("C-w"),
             K("Super-x"): K("C-x"),
+            K("Super-z"): K("C-z"),
+            K("Super-Shift-z"): K("C-Shift-z"),
         }, "Librewolf")
       '';
     };
   };
   systemd.services.xkeysnail = {
     enable = true;
-    wantedBy = [ "display-manager.service" ];
-    environment = { DISPLAY = ":0"; };
+    wantedBy = ["display-manager.service"];
+    environment = {DISPLAY = ":0";};
     serviceConfig = {
       ExecStart = "${pkgs.xkeysnail}/bin/xkeysnail /etc/xkeysnail";
       User = "root";

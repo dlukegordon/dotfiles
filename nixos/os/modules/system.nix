@@ -1,8 +1,10 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
@@ -78,8 +80,8 @@
   users.users.luke = {
     isNormalUser = true;
     description = "Luke";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    extraGroups = ["networkmanager" "wheel"];
+    packages = with pkgs; [];
   };
 
   # Some programs need SUID wrappers, can be configured further or are
@@ -102,7 +104,7 @@
   # networking.firewall.enable = false;
 
   # Enable OpenGL
-  hardware.graphics = { enable = true; };
+  hardware.graphics = {enable = true;};
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

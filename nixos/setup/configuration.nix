@@ -1,15 +1,16 @@
 # This configuration.nix was copied from the default NixOS configuration and slightly modified
 # to add some packages and experimental settings we need to setup the full system. See the README
 # for full setup instructions.
-
 # Edit this configuration file to define what should be installed on
 # your system.  Help is available in the configuration.nix(5) man page
 # and in the NixOS manual (accessible by running ‘nixos-help’).
-
-{ config, pkgs, ... }:
-
 {
-  imports = [ # Include the results of the hardware scan.
+  config,
+  pkgs,
+  ...
+}: {
+  imports = [
+    # Include the results of the hardware scan.
     ./hardware-configuration.nix
   ];
 
@@ -85,8 +86,8 @@
   users.users.luke = {
     isNormalUser = true;
     description = "Luke";
-    extraGroups = [ "networkmanager" "wheel" ];
-    packages = with pkgs; [ ];
+    extraGroups = ["networkmanager" "wheel"];
+    packages = with pkgs; [];
   };
 
   # Install firefox.
@@ -95,11 +96,11 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  nix.settings.experimental-features = [ "nix-command" "flakes" ];
+  nix.settings.experimental-features = ["nix-command" "flakes"];
 
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [ git gnumake neovim stow ];
+  environment.systemPackages = with pkgs; [git gnumake neovim stow];
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
@@ -127,5 +128,4 @@
   # Before changing this value read the documentation for this option
   # (e.g. man configuration.nix or on https://nixos.org/nixos/options.html).
   system.stateVersion = "24.11"; # Did you read the comment?
-
 }

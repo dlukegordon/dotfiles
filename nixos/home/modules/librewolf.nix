@@ -1,6 +1,8 @@
-{ config, pkgs, ... }:
-
-let
+{
+  config,
+  pkgs,
+  ...
+}: let
   lock-false = {
     Value = false;
     Status = "locked";
@@ -13,7 +15,7 @@ in {
   programs = {
     librewolf = {
       enable = true;
-      languagePacks = [ "en-US" ];
+      languagePacks = ["en-US"];
 
       # ---- Profiles ----
       profiles.default = {
@@ -81,52 +83,45 @@ in {
         ExtensionSettings = {
           # uBlock Origin
           "uBlock0@raymondhill.net" = {
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/ublock-origin/latest.xpi";
             installation_mode = "force_installed";
             default_area = "navbar";
           };
 
           # Bitwarden
           "{446900e4-71c2-419f-a6a7-df9c091e268b}" = {
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/bitwarden-password-manager/latest.xpi";
             installation_mode = "force_installed";
             default_area = "navbar";
           };
 
           # Vimium
           "{d7742d87-e61d-4b78-b8a1-b469842139fa}" = {
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/vimium-ff/latest.xpi";
             installation_mode = "force_installed";
             default_area = "navbar";
           };
 
           # Tree Style Tabs
           "treestyletab@piro.sakura.ne.jp" = {
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tree-style-tab/latest.xpi";
             installation_mode = "force_installed";
             default_area = "menupanel";
           };
           "tst-indent-line@piro.sakura.ne.jp" = {
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/tst-indent-line/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tst-indent-line/latest.xpi";
             installation_mode = "force_installed";
             default_area = "menupanel";
           };
           "tst-more-tree-commands@piro.sakura.ne.jp" = {
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/tst-more-tree-commands/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/tst-more-tree-commands/latest.xpi";
             installation_mode = "force_installed";
             default_area = "menupanel";
           };
 
           # Theme
           "arc-dark-theme@afnankhan" = {
-            install_url =
-              "https://addons.mozilla.org/firefox/downloads/latest/arc-dark-theme-we/latest.xpi";
+            install_url = "https://addons.mozilla.org/firefox/downloads/latest/arc-dark-theme-we/latest.xpi";
             installation_mode = "force_installed";
           };
         };

@@ -1,6 +1,9 @@
-{ config, pkgs, lib, ... }:
-
 {
+  config,
+  pkgs,
+  lib,
+  ...
+}: {
   home.username = "luke";
   home.homeDirectory = "/home/luke";
 
@@ -22,13 +25,13 @@
     userName = "Lucas Gordon";
     # Email is set in the home configs for each host
     extraConfig = {
-      push = { autoSetupRemote = true; };
-      pull = { rebase = true; };
+      push = {autoSetupRemote = true;};
+      pull = {rebase = true;};
     };
   };
 
   # Emacs
-  programs.emacs = { enable = true; };
+  programs.emacs = {enable = true;};
   services.emacs = {
     enable = true;
     startWithUserSession = "graphical";
@@ -36,12 +39,12 @@
 
   # Allow xkeysnail to access the X display
   systemd.user.services.xhostaccess = {
-    Install.WantedBy = [ "graphical-session.target" ];
+    Install.WantedBy = ["graphical-session.target"];
     Service.ExecStart = "${pkgs.xorg.xhost}/bin/xhost +SI:localuser:root";
   };
 
   # Make some directories
-  home.activation.mkDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
+  home.activation.mkDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
     mkdir -p ${config.home.homeDirectory}/scratch
     mkdir -p ${config.home.homeDirectory}/projects
     mkdir -p ${config.home.homeDirectory}/gits

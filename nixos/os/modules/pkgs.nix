@@ -1,10 +1,12 @@
-{ config, pkgs, ... }:
-
 {
-
+  config,
+  pkgs,
+  ...
+}: {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    alejandra
     asdf-vm
     bash-language-server
     bc
@@ -32,7 +34,7 @@
     lsof
     neovim
     neofetch
-    nil
+    nixd
     nixfmt-classic
     nvimpager
     opensc
@@ -73,8 +75,8 @@
   fonts.packages = with pkgs; [
     font-awesome
     roboto-mono
-    (nerdfonts.override { fonts = [ "NerdFontsSymbolsOnly" ]; })
-    (callPackage ./etbembo.nix { })
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+    (callPackage ./etbembo.nix {})
   ];
 
   programs.nix-ld.enable = true;

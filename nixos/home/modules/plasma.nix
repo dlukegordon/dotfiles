@@ -1,56 +1,56 @@
-{ config, pkgs, ... }:
-
 {
+  config,
+  pkgs,
+  ...
+}: {
   programs.plasma = {
     enable = true;
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
-    session.sessionRestore.restoreOpenApplicationsOnLogin =
-      "startWithEmptySession";
+    session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
 
-    panels = [{
-      location = "bottom";
-      height = 40;
-      floating = false;
+    panels = [
+      {
+        location = "bottom";
+        height = 40;
+        floating = false;
 
-      widgets = [
+        widgets = [
+          {
+            kickoff = {
+              icon = "nix-snowflake-white";
+              favoritesDisplayMode = "list";
+            };
+          }
 
-        {
-          kickoff = {
-            icon = "nix-snowflake-white";
-            favoritesDisplayMode = "list";
-          };
-        }
+          "org.kde.plasma.marginsseparator"
 
-        "org.kde.plasma.marginsseparator"
+          {
+            iconTasks = {
+              launchers = [
+                "applications:librewolf.desktop"
+                "applications:org.wezfurlong.wezterm.desktop"
+                "applications:emacsclient.desktop"
+              ];
+            };
+          }
 
-        {
-          iconTasks = {
-            launchers = [
-              "applications:librewolf.desktop"
-              "applications:org.wezfurlong.wezterm.desktop"
-              "applications:emacsclient.desktop"
-            ];
-          };
-        }
-
-        "org.kde.plasma.marginsseparator"
-        "org.kde.plasma.systemtray"
-        "org.kde.plasma.digitalclock"
-
-      ];
-
-    }];
+          "org.kde.plasma.marginsseparator"
+          "org.kde.plasma.systemtray"
+          "org.kde.plasma.digitalclock"
+        ];
+      }
+    ];
 
     shortcuts = {
       ksmserver = {
         # Free up Meta+L
-        "Lock Session" = [ "Screensaver" ];
+        "Lock Session" = ["Screensaver"];
       };
       kwin = {
         # Free up Meta+T
-        "Edit Tiles" = [ ];
+        "Edit Tiles" = [];
         # Free up Meta+W
-        "Overview" = [ ];
+        "Overview" = [];
         # "Walk Through Windows" = [ "Alt+Tab" "Meta+Tab" ];
         # "Walk Through Windows (Reverse)" = [ "Alt+Shift+Tab" "Meta+Shift+Tab" ];
         # "Walk Through Windows of Current Application" = [ "Alt+`" "Meta+`" ];
@@ -59,21 +59,21 @@
       };
       plasmashell = {
         # Free up Meta+S
-        "stop current activity" = [ ];
+        "stop current activity" = [];
         # Free up Meta+V
-        "show-on-mouse-pos" = [ ];
+        "show-on-mouse-pos" = [];
         # Free up Meta+A
-        "next activity" = [ ];
+        "next activity" = [];
         # Free up Meta+Shift+A
-        "previous activity" = [ ];
+        "previous activity" = [];
         # Free up Meta+Q
-        "manage activities" = [ ];
+        "manage activities" = [];
 
-        "activate application launcher" = [ "Meta+Space" ];
-        "activate task manager entry 1" = [ "Meta+1" "Meta+Ctrl+Alt+Shift+B" ];
-        "activate task manager entry 2" = [ "Meta+2" "Meta+Ctrl+Alt+Shift+T" ];
-        "activate task manager entry 3" = [ "Meta+3" "Meta+Ctrl+Alt+Shift+E" ];
-        "activate task manager entry 4" = [ "Meta+4" "Meta+Ctrl+Alt+Shift+S" ];
+        "activate application launcher" = ["Meta+Space"];
+        "activate task manager entry 1" = ["Meta+1" "Meta+Ctrl+Alt+Shift+B"];
+        "activate task manager entry 2" = ["Meta+2" "Meta+Ctrl+Alt+Shift+T"];
+        "activate task manager entry 3" = ["Meta+3" "Meta+Ctrl+Alt+Shift+E"];
+        "activate task manager entry 4" = ["Meta+4" "Meta+Ctrl+Alt+Shift+S"];
       };
     };
   };

@@ -176,6 +176,28 @@
 (after! lsp-mode
   (setq lsp-diagnostics-provider :flymake))
 
+;; Nix setup
+(let ((username (user-login-name))
+      (hostname (system-name)))
+  (setq
+   lsp-nix-nixd-server-path "nixd"
+   lsp-nix-nixd-formatting-command ["alejandra"]
+   lsp-nix-nixd-nixpkgs-expr "import <nixpkgs> { }"
+   lsp-nix-nixd-nixos-options-expr
+   (format "(builtins.getFlake \"/home/%s/dotfiles/nixos\").nixosConfigurations.%s.options"
+           username hostname)
+   lsp-nix-nixd-home-manager-options-expr
+   (format "(builtins.getFlake \"/home/%s/dotfiles/nixos\").homeConfigurations.\"%s@%s\".options"
+           username username hostname)))
+(after! apheleia
+  (setq
+   apheleia-formatters
+   (append '((alejandra "alejandra"))
+           apheleia-formatters)
+   apheleia-mode-alist
+   (cons '(nix-mode . alejandra)
+         (assq-delete-all 'nix-mode apheleia-mode-alist))))
+
 ;;;;;;;; Org
 (setq org-directory "~/org/")
 (after! org
