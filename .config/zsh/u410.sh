@@ -23,7 +23,7 @@ eval "$(/opt/homebrew/bin/brew shellenv)"
 
 psb() {
   git fetch
-  git checkout $1
+  git checkout "$1"
   git pull
   polysign
   git checkout -
@@ -59,5 +59,5 @@ path_appends=(
   ~/google-cloud-sdk/bin
 )
 
-path-prepend $path_prepends
-path-append $path_appends
+path_prepend "$path_prepends"
+path_append "$path_appends"

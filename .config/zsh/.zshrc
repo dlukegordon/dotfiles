@@ -23,7 +23,7 @@ bindkey "^[[1;5D" backward-word
 if [[ ! -e "/etc/NIXOS" && -d "$HOME/.asdf" ]]; then
     . "$HOME/.asdf/asdf.sh"
     fpath=(${ASDF_DIR}/completions $fpath)
-    autoload -Uz compinit && compinit
+    # autoload -Uz compinit && compinit
 fi
 if [[ ! -e "/etc/NIXOS" && -d "$HOME/.cargo/" ]]; then
     . "$HOME/.cargo/env"
@@ -49,8 +49,8 @@ gpg-agent --homedir ~/.gnupg --daemon --enable-ssh-support > /dev/null 2>&1
 gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # Paths
-path-prepend ~/.asdf/shims
-path-append ~/scripts ~/.local/bin ~/go/bin ~/.config/emacs/bin
+path_prepend ~/.asdf/shims
+path_append ~/scripts ~/.local/bin ~/go/bin ~/.config/emacs/bin
 
 # OSC7 escape sequence for terminal
 _urlencode() {
