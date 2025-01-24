@@ -41,6 +41,8 @@
       }
     ];
 
+    input.keyboard.options = ["caps:escape"];
+
     shortcuts = {
       ksmserver = {
         # Free up Meta+L
