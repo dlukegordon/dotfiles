@@ -6,6 +6,16 @@
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
+  # Automatic updates
+  system.autoUpgrade.enable = true;
+  system.autoUpgrade.dates = "weekly";
+
+  # Automatic cleanup
+  nix.gc.automatic = true;
+  nix.gc.dates = "daily";
+  nix.gc.options = "--delete-older-than 10d";
+  nix.settings.auto-optimise-store = true;
+
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
