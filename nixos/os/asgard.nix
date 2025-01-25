@@ -11,4 +11,7 @@
   ];
 
   networking.hostName = "asgard";
+
+  # Override default so that we use Alt and instead of Super
+  systemd.services.xkeysnail.serviceConfig.ExecStart = "${pkgs.xkeysnail}/bin/xkeysnail /etc/xkeysnail/alt.py";
 }

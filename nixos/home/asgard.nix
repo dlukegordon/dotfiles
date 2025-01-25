@@ -13,4 +13,7 @@
 
   # The rest of the git configs are in modules/general.nix
   programs.git.userEmail = "luke@asgard";
+
+  # Swap Super and Alt
+  programs.plasma.input.keyboard.options = ["caps:escape" "altwin:swap_lalt_lwin"];
 }
