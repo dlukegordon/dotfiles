@@ -5,7 +5,6 @@
   ...
 }: {
   imports = [
-    ./modules/doom.nix
     ./modules/general.nix
     ./modules/plasma.nix
     ./modules/librewolf.nix

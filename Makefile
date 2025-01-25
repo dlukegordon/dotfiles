@@ -36,7 +36,9 @@ asdf-install:
 	asdf global golang latest
 
 doom-install:
+	git clone --depth 1 https://github.com/doomemacs/doomemacs $(HOME)/.config/emacs
 	$(HOME)/.config/emacs/bin/doom install
+	$(HOME)/.config/emacs/bin/doom sync
 
 doom-sync:
 	$(HOME)/.config/emacs/bin/doom sync
@@ -46,4 +48,6 @@ emacs-restart:
 
 doom-reload: doom-sync emacs-restart
 
-install: check-host stow nixos-cp-hardware nixos-switch asdf-install doom-install doom-reload
+install-1: check-host stow nixos-cp-hardware nixos-boot
+
+install-2: asdf-install doom-install doom-reload nixos-switch

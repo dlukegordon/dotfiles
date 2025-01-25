@@ -28,8 +28,10 @@ nix-shell -p git gnumake stow --extra-experimental-features 'nix-command flakes'
 new_host="<set hostname from flake.nix>"
 git clone https://github.com/dlukegordon/dotfiles.git
 cd dotfiles
-make install host=$new_host
+make install-1 host=$new_host
 reboot
+# Reboot and log back in
+make install-2
 #+end_src
 
 After the reboot, make sure to select an X11 session on the SDDM screen. Wayland is not currently supported.
@@ -39,6 +41,7 @@ After the reboot, make sure to select an X11 session on the SDDM screen. Wayland
 There are a few things that we can't (currently) setup through NixOS, you'll need to set these up manually.
 - Setup Librewolf extensions like Bitwarden, Tree Style Tabs, uBlock.
 - Customize Librewolf settings such as search engines, search shortcuts, and appearance (theme is already installed).
+- Set a fingerprint
 - Customize the Plasma panel and task switcher settings.
 - Set Plasma display, power, and screen lock settings.
 - Generate an ssh key for git. Follow instructions [[https://docs.github.com/en/authentication/connecting-to-github-with-ssh/generating-a-new-ssh-key-and-adding-it-to-the-ssh-agent][here]]. Then you'll need to update the remote of this repo to use ssh: =git remote set-url origin git@github.com:dlukegordon/dotfiles.git=.
