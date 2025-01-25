@@ -17,6 +17,10 @@ in {
       enable = true;
       languagePacks = ["en-US"];
 
+      settings = {
+        "privacy.resistFingerprinting" = false; # So that we can start maximized.
+      };
+
       # ---- Profiles ----
       profiles.default = {
         name = "default";
@@ -38,7 +42,6 @@ in {
         '';
       };
 
-      # ---- POLICIES ----
       # Check about:policies#documentation for options.
       policies = {
         DisableTelemetry = true;
@@ -50,9 +53,10 @@ in {
         DisplayBookmarksToolbar = "never"; # alternatives: "always" or "newtab"
         SanitizeOnShutdown = false;
 
-        # ---- PREFERENCES ----
         # Check about:config for options.
         Preferences = {
+          "browser.ctrlTab.previews" = lock-true;
+          "browser.ctrlTab.sortByRecentlyUsed" = lock-true;
           "browser.contentblocking.category" = {
             Value = "standard";
             Status = "locked";
@@ -72,11 +76,12 @@ in {
           "browser.urlbar.shortcuts.bookmarks" = lock-false;
           "browser.urlbar.shortcuts.history" = lock-false;
           "browser.urlbar.shortcuts.tabs" = lock-false;
+          "browser.warnOnQuit" = lock-false;
+          "browser.warnOnQuitShortcut" = lock-false;
           "privacy.sanitize.sanitizeOnShutdown" = lock-false;
           "toolkit.legacyUserProfileCustomizations.stylesheets" = lock-true;
         };
 
-        # ---- EXTENSIONS ----
         # Check about:support for extension/add-on ID strings.
         # Valid strings for installation_mode are "allowed", "blocked",
         # "force_installed" and "normal_installed".
