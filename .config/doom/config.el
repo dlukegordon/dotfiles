@@ -83,8 +83,10 @@
         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\deps\\'")
         (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\ops-gcs\\'"))
       (setq +my/font-size 14))
-  (progn
-    (setq +my/font-size 21)))
+  (setq +my/font-size
+        (if (string= (system-name) "asgard")
+            25
+          21)))
 
 ;;;;;;;; Style
 (add-to-list 'default-frame-alist '(fullscreen . maximized))
