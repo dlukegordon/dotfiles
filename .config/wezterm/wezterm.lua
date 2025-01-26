@@ -12,7 +12,6 @@ end
 config.font = wezterm.font('Roboto Mono')
 config.unicode_version = 14
 config.font_size = 11
--- config.color_scheme = 'Catppuccin Mocha'
 config.color_scheme = 'OneDark (base16)'
 config.line_height = 1
 config.initial_cols = 250

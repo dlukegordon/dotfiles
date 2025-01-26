@@ -18,13 +18,13 @@ nixos-cp-hardware:
 	cp /etc/nixos/hardware-configuration.nix nixos/os/hardware-configuration.nix
 
 nixos-test: check-host
-	sudo nixos-rebuild test --flake path:./nixos#$(host)
+	sudo nixos-rebuild test --flake path:$(HOME)/dotfiles/nixos#$(host)
 
 nixos-switch: check-host
-	sudo nixos-rebuild switch --flake path:./nixos#$(host)
+	sudo nixos-rebuild switch --flake path:$(HOME)/dotfiles/nixos#$(host)
 
 nixos-boot: check-host
-	sudo nixos-rebuild boot --flake path:./nixos#$(host)
+	sudo nixos-rebuild boot --flake path:$(HOME)/dotfiles/nixos#$(host)
 
 asdf-install:
 	asdf plugin add nodejs

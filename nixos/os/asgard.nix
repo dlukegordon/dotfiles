@@ -6,6 +6,7 @@
   imports = [
     ./hardware-configuration.nix
     ./modules/pkgs.nix
+    ./modules/stylix.nix
     ./modules/system.nix
     ./modules/xkeysnail.nix
   ];

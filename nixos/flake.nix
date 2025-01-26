@@ -14,12 +14,18 @@
       inputs.nixpkgs.follows = "nixpkgs";
       inputs.home-manager.follows = "home-manager";
     };
+
+    stylix = {
+      url = "github:danth/stylix/release-24.11";
+      inputs.nixpkgs.follows = "nixpkgs";
+    };
   };
 
   outputs = inputs @ {
     nixpkgs,
     home-manager,
     plasma-manager,
+    stylix,
     ...
   }: {
     nixosConfigurations = {
@@ -29,13 +35,16 @@
 
         modules = [
           ./os/valhalla.nix
+          stylix.nixosModules.stylix
 
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.luke = import ./home/valhalla.nix;
-            home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.sharedModules = [
+              plasma-manager.homeManagerModules.plasma-manager
+            ];
           }
         ];
       };
@@ -46,13 +55,16 @@
 
         modules = [
           ./os/asgard.nix
+          stylix.nixosModules.stylix
 
           home-manager.nixosModules.home-manager
           {
             home-manager.useGlobalPkgs = true;
             home-manager.useUserPackages = true;
             home-manager.users.luke = import ./home/asgard.nix;
-            home-manager.sharedModules = [plasma-manager.homeManagerModules.plasma-manager];
+            home-manager.sharedModules = [
+              plasma-manager.homeManagerModules.plasma-manager
+            ];
           }
         ];
       };

@@ -7,6 +7,10 @@
     enable = true;
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
     session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
+    configFile.kded5rc = {
+      # So that plasma doesn't keep creating ~/.gtkrc-2.0 which we then have to delete for stylix
+      "Module-gtkconfig"."autoload" = false;
+    };
 
     panels = [
       {

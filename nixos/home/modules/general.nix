@@ -20,6 +20,29 @@
     wezterm
   ];
 
+  # Stylix (most of the configs are in os but we have some here in home)
+  # stylix.targets.librewolf.enable = false;
+  stylix = {
+    fonts = {
+      sizes.applications = 11;
+      serif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Serif";
+      };
+
+      sansSerif = {
+        package = pkgs.noto-fonts;
+        name = "Noto Sans";
+      };
+
+      monospace = {
+        package = pkgs.roboto-mono;
+        name = "Roboto Mono";
+      };
+    };
+  };
+
+  # Git
   programs.git = {
     enable = true;
     userName = "Lucas Gordon";
@@ -31,7 +54,7 @@
   };
 
   # Emacs
-  programs.emacs = {enable = true;};
+  programs.emacs.enable = true;
   services.emacs = {
     enable = true;
     startWithUserSession = "graphical";
@@ -50,8 +73,7 @@
     mkdir -p ${config.home.homeDirectory}/gits
   '';
 
-  # We are managing fonts in nixos, not home-manager
-  fonts.fontconfig.enable = false;
+  fonts.fontconfig.enable = true;
 
   # This value determines the home Manager release that your
   # configuration is compatible with. This helps avoid breakage
