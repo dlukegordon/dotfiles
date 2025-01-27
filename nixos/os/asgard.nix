@@ -25,4 +25,7 @@
 
   # Override default so that we use Alt and instead of Super
   systemd.services.xkeysnail.serviceConfig.ExecStart = "${pkgs.xkeysnail}/bin/xkeysnail /etc/xkeysnail/alt.py";
+
+  # Enable Intel Quick Sync Video
+  hardware.graphics.extraPackages = [pkgs.vpl-gpu-rt];
 }
