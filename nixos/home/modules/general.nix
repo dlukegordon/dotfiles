@@ -21,10 +21,11 @@
   ];
 
   # Stylix (most of the configs are in os but we have some here in home)
-  # stylix.targets.librewolf.enable = false;
   stylix = {
     fonts = {
-      sizes.applications = 11;
+      sizes.applications = 10;
+      sizes.popups = 16;
+
       serif = {
         package = pkgs.noto-fonts;
         name = "Noto Serif";
@@ -33,11 +34,6 @@
       sansSerif = {
         package = pkgs.noto-fonts;
         name = "Noto Sans";
-      };
-
-      monospace = {
-        package = pkgs.roboto-mono;
-        name = "Roboto Mono";
       };
     };
   };
@@ -54,17 +50,21 @@
   };
 
   # Emacs
-  programs.emacs.enable = true;
+  programs.emacs = {
+    enable = true;
+    package = pkgs.emacs29-pgtk;
+  };
   services.emacs = {
     enable = true;
     startWithUserSession = "graphical";
+    package = pkgs.emacs29-pgtk;
   };
 
   # Allow xkeysnail to access the X display
-  systemd.user.services.xhostaccess = {
-    Install.WantedBy = ["graphical-session.target"];
-    Service.ExecStart = "${pkgs.xorg.xhost}/bin/xhost +SI:localuser:root";
-  };
+  # systemd.user.services.xhostaccess = {
+  #   Install.WantedBy = ["graphical-session.target"];
+  #   Service.ExecStart = "${pkgs.xorg.xhost}/bin/xhost +SI:localuser:root";
+  # };
 
   # Make some directories
   home.activation.mkDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''

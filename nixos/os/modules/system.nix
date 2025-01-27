@@ -61,6 +61,10 @@
   services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
 
+  # Hyprland
+  programs.hyprland.enable = true;
+  programs.hyprland.withUWSM = true;
+
   # Configure keymap in X11
   services.xserver.xkb = {
     layout = "us";
@@ -93,8 +97,7 @@
   users.users.luke = {
     isNormalUser = true;
     description = "Luke";
-    extraGroups = ["networkmanager" "wheel"];
-    packages = with pkgs; [];
+    extraGroups = ["networkmanager" "wheel" "input"];
   };
 
   # Some programs need SUID wrappers, can be configured further or are

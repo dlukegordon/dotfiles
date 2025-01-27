@@ -77,6 +77,8 @@
     roboto-mono
     (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     (callPackage ./etbembo.nix {})
+    dejavu_fonts
+    noto-fonts
   ];
 
   programs.nix-ld.enable = true;

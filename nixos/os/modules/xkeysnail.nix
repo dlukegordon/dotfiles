@@ -62,15 +62,15 @@
     };
   };
 
-  systemd.services.xkeysnail = {
-    enable = true;
-    wantedBy = ["display-manager.service"];
-    environment = {DISPLAY = ":0";};
-    serviceConfig = {
-      ExecStart = lib.mkDefault "${pkgs.xkeysnail}/bin/xkeysnail /etc/xkeysnail/super.py";
-      User = "root";
-      Restart = "always";
-      RestartSec = "2";
-    };
-  };
+  # systemd.services.xkeysnail = {
+  #   enable = true;
+  #   wantedBy = ["display-manager.service"];
+  #   environment = {DISPLAY = ":0";};
+  #   serviceConfig = {
+  #     ExecStart = lib.mkDefault "${pkgs.xkeysnail}/bin/xkeysnail /etc/xkeysnail/super.py";
+  #     User = "root";
+  #     Restart = "always";
+  #     RestartSec = "2";
+  #   };
+  # };
 }
