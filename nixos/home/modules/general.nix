@@ -14,7 +14,6 @@
     obsidian
     signal-desktop
     sparrow
-    thunderbird
     transmission_4-qt
     vlc
     wezterm
@@ -61,6 +60,18 @@
     enable = true;
     startWithUserSession = "graphical";
     # package = pkgs.emacs29-pgtk;
+  };
+
+  # Thunderbird
+  programs.thunderbird = {
+    enable = true;
+    profiles.default = {
+      isDefault = true;
+      settings = {
+        # If we don't do this, the browser ui is strangely large
+        "browser.display.os-zoom-behavior" = 0;
+      };
+    };
   };
 
   # Allow xkeysnail to access the X display
