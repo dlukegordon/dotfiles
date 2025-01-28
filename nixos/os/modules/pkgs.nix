@@ -34,7 +34,7 @@
     lsof
     neovim
     fastfetch
-    nixd
+    # nixd
     nixfmt-classic
     nvimpager
     opensc
