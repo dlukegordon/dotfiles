@@ -55,12 +55,12 @@
   # Emacs
   programs.emacs = {
     enable = true;
-    package = pkgs.emacs29-pgtk;
+    # package = pkgs.emacs29-pgtk;
   };
   services.emacs = {
     enable = true;
     startWithUserSession = "graphical";
-    package = pkgs.emacs29-pgtk;
+    # package = pkgs.emacs29-pgtk;
   };
 
   # Allow xkeysnail to access the X display
