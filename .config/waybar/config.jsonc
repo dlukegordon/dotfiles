@@ -28,7 +28,7 @@
     ],
     "hyprland/workspaces": {
         "format": "{icon}",
-        "format-icons": {"1": "", "2": "", "3": "", "4": ""}
+        "format-icons": {"1": "", "2": "", "3": "󰭹", "4": ""}
     },
     "idle_inhibitor": {
         "format": "{icon}",
@@ -71,7 +71,7 @@
     },
     "backlight": {
         // "device": "acpi_video1",
-        "format": "{percent}% {icon}",
+        "format": "{icon}",
         "format-icons": ["", "", "", "", "", "", "", "", ""]
     },
     "battery": {
@@ -80,14 +80,16 @@
             "warning": 30,
             "critical": 15
         },
-        "format": "{capacity}% {icon}",
-        "format-full": "{capacity}% {icon}",
-        "format-charging": "{capacity}% ",
-        "format-plugged": "{capacity}% ",
+        "format": "{icon}",
+        "format-full": "{icon}",
+        "format-charging": "{icon} ",
+        "format-plugged": "{icon} ",
         "format-alt": "{time} {icon}",
         // "format-good": "", // An empty format will hide the module
         // "format-full": "",
-        "format-icons": ["", "", "", "", ""]
+        "format-icons": ["", "", "", "", ""],
+        "tooltip-format": "{capacity}%, {timeTo}",
+        "interval": 1
     },
     "power-profiles-daemon": {
       "format": "{icon}",

@@ -4,10 +4,15 @@
   lib,
   ...
 }: {
-  programs.fuzzel.enable = true;
+  # We need to enable this so that stylix makes the config file. But for some reason the
+  # service doesn't start automatically, so we need to start in hyprland.conf.
   services.hyprpaper.enable = true;
+
+  programs.fuzzel.enable = true;
   services.swaync.enable = true;
+
   home.packages = with pkgs; [
+    brightnessctl
     hypridle
     hyprlock
     hyprshot
@@ -21,7 +26,7 @@
     style = ''
       * {
           /* This is necessary to display all icons correctly */
-          font-family: "Noto Sans", "Font Awesome 6 Free";
+          font-family: "Noto Sans", "Font Awesome 6 Free", "Symbols Nerd Font Mono";
       }
 
       window#waybar, tooltip {

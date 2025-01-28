@@ -56,11 +56,11 @@
     enable = true;
     # package = pkgs.emacs29-pgtk;
   };
-  services.emacs = {
-    enable = true;
-    startWithUserSession = "graphical";
-    # package = pkgs.emacs29-pgtk;
-  };
+  # services.emacs = {
+  #   enable = true;
+  #   startWithUserSession = "graphical";
+  #   # package = pkgs.emacs29-pgtk;
+  # };
 
   # Thunderbird
   programs.thunderbird = {

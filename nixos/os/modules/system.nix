@@ -64,6 +64,9 @@
   # Hyprland
   programs.hyprland.enable = true;
   programs.hyprland.withUWSM = true;
+  security.pam.services.sddm.enableKwallet = true;
+  environment.sessionVariables.NIXOS_OZONE_WL = "1";
+  environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
 
   # Configure keymap in X11
   services.xserver.xkb = {

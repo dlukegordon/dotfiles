@@ -89,7 +89,7 @@
           21)))
 
 ;;;;;;;; Style
-(add-to-list 'default-frame-alist '(fullscreen . maximized))
+;; (add-to-list 'default-frame-alist '(fullscreen . maximized))
 (setq display-line-numbers-type t)
 (setq doom-theme 'doom-dark+)
 (setq emojify-display-style 'unicode)
