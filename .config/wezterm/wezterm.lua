@@ -9,9 +9,13 @@ if wezterm.config_builder then
     config = wezterm.config_builder()
 end
 
-config.font = wezterm.font('Roboto Mono')
+config.font = wezterm.font_with_fallback {
+    'Roboto Mono',
+    'Font Awesome 6 Free Regular',
+    'Font Awesome 6 Free Solid',
+}
 config.unicode_version = 14
-config.font_size = 16
+config.font_size = 11
 config.color_scheme = 'OneDark (base16)'
 config.line_height = 1
 config.initial_cols = 250

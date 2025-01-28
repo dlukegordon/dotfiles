@@ -22,9 +22,12 @@
 
   # Stylix (most of the configs are in os but we have some here in home)
   stylix = {
+    autoEnable = true;
+
     fonts = {
       sizes.applications = 10;
       sizes.popups = 16;
+      sizes.desktop = 7;
 
       serif = {
         package = pkgs.noto-fonts;

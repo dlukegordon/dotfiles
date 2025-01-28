@@ -28,6 +28,7 @@ alias vimdiff='nvim -d'
 # alias find='fd'
 alias watch='viddy -n 1 -s '
 alias t="tms ~/scratch"
+alias wbrl="pkill waybar && hyprctl dispatch exec waybar"
 
 # Git aliases
 alias repo='glab repo view -w'

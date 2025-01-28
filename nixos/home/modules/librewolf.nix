@@ -61,6 +61,11 @@ in {
             Value = "standard";
             Status = "locked";
           };
+          # If we don't do this, the browser ui is strangely large
+          "browser.display.os-zoom-behavior" = {
+            Value = 0;
+            Status = "locked";
+          };
           "browser.newtabpage.enabled" = lock-false;
           "browser.search.suggest.enabled" = lock-false;
           "browser.search.suggest.enabled.private" = lock-false;

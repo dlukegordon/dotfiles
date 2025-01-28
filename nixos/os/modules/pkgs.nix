@@ -33,7 +33,7 @@
     lsd
     lsof
     neovim
-    neofetch
+    fastfetch
     nixd
     nixfmt-classic
     nvimpager
@@ -70,6 +70,9 @@
 
   # Yubikeys
   services.pcscd.enable = true;
+
+  # Bluetooth
+  services.blueman.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [
