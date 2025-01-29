@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   ...
 }: {
   # Enable the Flakes feature and the accompanying new nix command-line tool
@@ -62,8 +63,10 @@
   services.desktopManager.plasma6.enable = true;
 
   # Hyprland
-  programs.hyprland.enable = true;
-  programs.hyprland.withUWSM = true;
+  programs.hyprland = {
+    enable = true;
+    withUWSM = true;
+  };
   security.pam.services.sddm.enableKwallet = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";
