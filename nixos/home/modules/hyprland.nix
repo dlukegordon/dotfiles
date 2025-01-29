@@ -7,13 +7,13 @@
   # We need to enable this so that stylix makes the config file. But for some reason the
   # service doesn't start automatically, so we need to start in hyprland.conf.
   services.hyprpaper.enable = true;
+  services.hypridle.enable = true;
 
   programs.fuzzel.enable = true;
   services.swaync.enable = true;
 
   home.packages = with pkgs; [
     brightnessctl
-    hypridle
     hyprlock
     hyprshot
     hyprsunset
