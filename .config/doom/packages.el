@@ -49,14 +49,23 @@
 ;; ...Or *all* packages (NOT RECOMMENDED; will likely break things)
 ;; (unpin! t)
 
-(package! treemacs-magit)
-(package! gptel)
+;; Org
 (package! org-appear)
 (package! org-fragtog)
 (package! org-modern)
-(package! uv-mode)
-(package! websocket)
+
+;; Better smooth scrolling
+(package! ultra-scroll
+  :recipe (:host github :repo "jdtsmith/ultra-scroll"))
+
+;; Typst
 (package! typst-ts-mode
   :recipe (:host nil :repo "https://codeberg.org/meow_king/typst-ts-mode.git"))
 (package! typst-preview
   :recipe (:host github :repo "havarddj/typst-preview.el"))
+
+;; Misc
+(package! gptel)
+(package! treemacs-magit)
+(package! uv-mode)
+(package! websocket)
