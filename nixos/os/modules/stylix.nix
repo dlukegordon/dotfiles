@@ -13,4 +13,5 @@
     polarity = "dark";
     base16Scheme = "${pkgs.base16-schemes}/share/themes/onedark.yaml";
   };
+  environment.etc."pictures/wallpaper.jpg".source = config.stylix.image;
 }

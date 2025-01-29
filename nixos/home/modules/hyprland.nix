@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   lib,
   ...
 }: {
@@ -14,7 +15,7 @@
 
   home.packages = with pkgs; [
     brightnessctl
-    hyprlock
+    pkgsUnstable.hyprlock
     hyprshot
     hyprsunset
     networkmanagerapplet
