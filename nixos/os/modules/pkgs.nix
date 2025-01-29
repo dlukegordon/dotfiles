@@ -10,6 +10,7 @@
     asdf-vm
     bash-language-server
     bc
+    btop
     ccid
     cmake
     dockfmt
@@ -34,7 +35,6 @@
     lsof
     neovim
     fastfetch
-    # nixd
     nixfmt-classic
     nvimpager
     opensc
