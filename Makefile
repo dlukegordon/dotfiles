@@ -1,7 +1,7 @@
 # Must override on first install
 host := $(shell hostname)
 
-default: nixos-test
+default: stow nixos-test
 
 check-host:
 	@if [ "$(host)" = "nixos" ]; then \
