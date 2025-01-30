@@ -1,14 +1,8 @@
 * dotfiles
 
-My personal dotfiles including configs for nixos, emacs, tmux, wezterm, neovim, and zsh.
+[[https://i0.wp.com/globalpragmatica.com/wp-content/uploads/2010/10/Mandelbrot.jpeg]]
 
-** Software
-
-*** TODO list software
-
-** NixOS setup (remote)
-
-*** TODO Implement with nix-anywhere
+My personal dotfiles including configs for nixos, hyprland, emacs, tmux, wezterm, neovim, and zsh.
 
 ** NixOS setup
 
