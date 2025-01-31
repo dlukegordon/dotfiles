@@ -406,3 +406,129 @@ Uses projectile to get project files and consult for selection with preview."
   (map! :leader "o l" #'gptel)
   (map! :nv "g l" #'gptel-add)
   (map! :nv "g L" #'gptel-rewrite))
+(map! :leader "j d" #'flymake-goto-next-error)
+(map! :leader "k d" #'flymake-goto-prev-error)
+
+;; avy
+(map!
+ :leader "j j"
+ (lambda ()
+   (interactive)
+   (evil-avy-goto-char-timer)))
+(map!
+ :leader "k k"
+ (lambda ()
+   (interactive)
+   (evil-avy-goto-word-0)))
+(map!
+ :leader "j s"
+ (lambda ()
+   (interactive)
+   (evil-avy-goto-char-2 1)))
+(map!
+ :leader "k s"
+ (lambda ()
+   (interactive)
+   (evil-avy-goto-char-2 -1)))
+
+;; evil-textobj-tree-sitter
+
+;; Function
+(define-key evil-outer-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.outer"))
+(define-key evil-inner-text-objects-map "f" (evil-textobj-tree-sitter-get-textobj "function.inner"))
+(map!
+ :leader "j f"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "function.outer")))
+(map!
+ :leader "j F"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "function.inner" nil 1)))
+(map!
+ :leader "k f"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "function.outer" 1)))
+(map!
+ :leader "k F"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "function.inner" 1)))
+
+;; Conditional
+(define-key evil-outer-text-objects-map "v" (evil-textobj-tree-sitter-get-textobj "conditional.outer"))
+(define-key evil-inner-text-objects-map "v" (evil-textobj-tree-sitter-get-textobj "conditional.inner"))
+(map!
+ :leader "j c"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "conditional.outer")))
+(map!
+ :leader "j C"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "conditional.inner" nil 1)))
+(map!
+ :leader "k c"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "conditional.outer" 1)))
+(map!
+ :leader "k C"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "conditional.inner" 1)))
+
+;; Parameter
+(define-key evil-outer-text-objects-map "p" (evil-textobj-tree-sitter-get-textobj "parameter.outer"))
+(define-key evil-inner-text-objects-map "p" (evil-textobj-tree-sitter-get-textobj "parameter.inner"))
+(map!
+ :leader "j p"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "parameter.inner")))
+(map!
+ :leader "k p"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "parameter.inner" 1)))
+
+;; Loop
+(define-key evil-outer-text-objects-map "l" (evil-textobj-tree-sitter-get-textobj "loop.outer"))
+(define-key evil-inner-text-objects-map "l" (evil-textobj-tree-sitter-get-textobj "loop.inner"))
+(map!
+ :leader "j l"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "loop.outer")))
+(map!
+ :leader "j L"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "loop.inner" nil 1)))
+(map!
+ :leader "k l"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "loop.outer" 1)))
+(map!
+ :leader "k L"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "loop.inner" 1)))
+
+;; Assignment
+(define-key evil-outer-text-objects-map "a" (evil-textobj-tree-sitter-get-textobj "assignment.outer"))
+(define-key evil-inner-text-objects-map "a" (evil-textobj-tree-sitter-get-textobj "assignment.inner"))
+(map!
+ :leader "j a"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "assignment.inner")))
+(map!
+ :leader "k a"
+ (lambda ()
+   (interactive)
+   (evil-textobj-tree-sitter-goto-textobj "assignment.inner" 1)))
