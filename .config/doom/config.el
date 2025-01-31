@@ -157,7 +157,7 @@
 (setq doom-modeline-persp-name t)
 (setq dired-free-space nil)
 (setq pixel-scroll-precision-interpolate-page t)
-(ultra-scroll-mode 1)
+(pixel-scroll-precision-mode 1)
 (global-tree-sitter-mode 1)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 (setq doom-modeline-env-enable-go nil)

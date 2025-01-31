@@ -54,10 +54,6 @@
 (package! org-fragtog)
 (package! org-modern)
 
-;; Better smooth scrolling
-(package! ultra-scroll
-  :recipe (:host github :repo "jdtsmith/ultra-scroll"))
-
 ;; Typst
 (package! typst-ts-mode
   :recipe (:host nil :repo "https://codeberg.org/meow_king/typst-ts-mode.git"))
