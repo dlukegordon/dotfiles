@@ -7,10 +7,12 @@
   (cond
    ((string-equal hostname "asgard")
     (setq +my/font-size 25)
-    (message "asgard"))
+    (ultra-scroll-mode 1))
+
    ((string-equal hostname "valhalla")
     (setq +my/font-size 20)
-    (message "valhalla"))
+    (pixel-scroll-precision-mode 1))
+
    ((eq system-type 'darwin)
     (setq +my/font-size 14)
     (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\deps\\'")
@@ -28,7 +30,6 @@
   (add-hook 'after-save-hook 'magit-after-save-refresh-status t))
 (setq evil-snipe-scope 'line)
 (setq pixel-scroll-precision-interpolate-page t)
-(pixel-scroll-precision-mode 1)
 (global-tree-sitter-mode 1)
 (add-hook 'tree-sitter-after-on-hook #'tree-sitter-hl-mode)
 (setq warning-minimum-level :error)
