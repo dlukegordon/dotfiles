@@ -3,6 +3,8 @@ host := $(shell hostname)
 
 default: stow nixos-test
 
+switch: stow nixos-switch doom-sync
+
 check-host:
 	@if [ "$(host)" = "nixos" ]; then \
 		echo "Error: Host is set to default: nixos"; \
