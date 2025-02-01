@@ -2,16 +2,19 @@
 
 ;;;;;;;; OS-specific settings
 (defvar +my/font-size nil)
-(if (eq system-type 'darwin)
-    (progn
-      (after! lsp-mode
-        (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\deps\\'")
-        (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\ops-gcs\\'"))
-      (setq +my/font-size 14))
-  (setq +my/font-size
-        (if (string= (system-name) "asgard")
-            25
-          20)))
+
+(let ((hostname (system-name)))
+  (cond
+   ((string-equal hostname "asgard")
+    (setq +my/font-size 25)
+    (message "asgard"))
+   ((string-equal hostname "valhalla")
+    (setq +my/font-size 20)
+    (message "valhalla"))
+   ((eq system-type 'darwin)
+    (setq +my/font-size 14)
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\deps\\'")
+    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\ops-gcs\\'"))))
 
 ;;;;;;;; Garbage Collection
 ;; Set garbage collection threshold very high.
