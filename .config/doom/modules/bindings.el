@@ -136,22 +136,22 @@
 (define-key evil-outer-text-objects-map "v" (evil-textobj-tree-sitter-get-textobj "conditional.outer"))
 (define-key evil-inner-text-objects-map "v" (evil-textobj-tree-sitter-get-textobj "conditional.inner"))
 (map!
- :leader "j c"
+ :leader "j v"
  (lambda ()
    (interactive)
    (evil-textobj-tree-sitter-goto-textobj "conditional.outer")))
 (map!
- :leader "j C"
+ :leader "j V"
  (lambda ()
    (interactive)
    (evil-textobj-tree-sitter-goto-textobj "conditional.inner" nil 1)))
 (map!
- :leader "k c"
+ :leader "k v"
  (lambda ()
    (interactive)
    (evil-textobj-tree-sitter-goto-textobj "conditional.outer" 1)))
 (map!
- :leader "k C"
+ :leader "k V"
  (lambda ()
    (interactive)
    (evil-textobj-tree-sitter-goto-textobj "conditional.inner" 1)))
