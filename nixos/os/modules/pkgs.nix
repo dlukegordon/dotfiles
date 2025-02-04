@@ -35,6 +35,7 @@
     lsof
     neovim
     fastfetch
+    font-manager
     nixfmt-classic
     nvimpager
     opensc
@@ -46,7 +47,9 @@
     shellcheck
     shfmt
     stow
+    tinymist
     tmux
+    typst
     uv
     unzip
     wget
@@ -82,6 +85,10 @@
     (callPackage ./etbembo.nix {})
     dejavu_fonts
     noto-fonts
+    garamond-libre
+    gelasio
+    caladea
+    libre-baskerville
   ];
 
   programs.nix-ld.enable = true;
