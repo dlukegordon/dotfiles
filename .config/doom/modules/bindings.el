@@ -44,6 +44,7 @@
 (map! :ni "s-q" #'save-buffers-kill-terminal)
 (map! :n "C-\\" #'+my/evil-insert-end-of-buffer)
 (map! :leader "\\" #'comment-line)
+(map! :nv "\\" #'comment-line)
 (map! :leader "/" #'+my/search-project)
 (map! :leader "s p" #'+my/search-project)
 (map! :leader "w v" #'+evil/window-vsplit-and-follow)
@@ -57,11 +58,12 @@
 ;;;;;;;; Projectile
 (after! projectile
   (map! :leader "SPC" #'+my/consult-project-file-preview)
-  (map! :n "` o" #'+my/projectile-persp-switch-project)
-  (map! :n "` SPC" #'+my/projectile-persp-switch-last-project)
   (map! :leader "p p" #'+my/projectile-persp-switch-project)
   (map! :leader "e" #'+my/projectile-persp-switch-project)
-  (map! :leader "r" #'+my/projectile-persp-switch-last-project))
+  (map! :leader "r" #'+my/projectile-persp-switch-last-project)
+  ;; Mimic tmux sessionizer bindings in terminal
+  (map! :n "= o" #'+my/projectile-persp-switch-project)
+  (map! :n "= SPC" #'+my/projectile-persp-switch-last-project))
 
 ;;;;;;;; Dired
 (after! dired

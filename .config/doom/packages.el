@@ -54,6 +54,9 @@
 (package! org-fragtog)
 (package! org-modern)
 
+;; Treesit-auto
+(package! treesit-auto)
+
 ;; Better smooth scrolling
 (package! ultra-scroll
   :recipe (:host github :repo "jdtsmith/ultra-scroll"))
