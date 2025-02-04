@@ -22,42 +22,32 @@ export GONOSUMDB='*'
 eval "$(/opt/homebrew/bin/brew shellenv)"
 
 psb() {
-  git fetch
-  git checkout "$1"
-  git pull
-  polysign
-  git checkout -
+    git fetch
+    git checkout "$1"
+    git pull
+    polysign
+    git checkout -
 }
 
-# Eject SD or usb storage devices
-# e() {
-#   local vpaths=(BOOT TRANSPORT ROM FIRMWARE)
-#     
-#   for vpath in "${vpaths[@]}"; do
-#     path="/Volumes/$vpath"
-#     if [[ -e "$vpath" ]]; then
-#       echo "Ejecting $vpath..."
-#       diskutil eject "$vpath"
-#     fi
-#   done
-# }
-
 path_prepends=(
-  # /opt/homebrew/opt/cpio/bin
-  # /opt/homebrew/opt/gnu-tar/libexec/gnubin
-  /opt/homebrew/opt/findutils/libexec/gnubin
-  /opt/homebrew/opt/curl/bin
-  /opt/homebrew/opt/grep/libexec/gnubin
-  /opt/homebrew/opt/coreutils/libexec/gnubin
+    # /opt/homebrew/opt/cpio/bin
+    # /opt/homebrew/opt/gnu-tar/libexec/gnubin
+    /opt/homebrew/opt/findutils/libexec/gnubin
+    /opt/homebrew/opt/curl/bin
+    /opt/homebrew/opt/grep/libexec/gnubin
+    /opt/homebrew/opt/coreutils/libexec/gnubin
 )
 
 path_appends=(
-  ~/u410/gnupg-m1-builder/target/bin
-  ~/u410/sig-utils/utils
-  ~/u410/cs/scripts
-  ~/u410/horcrux
-  ~/google-cloud-sdk/bin
+    ~/u410/gnupg-m1-builder/target/bin
+    ~/u410/sig-utils/utils
+    ~/u410/cs/scripts
+    ~/u410/horcrux
+    ~/google-cloud-sdk/bin
 )
 
-path_prepend "$path_prepends"
-path_append "$path_appends"
+# We don't want quotes here for the functions to work correctly
+# shellcheck disable=SC2086,SC2128
+path_prepend $path_prepends
+# shellcheck disable=SC2086,SC2128
+path_append $path_appends
