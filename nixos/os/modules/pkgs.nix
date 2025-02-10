@@ -27,6 +27,7 @@
     libsForQt5.kdbusaddons
     gnumake
     gnupg
+    inetutils
     ivpn
     ivpn-service
     less
@@ -40,6 +41,7 @@
     nvimpager
     opensc
     pandoc
+    rage
     re2
     ripgrep
     rust-analyzer
