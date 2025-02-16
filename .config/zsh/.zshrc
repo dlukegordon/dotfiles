@@ -35,7 +35,7 @@ export VISUAL="$EDITOR"
 export PAGER=nvimpager
 export LESS='--mouse --wheel-lines=1'
 export LS_COLORS="ow=100;37;01"
-export FZF_DEFAULT_OPTS="--pointer='>' --color=bg+:#30363F,fg+:white,gutter:black,hl:#C98E56,hl+:#C98E56"
+export FZF_DEFAULT_OPTS="--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 
 # Work settings
 if [[ "$HOST" == "lgordon-m2-mbp" ]]; then
