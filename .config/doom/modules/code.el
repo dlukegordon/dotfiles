@@ -3,9 +3,9 @@
 ;;;;;;;; Lsp
 (setq lsp-signature-auto-activate nil)
 (setq lsp-rust-analyzer-cargo-watch-command "clippy")
-(setq lsp-rust-analyzer-proc-macro-enable nil)
-(setq lsp-rust-analyzer-experimental-proc-attr-macros nil)
-(setq lsp-rust-analyzer-diagnostics-disabled ["macro-error"])
+;; (setq lsp-rust-analyzer-proc-macro-enable nil)
+;; (setq lsp-rust-analyzer-experimental-proc-attr-macros nil)
+;; (setq lsp-rust-analyzer-diagnostics-disabled ["macro-error"])
 (add-hook! prog-mode #'flymake-mode)
 (after! lsp-mode
   (setq lsp-diagnostics-provider :flymake))

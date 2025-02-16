@@ -54,8 +54,8 @@
 (package! org-fragtog)
 (package! org-modern)
 
-;; Treesit-auto
-(package! treesit-auto)
+;; ;; Treesit-auto
+;; (package! treesit-auto)
 
 ;; Better smooth scrolling
 (package! ultra-scroll
