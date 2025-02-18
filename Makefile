@@ -3,7 +3,7 @@ host := $(shell hostname)
 
 default: stow nixos-test
 
-switch: stow nixos-switch doom-sync
+switch: stow nixos-switch
 
 check-host:
 	@if [ "$(host)" = "nixos" ]; then \
