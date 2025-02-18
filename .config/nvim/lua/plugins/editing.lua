@@ -97,6 +97,87 @@ return {
     config = true,
   },
 
+  -- Increment and decrement
+  {
+    "monaqa/dial.nvim",
+    config = function()
+      local augend = require("dial.augend")
+      require("dial.config").augends:register_group({
+        default = {
+          augend.integer.alias.decimal,
+          augend.integer.alias.hex,
+          augend.date.alias["%Y/%m/%d"],
+          augend.date.alias["%Y-%m-%d"],
+          augend.date.alias["%m/%d"],
+          augend.date.alias["%H:%M"],
+          augend.constant.alias.bool,
+        },
+      })
+    end,
+    keys = {
+      {
+        "<c-a>",
+        function()
+          require("dial.map").manipulate("increment", "normal")
+        end,
+        desc = "Increment with dial",
+      },
+      {
+        "<c-x>",
+        function()
+          require("dial.map").manipulate("decrement", "normal")
+        end,
+        desc = "Decrement with dial",
+      },
+      {
+        "g<c-a>",
+        function()
+          require("dial.map").manipulate("increment", "gnormal")
+        end,
+        desc = "Increment with dial",
+      },
+      {
+        "g<c-x>",
+        function()
+          require("dial.map").manipulate("decrement", "gnormal")
+        end,
+        desc = "Decrement with dial",
+      },
+      {
+        "<C-a>",
+        function()
+          require("dial.map").manipulate("increment", "visual")
+        end,
+        desc = "Increment with dial",
+        mode = "v",
+      },
+      {
+        "<C-x>",
+        function()
+          require("dial.map").manipulate("decrement", "visual")
+        end,
+        desc = "Decrement with dial",
+        mode = "v",
+      },
+      {
+        "g<C-a>",
+        function()
+          require("dial.map").manipulate("increment", "gvisual")
+        end,
+        desc = "Increment with dial",
+        mode = "v",
+      },
+      {
+        "g<C-x>",
+        function()
+          require("dial.map").manipulate("decrement", "gvisual")
+        end,
+        desc = "Decrement with dial",
+        mode = "v",
+      },
+    },
+  },
+
   -- Autoformat
   {
     "stevearc/conform.nvim",
