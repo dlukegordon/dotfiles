@@ -6,7 +6,7 @@ if [[ $# -eq 1 ]]; then
     selected=$1
 else
     depth_0=$(find ~/dotfiles ~/scratch ~/org -mindepth 0 -maxdepth 0 -type d)
-    depth_1=$(find ~/projects ~/gits ~/u410 -mindepth 1 -maxdepth 1 -type d)
+    depth_1=$(find ~/projects ~/gits ~/work -mindepth 1 -maxdepth 1 -type d)
     # Replace $HOME with ~ for brevity
     dirs=$(echo -e "$depth_0\n$depth_1" | sed "s|^$HOME|~|g")
     selected=$(echo "$dirs" | fzf)
