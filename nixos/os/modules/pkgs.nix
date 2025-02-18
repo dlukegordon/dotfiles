@@ -35,6 +35,7 @@
     lsd
     lsof
     neovim
+    nushell
     fastfetch
     font-manager
     nixfmt-classic
@@ -48,6 +49,7 @@
     rustup
     shellcheck
     shfmt
+    starship
     stow
     tinymist
     tmux
@@ -56,11 +58,19 @@
     unzip
     wget
     wireguard-tools
-    xclip
+    wl-clipboard-rs
+    # xclip
     xkeysnail
     xorg.xhost
     yubikey-manager
     zoxide
+  ];
+
+  # Shells
+  environment.shells = with pkgs; [
+    bash
+    zsh
+    nushell
   ];
 
   # Zsh

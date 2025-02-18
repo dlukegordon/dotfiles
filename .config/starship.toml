@@ -1,0 +1,331 @@
+format = """
+$time\
+$os\
+$username\
+$hostname\
+$localip\
+$shlvl\
+$singularity\
+$kubernetes\
+$directory\
+$vcsh\
+$fossil_branch\
+$fossil_metrics\
+$git_branch\
+$git_commit\
+$git_status\
+$git_state\
+$git_metrics\
+$hg_branch\
+$pijul_channel\
+$docker_context\
+$package\
+$c\
+$cmake\
+$cobol\
+$daml\
+$dart\
+$deno\
+$dotnet\
+$elixir\
+$elm\
+$erlang\
+$fennel\
+$gleam\
+$golang\
+$guix_shell\
+$haskell\
+$haxe\
+$helm\
+$java\
+$julia\
+$kotlin\
+$gradle\
+$lua\
+$nim\
+$nodejs\
+$ocaml\
+$opa\
+$perl\
+$php\
+$pulumi\
+$purescript\
+$python\
+$quarto\
+$raku\
+$rlang\
+$red\
+$ruby\
+$rust\
+$scala\
+$solidity\
+$swift\
+$terraform\
+$typst\
+$vlang\
+$vagrant\
+$zig\
+$buf\
+$nix_shell\
+$conda\
+$meson\
+$spack\
+$memory_usage\
+$aws\
+$gcloud\
+$openstack\
+$azure\
+$nats\
+$direnv\
+$env_var\
+$crystal\
+$custom\
+$sudo\
+$cmd_duration\
+$line_break\
+$jobs\
+$battery\
+$status\
+$container\
+$shell\
+$character"""
+
+command_timeout = 100
+palette = 'my'
+
+[palettes.my]
+base = 'red'
+
+[time]
+disabled = false
+format = '[$time]($style) '
+time_format = '%I:%M%P'
+style = 'bright-black'
+
+[os]
+disabled = true
+format = '[$symbol]($style) '
+
+[directory]
+truncate_to_repo = false
+fish_style_pwd_dir_length = 5
+truncation_length = 5
+style = "blue"
+repo_root_style = "bold blue"
+
+[character]
+success_symbol = "[❯](yellow)"
+error_symbol = "[❯](red)"
+vimcmd_symbol = "[❮](green)"
+
+[git_branch]
+format = '[$symbol$branch(:$remote_branch)]($style) '
+style = "bright-black"
+symbol = " "
+# symbol = " "
+
+[git_commit]
+format = '[ $hash$tag]($style) '
+style = 'bright-black'
+commit_hash_length = 6
+only_detached = false
+tag_symbol = ' '
+
+[git_metrics]
+disabled = false
+
+[git_status]
+format = '([$conflicted$stashed$untracked$ahead_behind]($style) )'
+# format = '([$conflicted$stashed$deleted$renamed$modified$typechanged$staged$untracked$ahead_behind]($style))'
+style = "cyan"
+conflicted = '='
+stashed = '*'
+untracked = '?'
+ahead = '↑'
+behind = '↓'
+diverged = '↕'
+# ahead = '${count} '
+# behind = '${count} '
+# diverged = '${ahead_count}${behind_count} '
+# untracked = '?${count} '
+# stashed = '*${count} '
+# modified = '!${count} '
+# staged = '+${count} '
+# renamed = '»${count} '
+# deleted = '${count} '
+
+[git_state]
+format = '\([$state( $progress_current/$progress_total)]($style)\) '
+style = "bright-black"
+
+[package]
+disabled = true
+format = '[$symbol$version]($style) '
+
+[nix_shell]
+format = '[$symbol$state(\($name\))]($style) '
+symbol = " "
+
+[rust]
+disabled = true
+format = '[$symbol($version )]($style)'
+
+[golang]
+disabled = true
+symbol = " "
+
+[cmd_duration]
+format = "[$duration]($style) "
+style = "yellow"
+min_time = 1_000
+
+# Symbols
+[aws]
+symbol = "  "
+
+[buf]
+symbol = " "
+
+[c]
+symbol = " "
+
+[conda]
+symbol = " "
+
+[crystal]
+symbol = " "
+
+[dart]
+symbol = " "
+
+[docker_context]
+symbol = " "
+
+[elixir]
+symbol = " "
+
+[elm]
+symbol = " "
+
+[fennel]
+symbol = " "
+
+[fossil_branch]
+symbol = " "
+
+[guix_shell]
+symbol = " "
+
+[haskell]
+symbol = " "
+
+[haxe]
+symbol = " "
+
+[hg_branch]
+symbol = " "
+
+[hostname]
+ssh_symbol = " "
+
+[java]
+symbol = " "
+
+[julia]
+symbol = " "
+
+[kotlin]
+symbol = " "
+
+[lua]
+symbol = " "
+
+[memory_usage]
+symbol = "󰍛 "
+
+[meson]
+symbol = "󰔷 "
+
+[nim]
+symbol = "󰆥 "
+
+[nodejs]
+symbol = " "
+
+[ocaml]
+symbol = " "
+
+[perl]
+symbol = " "
+
+[php]
+symbol = " "
+
+[pijul_channel]
+symbol = " "
+
+[python]
+symbol = " "
+
+[rlang]
+symbol = "󰟔 "
+
+[ruby]
+symbol = " "
+
+[scala]
+symbol = " "
+
+[swift]
+symbol = " "
+
+[zig]
+symbol = " "
+
+[gradle]
+symbol = " "
+
+[os.symbols]
+Alpaquita = " "
+Alpine = " "
+AlmaLinux = " "
+Amazon = " "
+Android = " "
+Arch = " "
+Artix = " "
+CentOS = " "
+Debian = " "
+DragonFly = " "
+Emscripten = " "
+EndeavourOS = " "
+Fedora = " "
+FreeBSD = " "
+Garuda = "󰛓 "
+Gentoo = " "
+HardenedBSD = "󰞌 "
+Illumos = "󰈸 "
+Kali = " "
+Linux = " "
+Mabox = " "
+Macos = " "
+Manjaro = " "
+Mariner = " "
+MidnightBSD = " "
+Mint = " "
+NetBSD = " "
+NixOS = " "
+OpenBSD = "󰈺 "
+openSUSE = " "
+OracleLinux = "󰌷 "
+Pop = " "
+Raspbian = " "
+Redhat = " "
+RedHatEnterprise = " "
+RockyLinux = " "
+Redox = "󰀘 "
+Solus = "󰠳 "
+SUSE = " "
+Ubuntu = " "
+Unknown = " "
+Void = " "
+Windows = "󰍲 "

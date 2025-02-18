@@ -10,3 +10,4 @@ node_modules
 .config/zsh/.zcompcache/
 .config/zsh/gitignored.sh
 nixos/os/hardware-configuration.nix
+history.sqlite*
