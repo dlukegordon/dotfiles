@@ -17,6 +17,7 @@ config.font = wezterm.font_with_fallback({
 config.unicode_version = 14
 config.font_size = 10
 config.color_scheme = "Bamboo"
+-- config.color_scheme = "OceanicMaterial"
 config.line_height = 1
 config.initial_cols = 250
 config.initial_rows = 60
@@ -29,7 +30,7 @@ config.tab_max_width = 32
 config.window_padding = {
   left = 0,
   right = 0,
-  top = 0,
+  top = 20,
   bottom = 0,
 }
 config.colors = {
