@@ -247,13 +247,14 @@ return {
       "roxma/nvim-yarp",
       "nvim-web-devicons",
     },
+    build = ":UpdateRemotePlugins",
     config = function()
       local wilder = require("wilder")
       wilder.setup({ modes = { ":", "/", "?" } })
 
       wilder.set_option("pipeline", {
         wilder.branch(wilder.cmdline_pipeline({
-          language = "vim",
+          language = "python",
           fuzzy = 1,
         })),
       })

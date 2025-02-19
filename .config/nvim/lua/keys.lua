@@ -16,17 +16,22 @@ vim.keymap.set("n", "<leader>bl", ":b#<CR>", { desc = "Go to [l]ast buffer" })
 vim.keymap.set("n", "<leader>q", ":qa<CR>", { desc = "[Q]uit neovim" })
 vim.keymap.set("n", "<leader>Q", ":qa!<CR>", { desc = "[Q]uit neovim without saving" })
 
-vim.keymap.set("n", "<leader>ww", ":wincmd p<CR>", { desc = "Switch to last [w]indow" })
+vim.keymap.set("n", "<leader>ww", function()
+  local current_win = vim.fn.winnr()
+  local prev_win = vim.fn.winnr("#")
+  if prev_win ~= current_win then
+    vim.cmd("wincmd p")
+  else
+    vim.cmd("wincmd w")
+  end
+end, { desc = "Switch to last or next window" })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window [v]ertically" })
 vim.keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split window [h]orizontally" })
 vim.keymap.set("n", "<leader>wd", "<C-w>q", { desc = "[D]elete window" })
 vim.keymap.set("n", "<leader>jd", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>kd", vim.diagnostic.goto_prev)
 
--- vim.cmd([[
--- ]])
-
--- nnoremap <leader>tt <cmd>NvimTreeToggle<CR>
+vim.keymap.set("n", "<leader>x", ":e ~/notes/scratch.md<CR>", { desc = "Open scratch file" })
 
 -- " Function key mappings
 -- nnoremap <F5> :lua require('nvim-dap-projects').search_project_config()<CR>:lua require("dapui").open()<CR>:lua require'dap'.continue()<CR>
