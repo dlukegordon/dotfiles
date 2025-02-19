@@ -1,34 +1,39 @@
-#!/usr/bin/env bash
+#!/usr/bin/env nu
 
-# Tmux sessionizer, based on https://github.com/ThePrimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+# Tmux sessionizer, based on https://github.com/theprimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
 
-if [[ $# -eq 1 ]]; then
-    selected=$1
-else
-    depth_0=$(find ~/dotfiles ~/scratch ~/org -mindepth 0 -maxdepth 0 -type d)
-    depth_1=$(find ~/projects ~/gits ~/work -mindepth 1 -maxdepth 1 -type d)
-    # Replace $HOME with ~ for brevity
-    dirs=$(echo -e "$depth_0\n$depth_1" | sed "s|^$HOME|~|g")
-    selected=$(echo "$dirs" | fzf)
-fi
+def main [...args] {
+    # Get the selected directory either from args or from fzf
+    let selected = if ($args | length) > 0 {
+        $args.0
+    } else {
+        let depth_0 = (^find ~/dotfiles ~/scratch ~/notes -mindepth 0 -maxdepth 0 -type d | lines)
+        let depth_1 = (^find ~/projects ~/gits ~/work -mindepth 1 -maxdepth 1 -type d | lines)
+        # replace $home with ~ for brevity
+        let dirs = ($depth_0 | append $depth_1 | each { |it| $it | str replace $nu.home-path "~" })
+        ($dirs | to text | fzf | str trim)
+    }
 
-if [[ -z $selected ]]; then
-    exit 0
-fi
+    if ($selected | is-empty) {
+        exit 0
+    }
 
-selected_name=$(basename "$selected" | tr . _)
+    # Get the session name from the base directory name
+    let selected_name = ($selected | path basename | str replace "." "_")
 
-if ! tmux has-session -t=$selected_name 2>/dev/null; then
-    # Tmux doesn't have this session, so create
-    # Replace ~ back to $HOME so tmux can understand the path
-    full_path=$(echo "$selected" | sed "s|^~|$HOME|")
-    tmux new-session -ds "$selected_name" -c "$full_path"
-fi
+    let session_exists = (tmux has-session -t=($selected_name) | complete).exit_code == 0
+    if not $session_exists {
+        # Tmux doesn't have this session, so create
+        # Replace ~ back to $home so tmux can understand the path
+        let full_path = ($selected | str replace -r "^~" $nu.home-path)
+        tmux new-session -ds $selected_name -c $full_path
+    }
 
-if [[ -z $TMUX ]]; then
-    # We're not in tmux, so attach
-    tmux attach -t "$selected_name"
-else
-    # We're in tmux, so switch
-    tmux switch-client -t "$selected_name"
-fi
+    if ($env | get -i TMUX) != null {
+        # We're in tmux, so switch
+        tmux switch-client -t $selected_name
+    } else {
+        # We're not in tmux, so attach
+        tmux attach -t $selected_name
+    }
+}

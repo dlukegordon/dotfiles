@@ -39,13 +39,7 @@
   # Emacs
   programs.emacs = {
     enable = true;
-    # package = pkgs.emacs29-pgtk;
   };
-  # services.emacs = {
-  #   enable = true;
-  #   startWithUserSession = "graphical";
-  #   # package = pkgs.emacs29-pgtk;
-  # };
 
   # Thunderbird
   programs.thunderbird = {
@@ -70,6 +64,7 @@
     mkdir -p ${config.home.homeDirectory}/scratch
     mkdir -p ${config.home.homeDirectory}/projects
     mkdir -p ${config.home.homeDirectory}/gits
+    mkdir -p ${config.home.homeDirectory}/.local/share/nushell/vendor/autoload
   '';
 
   fonts.fontconfig.enable = true;
