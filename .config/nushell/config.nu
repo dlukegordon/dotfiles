@@ -52,6 +52,8 @@ alias lt3 = lsd --color always -A --date relative --group-directories-first --tr
 alias ns = nix-shell --command nu
 alias t = tms ~/scratch
 alias v = nvim
+alias c = wl-copy
+alias p = wl-paste
 
 # Git Defs
 def is-git-repo [] {
@@ -80,10 +82,12 @@ def grbm [] {
 
 # Git aliases
 alias g = git
-alias gg = git status
-alias gp = git pull
-alias gP = git push
-alias gPf = git push --force
+alias gs = git status
+alias gl = git pull
+alias gp = git push
+alias gpf = git push --force
+alias gaa = git add -A
+alias gd = git diff
 alias gcom = git checkout (git-main-branch)
 alias gcob = git checkout -b
 alias gcol = git checkout -

@@ -83,11 +83,18 @@
   # IVPN
   services.ivpn.enable = true;
 
-  # Yubikeys
+  # GPG and Yubikeys
   services.pcscd.enable = true;
+  programs.gnupg.agent = {
+    enable = true;
+    enableSSHSupport = true;
+  };
 
   # Bluetooth
   services.blueman.enable = true;
+
+  # Steam
+  programs.steam.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [

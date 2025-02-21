@@ -43,10 +43,10 @@ if [[ "$HOST" == "lgordon-m2-mbp" ]]; then
 fi
 
 # GPG
-export GPG_TTY="$TTY"
-export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
-gpg-agent --homedir ~/.gnupg --daemon --enable-ssh-support > /dev/null 2>&1
-gpg-connect-agent updatestartuptty /bye > /dev/null
+# export GPG_TTY="$TTY"
+# export SSH_AUTH_SOCK=$(gpgconf --list-dirs agent-ssh-socket)
+# gpg-agent --homedir ~/.gnupg --daemon --enable-ssh-support > /dev/null 2>&1
+# gpg-connect-agent updatestartuptty /bye > /dev/null
 
 # Paths
 # path_prepend ~/.asdf/shims
