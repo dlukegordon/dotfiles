@@ -28,6 +28,9 @@ nixos-switch: check-host
 nixos-boot: check-host
 	sudo nixos-rebuild boot --flake path:$(HOME)/dotfiles/nixos#$(host)
 
+nixos-update:
+	nix flake update --flake path:$(HOME)/dotfiles/nixos
+
 asdf-install:
 	asdf plugin add nodejs
 	asdf install nodejs latest

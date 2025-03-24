@@ -91,6 +91,23 @@ return {
     end,
   },
 
+  -- -- Seamlessly navigate between neovim and wezterm
+  -- {
+  --   "mrjones2014/smart-splits.nvim",
+  --   lazy = false,
+  --   config = {},
+  --   keys = {
+  --     { "<C-h>", "<cmd>SmartCursorMoveLeft<cr>" },
+  --     { "<C-j>", "<cmd>SmartCursorMoveDown<cr>" },
+  --     { "<C-k>", "<cmd>SmartCursorMoveUp<cr>" },
+  --     { "<C-l>", "<cmd>SmartCursorMoveRight<cr>" },
+  --     { "<A-h>", "<cmd>SmartResizeLeft<cr>" },
+  --     { "<A-j>", "<cmd>SmartResizeDown<cr>" },
+  --     { "<A-k>", "<cmd>SmartResizeUp<cr>" },
+  --     { "<A-l>", "<cmd>SmartResizeRight<cr>" },
+  --   },
+  -- },
+
   -- Seamlessly navigate between neovim and tmux
   {
     "christoomey/vim-tmux-navigator",

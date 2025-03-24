@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   lib,
   ...
 }: {
@@ -24,6 +25,7 @@
 
   # Helix
   programs.helix.enable = true;
+  programs.helix.package = pkgsUnstable.helix;
 
   # Git
   programs.git = {

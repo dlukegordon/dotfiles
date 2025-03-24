@@ -1,15 +1,15 @@
 -- Pull in the wezterm API
-local wezterm = require("wezterm")
-local act = wezterm.action
-local mux = wezterm.mux
+local w = require("wezterm")
+local act = w.action
 
 local config = {}
 
-if wezterm.config_builder then
-  config = wezterm.config_builder()
+if w.config_builder then
+  config = w.config_builder()
 end
 
-config.font = wezterm.font_with_fallback({
+config.default_prog = { "nu" }
+config.font = w.font_with_fallback({
   "Roboto Mono",
   "Font Awesome 6 Free Regular",
   "Font Awesome 6 Free Solid",
@@ -22,59 +22,216 @@ config.line_height = 1
 config.initial_cols = 250
 config.initial_rows = 60
 config.audible_bell = "Disabled"
+-- config.disable_default_key_bindings = true
 config.use_fancy_tab_bar = false
+config.tab_bar_at_bottom = true
 config.show_new_tab_button_in_tab_bar = false
 config.hide_tab_bar_if_only_one_tab = true
-config.tab_bar_at_bottom = true
 config.tab_max_width = 32
 config.window_padding = {
   left = 0,
   right = 0,
-  top = 20,
+  top = 10,
   bottom = 0,
 }
+-- config.enable_scroll_bar = true
+-- Fixes key combos like C-Enter in tmux
+config.enable_csi_u_key_encoding = true
+
+local bg_color = "#2d3139"
+local fg_color = "#d5d7dd"
+local fg_color2 = "#979eac"
+-- local fg_color2 = "#abb2bf"
 config.colors = {
   tab_bar = {
-    background = "#282c34",
+    background = bg_color,
     active_tab = {
-      bg_color = "#979eac",
-      fg_color = "#282c34",
+      bg_color = bg_color,
+      fg_color = fg_color,
     },
     inactive_tab = {
-      bg_color = "#282c34",
-      fg_color = "#abb2bf",
+      bg_color = bg_color,
+      fg_color = fg_color2,
     },
   },
   scrollbar_thumb = "#282c34",
 }
 
--- Override for colorblindness
--- See:
--- https://jeffkreeftmeijer.com/vim-16-color/
--- https://www.rapidtables.com/web/color/RGB_Color.html
--- https://www.ditig.com/publications/256-colors-cheat-sheet
--- local scheme = wezterm.color.get_builtin_schemes()[config.color_scheme]
--- scheme.ansi[4] = '#c0c03a'    -- yellow
--- scheme.brights[2] = '#ff6c6c' -- red
--- scheme.brights[3] = '#68c068' -- green
--- scheme.brights[4] = '#c0c03a' -- yellow
--- config.color_schemes = { [config.color_scheme] = scheme }
-
-config.disable_default_key_bindings = true
-
--- Fixes key combos like C-Enter in tmux
-config.enable_csi_u_key_encoding = true
+-- w.on("update-status", function(window, pane)
+--   window:set_left_status(w.format({
+--     { Background = { Color = bg_color } },
+--     { Foreground = { Color = fg_color } },
+--     { Text = "[" .. window:active_workspace() .. "] " },
+--   }))
+-- end)
+--
+-- -- Format the nu shell title, removing the cwd
+-- local function nu_tab_title(original_title)
+--   local has_command = string.find(original_title, "> ")
+--   if has_command then
+--     local _, end_pos = string.find(original_title, "> ")
+--     local command = string.sub(original_title, end_pos + 1)
+--     return command
+--   else
+--     return "nu"
+--   end
+-- end
+--
+-- local function tab_title(tab)
+--   local orig_title = tab.tab_title
+--   local title
+--   if orig_title and #orig_title > 0 then
+--     title = orig_title
+--   else
+--     title = nu_tab_title(tab.active_pane.title)
+--   end
+--
+--   if tab.active_pane.is_zoomed then
+--     title = title .. "-Z"
+--   end
+--
+--   if tab.is_active then
+--     return "*" .. title
+--   end
+--
+--   local tab_index = tab.tab_index + 1
+--   return string.format("%d:%s", tab_index, title)
+-- end
+--
+-- w.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
+--   return {
+--     { Text = " " .. tab_title(tab) .. " " },
+--   }
+-- end)
+--
+-- config.leader = {
+--   key = "`",
+--   timeout_milliseconds = 10000,
+-- }
+--
+-- local function tab_binding(tab_number)
+--   return {
+--     key = tostring(tab_number),
+--     mods = "LEADER",
+--     action = act.ActivateTab(tab_number - 1),
+--   }
+-- end
+--
+-- local function toggle_terminal(window, pane)
+--   local panes = window:active_tab():panes()
+--   if #panes == 1 then
+--     window:perform_action(
+--       act.SplitPane({
+--         direction = "Down",
+--         size = { Percent = 33 },
+--       }),
+--       pane
+--     )
+--   else
+--     window:perform_action(act.ActivatePaneByIndex(0), pane)
+--     window:perform_action(act.TogglePaneZoomState, pane)
+--     window:perform_action(act.ActivatePaneByIndex(1), pane)
+--   end
+-- end
+--
+-- -- Seamlessly navigate between neovim and wezterm
+-- local function is_vim(pane)
+--   -- this is set by the plugin, and unset on ExitPre in Neovim
+--   return pane:get_user_vars().IS_NVIM == "true"
+-- end
+--
+-- local direction_keys = {
+--   h = "Left",
+--   j = "Down",
+--   k = "Up",
+--   l = "Right",
+-- }
+--
+-- local function split_nav(resize_or_move, key)
+--   return {
+--     key = key,
+--     mods = resize_or_move == "resize" and "META" or "CTRL",
+--     action = w.action_callback(function(win, pane)
+--       if is_vim(pane) then
+--         -- pass the keys through to vim/nvim
+--         win:perform_action({
+--           SendKey = { key = key, mods = resize_or_move == "resize" and "META" or "CTRL" },
+--         }, pane)
+--       else
+--         if resize_or_move == "resize" then
+--           win:perform_action({ AdjustPaneSize = { direction_keys[key], 3 } }, pane)
+--         else
+--           win:perform_action({ ActivatePaneDirection = direction_keys[key] }, pane)
+--         end
+--       end
+--     end),
+--   }
+-- end
 
 config.keys = {
-  {
-    key = "v",
-    mods = "SUPER",
-    action = wezterm.action.PasteFrom("Clipboard"),
-  },
+  -- -- Leader binds
+  -- {
+  --   key = "`",
+  --   mods = "LEADER",
+  --   action = act.SendKey({ key = "`" }),
+  -- },
+  -- {
+  --   key = "\\",
+  --   mods = "LEADER",
+  --   action = act.SplitHorizontal({ domain = "CurrentPaneDomain" }),
+  -- },
+  -- {
+  --   key = "-",
+  --   mods = "LEADER",
+  --   action = act.SplitVertical({ domain = "CurrentPaneDomain" }),
+  -- },
+  -- {
+  --   key = "c",
+  --   mods = "LEADER",
+  --   action = act.SpawnTab("CurrentPaneDomain"),
+  -- },
+  -- {
+  --   key = "l",
+  --   mods = "LEADER",
+  --   action = act.ActivateLastTab,
+  -- },
+  -- {
+  --   key = "z",
+  --   mods = "LEADER",
+  --   action = act.TogglePaneZoomState,
+  -- },
+  -- {
+  --   key = "Enter",
+  --   mods = "LEADER",
+  --   action = w.action_callback(toggle_terminal),
+  -- },
+  --
+  -- tab_binding(1),
+  -- tab_binding(2),
+  -- tab_binding(3),
+  -- tab_binding(4),
+  -- tab_binding(5),
+  -- tab_binding(6),
+  -- tab_binding(7),
+  -- tab_binding(8),
+  -- tab_binding(9),
+  --
+  -- -- move between split panes
+  -- split_nav("move", "h"),
+  -- split_nav("move", "j"),
+  -- split_nav("move", "k"),
+  -- split_nav("move", "l"),
+  -- -- resize panes
+  -- split_nav("resize", "h"),
+  -- split_nav("resize", "j"),
+  -- split_nav("resize", "k"),
+  -- split_nav("resize", "l"),
+
+  -- Bind some super combos to alt for passthru to neovim, etc
   {
     key = "a",
     mods = "SUPER",
-    action = wezterm.action.SendKey({
+    action = act.SendKey({
       key = "a",
       mods = "ALT",
     }),
@@ -82,7 +239,7 @@ config.keys = {
   {
     key = "f",
     mods = "SUPER",
-    action = wezterm.action.SendKey({
+    action = act.SendKey({
       key = "f",
       mods = "ALT",
     }),
@@ -90,56 +247,11 @@ config.keys = {
   {
     key = "s",
     mods = "SUPER",
-    action = wezterm.action.SendKey({
+    action = act.SendKey({
       key = "s",
       mods = "ALT",
     }),
   },
-  -- -- Map command key shortcuts to option for vim
-  -- { key = 'f', mods = 'SUPER', action = act.SendString 'ƒ' },
-  -- { key = 's', mods = 'SUPER', action = act.SendString 'ß' },
-  -- { key = 'a', mods = 'SUPER', action = act.SendString 'å' },
-  -- { key = 'w', mods = 'SUPER', action = act.SendString '∑' },
-
-  -- -- Map cmd+arrow keys to vimux tmux/vim window switching
-  -- -- cmd+left -> ctrl+h
-  -- { key = 'LeftArrow', mods = 'SUPER', action = act.SendString '\x08' },
-  -- -- cmd+down -> ctrl+j
-  -- { key = 'DownArrow', mods = 'SUPER', action = act.SendString '\x0A' },
-  -- -- cmd+up -> ctrl+k
-  -- { key = 'UpArrow', mods = 'SUPER', action = act.SendString '\x0B' },
-  -- -- cmd+right -> ctrl+l
-  -- { key = 'RightArrow', mods = 'SUPER', action = act.SendString '\x0C' },
-  -- -- cmd+\ -> ctrl+\
-  -- { key = '\\', mods = 'SUPER', action = act.SendString '\x1C' },
 }
-
-wezterm.on("window-config-reloaded", function(window, _pane)
-  local id = tostring(window:window_id())
-  local seen = wezterm.GLOBAL.seen_windows or {}
-  local is_new_window = not seen[id]
-  seen[id] = true
-  wezterm.GLOBAL.seen_windows = seen
-  if is_new_window then
-    window:maximize()
-  end
-end)
-
-function tab_title(tab_info)
-  local title = tab_info.tab_title
-  -- if the tab title is explicitly set, take that
-  if title and #title > 0 then
-    return title
-  end
-  -- Otherwise, use the title from the active pane
-  -- in that tab
-  return tab_info.active_pane.title
-end
-
-wezterm.on("format-tab-title", function(tab, tabs, panes, config, hover, max_width)
-  return {
-    { Text = "  " .. tab_title(tab) .. "  " },
-  }
-end)
 
 return config

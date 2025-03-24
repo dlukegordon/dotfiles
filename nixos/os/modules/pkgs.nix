@@ -18,6 +18,7 @@
     fzf
     gcc
     git
+    google-chrome
     golangci-lint
     gomodifytags
     gopls

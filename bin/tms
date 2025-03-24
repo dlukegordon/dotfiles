@@ -7,8 +7,8 @@ def main [...args] {
     let selected = if ($args | length) > 0 {
         $args.0
     } else {
-        let depth_0 = (^find ~/dotfiles ~/scratch ~/notes -mindepth 0 -maxdepth 0 -type d | lines)
-        let depth_1 = (^find ~/projects ~/gits ~/work -mindepth 1 -maxdepth 1 -type d | lines)
+        let depth_0 = (^find ~/dotfiles ~/scratch ~/notes -mindepth 0 -maxdepth 0 -type d err> ignore | lines)
+        let depth_1 = (^find ~/projects ~/gits ~/work -mindepth 1 -maxdepth 1 -type d err> ignore| lines)
         # replace $home with ~ for brevity
         let dirs = ($depth_0 | append $depth_1 | each { |it| $it | str replace $nu.home-path "~" })
         ($dirs | to text | fzf | str trim)
