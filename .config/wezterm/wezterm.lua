@@ -8,6 +8,20 @@ if w.config_builder then
   config = w.config_builder()
 end
 
+-- Machine specific settings
+local hostname = "unknown"
+local hostname_file = io.open("/etc/hostname", "r")
+if hostname_file then
+  hostname = hostname_file:read("*l")
+  hostname_file:close()
+end
+local top_padding = 0
+if hostname == "valhalla" then
+  top_padding = 20
+elseif hostname == "asgard" then
+  top_padding = 10
+end
+
 config.default_prog = { "nu" }
 config.font = w.font_with_fallback({
   "Roboto Mono",
@@ -31,7 +45,7 @@ config.tab_max_width = 32
 config.window_padding = {
   left = 0,
   right = 0,
-  top = 10,
+  top = top_padding,
   bottom = 0,
 }
 -- config.enable_scroll_bar = true

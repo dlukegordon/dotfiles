@@ -21,7 +21,7 @@
   nixpkgs.config.allowUnfree = true;
 
   # Get latest kernel in the channel
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_6_12;
 
   # Bootloader.
   boot.loader.systemd-boot.enable = true;
