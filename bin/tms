@@ -1,16 +1,20 @@
 #!/usr/bin/env nu
 
-# Tmux sessionizer, based on https://github.com/theprimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+# Tmux sessionizer, inspired by https://github.com/theprimeagen/.dotfiles/blob/master/bin/.local/scripts/tmux-sessionizer
+# Converted to nushell, and with a few improvements of mine
 
 def main [...args] {
     # Get the selected directory either from args or from fzf
     let selected = if ($args | length) > 0 {
         $args.0
     } else {
-        let depth_0 = (^find ~/dotfiles ~/scratch ~/notes -mindepth 0 -maxdepth 0 -type d err> ignore | lines)
-        let depth_1 = (^find ~/projects ~/gits ~/work -mindepth 1 -maxdepth 1 -type d err> ignore| lines)
+        let depth_0_dirs = [~/dotfiles ~/scratch ~/notes] | each {|d| $d | path expand} | where {|d| $d | path exists}
+        let depth_1_dirs = [~/projects ~/gits ~/work]     | each {|d| $d | path expand} | where {|d| $d | path exists}
+
+        let depth_1 = fd --exact-depth 1 --type d . ...$depth_1_dirs
+
         # replace $home with ~ for brevity
-        let dirs = ($depth_0 | append $depth_1 | each { |it| $it | str replace $nu.home-path "~" })
+        let dirs = ($depth_0_dirs | append $depth_1 | each { |it| $it | str replace -r $"^($nu.home-path)" "~" })
         ($dirs | to text | fzf | str trim)
     }
 
