@@ -6,6 +6,7 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
+    # xclip
     alejandra
     asdf-vm
     bash-language-server
@@ -14,32 +15,33 @@
     ccid
     cmake
     dockfmt
+    fastfetch
     fd
+    font-manager
     fzf
     gcc
     git
-    google-chrome
+    gnumake
+    gnupg
     golangci-lint
     gomodifytags
+    google-chrome
     gopls
     gore
     gotests
-    jq
-    libsForQt5.kdbusaddons
-    gnumake
-    gnupg
     inetutils
     ivpn
     ivpn-service
+    jq
     less
+    libsForQt5.kdbusaddons
     libtool
     lsd
     lsof
+    mosh
     neovim
-    nushell
-    fastfetch
-    font-manager
     nixfmt-classic
+    nushell
     nvimpager
     opensc
     pandoc
@@ -55,12 +57,11 @@
     tinymist
     tmux
     typst
-    uv
     unzip
+    uv
     wget
     wireguard-tools
     wl-clipboard-rs
-    # xclip
     xkeysnail
     xorg.xhost
     yubikey-manager
