@@ -43,6 +43,22 @@ def wbrl [] {
     pkill waybar; hyprctl dispatch exec waybar
 }
 
+def c [input?: string] {
+    if $input != null {
+        wl-copy $input
+    } else {
+        wl-copy $in
+    }
+}
+
+def p [] {
+    wl-paste
+}
+
+def clc [] {
+    history | last 2 | get 0.command | c
+}
+
 # Aliases
 alias ll = lsd --color always -1 --group-directories-first
 alias lla = lsd --color always -lA --date relative --group-directories-first --git
@@ -52,8 +68,6 @@ alias lt3 = lsd --color always -A --date relative --group-directories-first --tr
 alias ns = nix-shell --command nu
 alias t = tms ~/scratch
 alias v = nvim
-alias c = wl-copy
-alias p = wl-paste
 
 # Git Defs
 def is-git-repo [] {
