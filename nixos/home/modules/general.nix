@@ -11,6 +11,7 @@
   # Packages that should be installed to the user profile.
   # In general, GUI apps should be added here.
   home.packages = with pkgs; [
+    ghostty
     keepassxc
     obsidian
     signal-desktop
