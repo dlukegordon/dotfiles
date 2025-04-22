@@ -98,6 +98,9 @@
   # Steam
   programs.steam.enable = true;
 
+  # Flatpak (yes it sucks but need for zen browser)
+  services.flatpak.enable = true;
+
   # Fonts
   fonts.packages = with pkgs; [
     font-awesome
