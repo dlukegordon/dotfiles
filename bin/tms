@@ -11,7 +11,7 @@ def main [...args] {
         let depth_0_dirs = [~/dotfiles ~/scratch ~/notes] | each {|d| $d | path expand} | where {|d| $d | path exists}
         let depth_1_dirs = [~/projects ~/gits ~/work]     | each {|d| $d | path expand} | where {|d| $d | path exists}
 
-        let depth_1 = fd --exact-depth 1 --type d . ...$depth_1_dirs
+        let depth_1 = fd --exact-depth 1 --type d . ...$depth_1_dirs | lines
 
         # replace $home with ~ for brevity
         let dirs = ($depth_0_dirs | append $depth_1 | each { |it| $it | str replace -r $"^($nu.home-path)" "~" })
