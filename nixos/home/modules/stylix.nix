@@ -5,7 +5,7 @@
   ...
 }: {
   stylix = {
-    autoEnable = true;
+    autoEnable = false;
 
     fonts = {
       sizes.applications = 10;
@@ -21,6 +21,12 @@
         package = pkgs.noto-fonts;
         name = "Noto Sans";
       };
+    };
+
+    targets = {
+      fuzzel.enable = true;
+      hyprpaper.enable = true;
+      waybar.enable = true;
     };
   };
 }
