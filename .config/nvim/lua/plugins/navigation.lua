@@ -76,6 +76,7 @@ return {
       vim.keymap.set("n", "<leader>sc", builtin.grep_string, { desc = "Search [c]urrent word" })
       vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "Search [j]umplist" })
       vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "Search [m]arks" })
+      vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[R]esume last search" })
 
       vim.keymap.set("n", "<leader><leader>", function()
         builtin.find_files({ hidden = true })
