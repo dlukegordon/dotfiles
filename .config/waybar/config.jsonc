@@ -20,10 +20,10 @@
         // "temperature",
         "battery",
         "power-profiles-daemon",
-        "idle_inhibitor",
+        // "idle_inhibitor",
         "pulseaudio",
         // "network",
-        "backlight",
+        // "backlight",
         "tray",
         "clock"
     ],
