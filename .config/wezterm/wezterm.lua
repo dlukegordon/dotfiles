@@ -19,7 +19,7 @@ local top_padding = 0
 if hostname == "valhalla" then
   top_padding = 20
 elseif hostname == "asgard" then
-  top_padding = 10
+  top_padding = 8
 end
 
 config.default_prog = { "nu" }
