@@ -68,7 +68,7 @@ return {
             ["nh"] = "@assignment.lhs",
             ["nl"] = "@assignment.rhs",
 
-            ["m"] = "@statement.outer",
+            ["x"] = "@statement.outer",
           },
         },
         move = {
