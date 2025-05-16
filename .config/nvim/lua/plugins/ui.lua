@@ -9,10 +9,10 @@ return {
       require("bamboo").load()
     end,
   },
-  "Mofiqul/vscode.nvim",
-  "tomasiser/vim-code-dark",
-  "christianchiarulli/nvcode-color-schemes.vim",
-  "marko-cerovac/material.nvim",
+  -- "Mofiqul/vscode.nvim",
+  -- "tomasiser/vim-code-dark",
+  -- "christianchiarulli/nvcode-color-schemes.vim",
+  -- "marko-cerovac/material.nvim",
 
   -- Custom start screen
   {
@@ -131,113 +131,113 @@ return {
   },
 
   -- Smooth scolling
-  {
-    "karb94/neoscroll.nvim",
-    event = "VimEnter",
-    config = {
-      mappings = {
-        "<C-u>",
-        "<C-d>",
-        "<C-b>",
-        "<C-f>",
-        "<C-y>",
-        "<C-e>",
-        "zt",
-        "zz",
-        "zb",
-      },
-      stop_eof = false,
-    },
-    keys = {
-      {
-        "<PageUp>",
-        function()
-          require("neoscroll").scroll(-0.33, { move_cursor = true, duration = 120 })
-        end,
-        mode = "n",
-      },
-      {
-        "<PageUp>",
-        function()
-          require("neoscroll").scroll(-0.33, { move_cursor = true, duration = 120 })
-        end,
-        mode = "i",
-      },
-      {
-        "<PageUp>",
-        function()
-          require("neoscroll").scroll(-0.33, { move_cursor = true, duration = 120 })
-        end,
-        mode = "v",
-      },
-
-      {
-        "<PageDown>",
-        function()
-          require("neoscroll").scroll(0.33, { move_cursor = true, duration = 120 })
-        end,
-        mode = "n",
-      },
-      {
-        "<PageDown>",
-        function()
-          require("neoscroll").scroll(0.33, { move_cursor = true, duration = 120 })
-        end,
-        mode = "i",
-      },
-      {
-        "<PageDown>",
-        function()
-          require("neoscroll").scroll(0.33, { move_cursor = true, duration = 120 })
-        end,
-        mode = "v",
-      },
-
-      {
-        "<ScrollWheelUp>",
-        function()
-          require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "n",
-      },
-      {
-        "<ScrollWheelUp>",
-        function()
-          require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "i",
-      },
-      {
-        "<ScrollWheelUp>",
-        function()
-          require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "v",
-      },
-
-      {
-        "<ScrollWheelDown>",
-        function()
-          require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "n",
-      },
-      {
-        "<ScrollWheelDown>",
-        function()
-          require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "i",
-      },
-      {
-        "<ScrollWheelDown>",
-        function()
-          require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "v",
-      },
-    },
-  },
+  -- {
+  --   "karb94/neoscroll.nvim",
+  --   event = "VimEnter",
+  --   config = {
+  --     mappings = {
+  --       "<C-u>",
+  --       "<C-d>",
+  --       "<C-b>",
+  --       "<C-f>",
+  --       "<C-y>",
+  --       "<C-e>",
+  --       "zt",
+  --       "zz",
+  --       "zb",
+  --     },
+  --     stop_eof = false,
+  --   },
+  --   keys = {
+  --     -- {
+  --     --   "<PageUp>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(-0.5, { move_cursor = true, duration = 100 })
+  --     --   end,
+  --     --   mode = "n",
+  --     -- },
+  --     -- {
+  --     --   "<PageUp>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(-0.5, { move_cursor = true, duration = 100 })
+  --     --   end,
+  --     --   mode = "i",
+  --     -- },
+  --     -- {
+  --     --   "<PageUp>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(-0.5, { move_cursor = true, duration = 100 })
+  --     --   end,
+  --     --   mode = "v",
+  --     -- },
+  --     --
+  --     -- {
+  --     --   "<PageDown>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(0.5, { move_cursor = true, duration = 100 })
+  --     --   end,
+  --     --   mode = "n",
+  --     -- },
+  --     -- {
+  --     --   "<PageDown>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(0.5, { move_cursor = true, duration = 100 })
+  --     --   end,
+  --     --   mode = "i",
+  --     -- },
+  --     -- {
+  --     --   "<PageDown>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(0.5, { move_cursor = true, duration = 100 })
+  --     --   end,
+  --     --   mode = "v",
+  --     -- },
+  --     --
+  --     -- {
+  --     --   "<ScrollWheelUp>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
+  --     --   end,
+  --     --   mode = "n",
+  --     -- },
+  --     -- {
+  --     --   "<ScrollWheelUp>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
+  --     --   end,
+  --     --   mode = "i",
+  --     -- },
+  --     -- {
+  --     --   "<ScrollWheelUp>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
+  --     --   end,
+  --     --   mode = "v",
+  --     -- },
+  --     --
+  --     -- {
+  --     --   "<ScrollWheelDown>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
+  --     --   end,
+  --     --   mode = "n",
+  --     -- },
+  --     -- {
+  --     --   "<ScrollWheelDown>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
+  --     --   end,
+  --     --   mode = "i",
+  --     -- },
+  --     -- {
+  --     --   "<ScrollWheelDown>",
+  --     --   function()
+  --     --     require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
+  --     --   end,
+  --     --   mode = "v",
+  --     -- },
+  --   },
+  -- },
 
   -- Better wild menu
   {

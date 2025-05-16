@@ -119,6 +119,7 @@ return {
       -- Diagnostic settings
       vim.diagnostic.config({
         virtual_text = false,
+        -- virtual_lines = true,
         severity_sort = true,
       })
 

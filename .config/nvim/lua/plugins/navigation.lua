@@ -72,8 +72,8 @@ return {
       vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Search [d]iagnostics" })
       vim.keymap.set("n", "<leader>l", builtin.oldfiles, { desc = "Search [l]ast files" })
       vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Live grep" })
-      vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "[S]earch [h]elp" })
-      vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "[S]earch [k]eymaps" })
+      vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Search [h]elp" })
+      vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Search [k]eymaps" })
       vim.keymap.set("n", "<leader>sc", builtin.grep_string, { desc = "Search [c]urrent word" })
       vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "Search [j]umplist" })
       vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "Search [m]arks" })
@@ -174,6 +174,60 @@ return {
         end,
         desc = "Toggle NvimTree",
       },
+    },
+  },
+
+  -- Grug-far
+  {
+    "MagicDuck/grug-far.nvim",
+    config = {},
+    keys = {
+      { "<leader>sg", ":GrugFar<CR>", desc = "[S]earch with grug-far" },
+    },
+  },
+
+  {
+    "stevearc/aerial.nvim",
+    opts = {
+      -- filter_kind = {
+      --   "Array",
+      --   "Boolean",
+      --   "Class",
+      --   "Constant",
+      --   "Constructor",
+      --   "Enum",
+      --   "EnumMember",
+      --   "Event",
+      --   "Field",
+      --   "File",
+      --   "Function",
+      --   "Interface",
+      --   "Key",
+      --   "Method",
+      --   "Module",
+      --   "Namespace",
+      --   "Null",
+      --   "Number",
+      --   "Object",
+      --   "Operator",
+      --   "Package",
+      --   "Property",
+      --   "String",
+      --   "Struct",
+      --   "TypeParameter",
+      --   "Variable",
+      -- },
+      filter_kind = false,
+      autojump = true,
+      close_on_select = true,
+      nav = {
+        autojump = true,
+      },
+    },
+    keys = {
+      { "<leader>a", ":AerialToggle<CR>", desc = "Open aerial outline" },
+      { "<leader>jj", ":AerialNext<CR>", desc = "Goto next code structure" },
+      { "<leader>kk", ":AerialPrev<CR>", desc = "Goto previous code structure" },
     },
   },
 }

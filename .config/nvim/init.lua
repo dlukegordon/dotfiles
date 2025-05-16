@@ -8,7 +8,7 @@ vim.g.have_nerd_font = true
 vim.opt.number = true
 
 vim.opt.mouse = "a"
-vim.opt.mousescroll = "ver:5,hor:1"
+vim.opt.mousescroll = "ver:2,hor:1"
 
 vim.opt.showmode = false
 

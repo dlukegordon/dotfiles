@@ -71,20 +71,29 @@ return {
             ["m"] = "@statement.outer",
           },
         },
-        -- move = {
-        --   enable = true,
-        --   set_jumps = true, -- whether to set jumps in the jumplist
-        --   goto_next_start = {
-        --     ["<leader>jf"] = "@function.outer",
-        --     ["<leader>jF"] = "@function.inner",
-        --
-        --     ["<leader>jl"] = "@loop.outer",
-        --     ["<leader>jL"] = "@loop.inner",
-        --
-        --     ["<leader>ja"] = "@parameter.outer",
-        --     ["<leader>jA"] = "@parameter.inner",
-        --   },
-        -- },
+        move = {
+          enable = true,
+          set_jumps = true, -- whether to set jumps in the jumplist
+          goto_next_start = {
+            ["<leader>jf"] = "@function.outer",
+            ["<leader>jF"] = "@function.inner",
+
+            ["<leader>jr"] = "@class.outer",
+            ["<leader>jR"] = "@class.inner",
+            --     ["<leader>jl"] = "@loop.outer",
+            --     ["<leader>jL"] = "@loop.inner",
+
+            --     ["<leader>ja"] = "@parameter.outer",
+            --     ["<leader>jA"] = "@parameter.inner",
+          },
+          goto_previous_start = {
+            ["<leader>kf"] = "@function.outer",
+            ["<leader>kF"] = "@function.inner",
+
+            ["<leader>kr"] = "@class.outer",
+            ["<leader>kR"] = "@class.inner",
+          },
+        },
       },
     },
     -- There are additional nvim-treesitter modules that you can use to interact

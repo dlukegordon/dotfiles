@@ -31,6 +31,16 @@ vim.keymap.set("n", "<leader>wd", "<C-w>q", { desc = "[D]elete window" })
 vim.keymap.set("n", "<leader>jd", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>kd", vim.diagnostic.goto_prev)
 
+-- Swap PageUp/PageDown and C-u/C-d
+-- vim.keymap.set("n", "<PageUp>", "<C-u>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<PageUp>", "<C-u>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<PageDown>", "<C-d>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<PageDown>", "<C-d>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<C-u>", "<PageUp>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<C-u>", "<PageUp>", { noremap = true, silent = true })
+-- vim.keymap.set("n", "<C-d>", "<PageDown>", { noremap = true, silent = true })
+-- vim.keymap.set("v", "<C-d>", "<PageDown>", { noremap = true, silent = true })
+
 vim.keymap.set("n", "<leader>x", ":e ~/notes/scratch.md<CR>", { desc = "Open scratch file" })
 
 -- " Function key mappings
