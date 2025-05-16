@@ -1,6 +1,7 @@
 {
   config,
   pkgs,
+  pkgsUnstable,
   ...
 }: {
   # List packages installed in system profile. To search, run:
@@ -39,12 +40,14 @@
     lsd
     lsof
     mosh
-    neovim
     nixfmt-classic
     nushell
     nvimpager
     opensc
     pandoc
+    pkgsUnstable.jujutsu
+    pkgsUnstable.lazyjj
+    pkgsUnstable.neovim
     rage
     re2
     ripgrep
@@ -56,6 +59,7 @@
     stow
     tinymist
     tmux
+    tree-sitter
     typst
     unzip
     uv
