@@ -239,37 +239,6 @@ return {
   --   },
   -- },
 
-  -- Better wild menu
-  {
-    "gelguy/wilder.nvim",
-    event = "VeryLazy",
-    dependencies = {
-      "roxma/nvim-yarp",
-      "nvim-web-devicons",
-    },
-    build = ":UpdateRemotePlugins",
-    config = function()
-      local wilder = require("wilder")
-      wilder.setup({ modes = { ":", "/", "?" } })
-
-      wilder.set_option("pipeline", {
-        wilder.branch(wilder.cmdline_pipeline({
-          language = "python",
-          fuzzy = 1,
-        })),
-      })
-
-      wilder.set_option(
-        "renderer",
-        wilder.popupmenu_renderer({
-          highlighter = wilder.basic_highlighter(),
-          left = { " ", wilder.popupmenu_devicons() },
-          right = { " ", wilder.popupmenu_scrollbar() },
-        })
-      )
-    end,
-  },
-
   -- Better quickfix window
   {
     "kevinhwang91/nvim-bqf",

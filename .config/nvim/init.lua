@@ -44,7 +44,23 @@ vim.opt.scrolloff = 10
 
 vim.opt.tabstop = 4
 
-vim.opt.winborder = "rounded"
+vim.o.wildoptions = "pum,tagfile,fuzzy"
+
+vim.o.winborder = "rounded"
+
+-- Hack to fix double borders until winborder is better supported by telescope
+vim.api.nvim_create_autocmd("User", {
+  pattern = "TelescopeFindPre",
+  callback = function()
+    vim.opt_local.winborder = "none"
+    vim.api.nvim_create_autocmd("WinLeave", {
+      once = true,
+      callback = function()
+        vim.opt_local.winborder = "rounded"
+      end,
+    })
+  end,
+})
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
