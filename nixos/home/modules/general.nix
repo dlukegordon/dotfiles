@@ -56,12 +56,6 @@
     };
   };
 
-  # Allow xkeysnail to access the X display
-  # systemd.user.services.xhostaccess = {
-  #   Install.WantedBy = ["graphical-session.target"];
-  #   Service.ExecStart = "${pkgs.xorg.xhost}/bin/xhost +SI:localuser:root";
-  # };
-
   # Make some directories
   home.activation.mkDirs = lib.hm.dag.entryAfter ["writeBoundary"] ''
     mkdir -p ${config.home.homeDirectory}/scratch

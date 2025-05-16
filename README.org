@@ -33,8 +33,8 @@ After the reboot, make sure to select an X11 session on the SDDM screen. Wayland
 *** Post install
 
 There are a few things that we can't (currently) setup through NixOS, you'll need to set these up manually.
-- Setup Librewolf extensions like Bitwarden, Tree Style Tabs, uBlock.
-- Customize Librewolf settings such as search engines, search shortcuts, and appearance (theme is already installed).
+- Install Zen browser through flatpak (=flatpak install flathub app.zen_browser.zen=)
+- Configure Zen browser (set =browser.display.os-zoom-behavior= to =0= to make text normally sized)
 - Set a fingerprint
 - Customize the Plasma panel and task switcher settings.
 - Set Plasma display, power, and screen lock settings.

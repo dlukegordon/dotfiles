@@ -31,7 +31,6 @@
           {
             iconTasks = {
               launchers = [
-                "applications:librewolf.desktop"
                 "applications:org.wezfurlong.wezterm.desktop"
                 "applications:emacsclient.desktop"
               ];

@@ -8,7 +8,6 @@
   imports = [
     ./modules/general.nix
     ./modules/plasma.nix
-    ./modules/librewolf.nix
     ./modules/stylix.nix
     ./modules/hyprland.nix
   ];

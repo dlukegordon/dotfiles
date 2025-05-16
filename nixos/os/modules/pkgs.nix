@@ -66,7 +66,6 @@
     wget
     wireguard-tools
     wl-clipboard-rs
-    xkeysnail
     xorg.xhost
     yubikey-manager
     zoxide
