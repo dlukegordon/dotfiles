@@ -24,6 +24,7 @@
 
   programs.waybar = {
     enable = true;
+    package = pkgsUnstable.waybar;
     style = ''
       * {
           /* This is necessary to display all icons correctly */
@@ -41,6 +42,11 @@
 
       #power-profiles-daemon {
           padding: 0 5px;
+      }
+
+      #workspaces button {
+          margin: 0;
+          padding: 0 8px;
       }
 
       #workspaces button.focused,

@@ -69,7 +69,10 @@
     enable = true;
     withUWSM = true;
   };
-  programs.niri.enable = true;
+  programs.niri = {
+    enable = true;
+    package = pkgsUnstable.niri;
+  };
   security.pam.services.sddm.enableKwallet = true;
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
   environment.sessionVariables.ELECTRON_OZONE_PLATFORM_HINT = "auto";

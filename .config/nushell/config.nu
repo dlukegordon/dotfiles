@@ -39,8 +39,13 @@ def lad [...pattern] {
     ls -ladt ...$pattern | sort-by type name
 }
 
-def wbrl [] {
-    pkill waybar; hyprctl dispatch exec waybar
+def wbrlh [] {
+    pkill waybar
+    hyprctl dispatch exec waybar
+}
+def wbrln [] {
+    pkill waybar
+    niri msg action spawn -- waybar
 }
 
 def c [input?: string] {

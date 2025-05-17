@@ -25,6 +25,7 @@
 
     targets = {
       fuzzel.enable = true;
+      gtk.enable = true;
       hyprpaper.enable = true;
       waybar.enable = true;
     };

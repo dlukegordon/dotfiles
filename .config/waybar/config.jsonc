@@ -3,16 +3,18 @@
     // "layer": "top", // Waybar at top layer
     "position": "top", // Waybar position (top|bottom|left|right)
     // "position": "bottom", // Waybar position (top|bottom|left|right)
-    "height": 30, // Waybar height (to be removed for auto height)
+    "height": 33, // Waybar height (to be removed for auto height)
     // "width": 1280, // Waybar width
     "spacing": 4, // Gaps between modules (4px)
     // Choose the order of the modules
     "modules-left": [
         "hyprland/workspaces",
         "hyprland/submap",
+        "niri/workspaces",
     ],
     "modules-center": [
-        "hyprland/window"
+        "hyprland/window",
+        "niri/window"
     ],
     "modules-right": [
         // "cpu",
@@ -32,6 +34,17 @@
         "format-icons": {"1": "", "2": "", "3": "󰭹"}
     },
     "hyprland/window": {
+        "max-length": 50,
+    },
+    "niri/workspaces": {
+        "format": "{icon}",
+        "format-icons": {
+            "browser": "",
+            "terminal": "",
+            "comms": "󰭹",
+        }
+    },
+    "niri/window": {
         "max-length": 50,
     },
     "idle_inhibitor": {
