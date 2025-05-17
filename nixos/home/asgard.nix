@@ -9,7 +9,7 @@
     ./modules/general.nix
     ./modules/plasma.nix
     ./modules/stylix.nix
-    ./modules/hyprland.nix
+    ./modules/wm.nix
   ];
 
   # The rest of the git configs are in modules/general.nix

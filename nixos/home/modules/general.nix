@@ -18,7 +18,7 @@
     sparrow
     transmission_4-qt
     vlc
-    wezterm
+    pkgsUnstable.wezterm
   ];
 
   # Btop. We also add to os pkgs, but we also add here so Stylix will theme.
