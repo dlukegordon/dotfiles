@@ -66,7 +66,10 @@
     wget
     wireguard-tools
     wl-clipboard-rs
+    xfce.ristretto
+    xfce.thunar
     xorg.xhost
+    yazi
     yubikey-manager
     zoxide
   ];
@@ -85,9 +88,6 @@
   };
   users.defaultUserShell = pkgs.zsh;
 
-  # IVPN
-  services.ivpn.enable = true;
-
   # GPG and Yubikeys
   services.pcscd.enable = true;
   programs.gnupg.agent = {
@@ -95,14 +95,15 @@
     enableSSHSupport = true;
   };
 
-  # Bluetooth
-  services.blueman.enable = true;
-
-  # Steam
-  programs.steam.enable = true;
-
   # Flatpak (yes it sucks but need for zen browser)
   services.flatpak.enable = true;
+
+  # Other programs/services
+  programs.nix-ld.enable = true;
+  programs.steam.enable = true;
+  services.blueman.enable = true;
+  services.ivpn.enable = true;
+  services.tumbler.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [
@@ -117,6 +118,4 @@
     caladea
     libre-baskerville
   ];
-
-  programs.nix-ld.enable = true;
 }
