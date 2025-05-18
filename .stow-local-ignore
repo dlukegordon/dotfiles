@@ -1,5 +1,8 @@
 .git
 .gitignore
+.jj
 Makefile
-README.md
-nixos
+README-old.md
+README.org
+bin/
+nixos/
