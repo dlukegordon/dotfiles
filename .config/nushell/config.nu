@@ -39,7 +39,7 @@ def lad [...pattern] {
     ls -ladt ...$pattern | sort-by type name
 }
 
-def wbrlh [] {
+def wbrl [] {
     pkill waybar
     hyprctl dispatch exec waybar
 }

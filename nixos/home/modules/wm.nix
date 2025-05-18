@@ -81,12 +81,11 @@
           border-bottom: none;
           color: @base04
       }
-
-      .modules-right #workspaces button.focused,
-      .modules-right #workspaces button.active {
-          border-bottom: none;
-          color: white
-      }
     '';
   };
 }
+      # .modules-right #workspaces button.focused,
+      # .modules-right #workspaces button.active {
+      #     border-bottom: none;
+      #     color: white
+      # }
