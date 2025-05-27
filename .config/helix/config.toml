@@ -8,3 +8,6 @@ idle-timeout = 10
 insert = "bar"
 normal = "block"
 select = "underline"
+
+[editor.file-picker]
+hidden = false
