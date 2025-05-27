@@ -49,10 +49,9 @@ config.window_padding = {
 -- Fixes key combos like C-Enter in tmux
 config.enable_csi_u_key_encoding = true
 
-local bg_color = "#2d3139"
-local fg_color = "#d5d7dd"
-local fg_color2 = "#979eac"
--- local fg_color2 = "#abb2bf"
+local bg_color = "#2f312c"
+local fg_color = "#f1e9d2"
+local fg_color2 = "#a3a7a1"
 config.colors = {
   tab_bar = {
     background = bg_color,
@@ -179,8 +178,26 @@ config.colors = {
 --   }
 -- end
 
+-- local sessionizer = w.plugin.require("https://github.com/mikkasendke/sessionizer.wezterm")
+-- local history = w.plugin.require("https://github.com/mikkasendke/sessionizer-history")
+-- local schema = {
+--   options = { callback = history.Wrapper(sessionizer.DefaultCallback) },
+--   sessionizer.DefaultWorkspace({}),
+--   history.MostRecentWorkspace({}),
+--
+--   w.home_dir .. "/dotfiles",
+--
+--   sessionizer.FdSearch(w.home_dir .. "/projects"),
+--   sessionizer.FdSearch(w.home_dir .. "/gits"),
+--   sessionizer.FdSearch(w.home_dir .. "/work"),
+--
+--   processing = sessionizer.for_each_entry(function(entry)
+--     entry.label = entry.label:gsub(w.home_dir, "~")
+--   end),
+-- }
+
 config.keys = {
-  -- -- Leader binds
+  -- Leader binds
   -- {
   --   key = "`",
   --   mods = "LEADER",
@@ -215,6 +232,16 @@ config.keys = {
   --   key = "Enter",
   --   mods = "LEADER",
   --   action = w.action_callback(toggle_terminal),
+  -- },
+  -- {
+  --   key = "o",
+  --   mods = "LEADER",
+  --   action = sessionizer.show(schema),
+  -- },
+  -- {
+  --   key = " ",
+  --   mods = "LEADER",
+  --   action = history.switch_to_most_recent_workspace,
   -- },
   --
   -- tab_binding(1),
