@@ -7,7 +7,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    # xclip
     alejandra
     asdf-vm
     bash-language-server
@@ -45,9 +44,11 @@
     nvimpager
     opensc
     pandoc
+    pkgsUnstable.dioxus-cli
     pkgsUnstable.jujutsu
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
+    pkgsUnstable.wasm-bindgen-cli
     rage
     re2
     ripgrep
@@ -62,6 +63,7 @@
     tree-sitter
     typst
     unzip
+    uutils-coreutils
     uv
     wget
     wireguard-tools
