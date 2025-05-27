@@ -83,12 +83,20 @@ return {
     },
   },
 
+  {
+    "smoka7/hop.nvim",
+    config = {},
+    keys = {
+      { "s", ":HopWord<CR>", mode = { "n" } },
+    },
+  },
+
   -- Neovim's answer to the mouse
   {
     "ggandor/leap.nvim",
     event = "VeryLazy",
     config = function()
-      require("leap").create_default_mappings()
+      -- require("leap").create_default_mappings()
     end,
   },
 

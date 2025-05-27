@@ -41,8 +41,6 @@ vim.keymap.set("n", "<leader>kd", vim.diagnostic.goto_prev)
 -- vim.keymap.set("n", "<C-d>", "<PageDown>", { noremap = true, silent = true })
 -- vim.keymap.set("v", "<C-d>", "<PageDown>", { noremap = true, silent = true })
 
-vim.keymap.set("n", "<leader>x", ":e ~/notes/scratch.md<CR>", { desc = "Open scratch file" })
-
 -- " Function key mappings
 -- nnoremap <F5> :lua require('nvim-dap-projects').search_project_config()<CR>:lua require("dapui").open()<CR>:lua require'dap'.continue()<CR>
 -- inoremap <F5> <ESC>:lua require('nvim-dap-projects').search_project_config()<CR>:lua require("dapui").open()<CR>:lua require'dap'.continue()<CR>
