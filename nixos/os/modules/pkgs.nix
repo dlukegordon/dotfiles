@@ -64,6 +64,7 @@
     tree-sitter
     typst
     unzip
+    usbutils
     uutils-coreutils
     uv
     wget
