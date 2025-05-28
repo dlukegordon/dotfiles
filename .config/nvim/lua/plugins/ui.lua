@@ -134,20 +134,56 @@ return {
   {
     "karb94/neoscroll.nvim",
     event = "VimEnter",
-    config = {
-      mappings = {
-        "<C-u>",
-        "<C-d>",
-        "<C-b>",
-        "<C-f>",
-        "<C-y>",
-        "<C-e>",
-        "zt",
-        "zz",
-        "zb",
-      },
-      stop_eof = false,
-    },
+    config = function()
+      local neoscroll = require("neoscroll")
+
+      neoscroll.setup({
+        mappings = {
+          "<C-u>",
+          "<C-d>",
+          "<C-b>",
+          "<C-f>",
+          "<C-y>",
+          "<C-e>",
+          "zt",
+          "zz",
+          "zb",
+        },
+        stop_eof = false,
+      })
+
+      local hostname = vim.fn.trim(vim.fn.system("hostname"))
+
+      -- Mouse wheel settings, for touchpad better to do nothing
+      if hostname == "valhalla" then
+        local keymap = vim.keymap.set
+        local opts = { silent = true }
+
+        keymap("n", "<ScrollWheelUp>", function()
+          neoscroll.scroll(-15, { move_cursor = false, duration = 70 })
+        end, opts)
+
+        keymap("i", "<ScrollWheelUp>", function()
+          neoscroll.scroll(-15, { move_cursor = false, duration = 70 })
+        end, opts)
+
+        keymap("v", "<ScrollWheelUp>", function()
+          neoscroll.scroll(-15, { move_cursor = false, duration = 70 })
+        end, opts)
+
+        keymap("n", "<ScrollWheelDown>", function()
+          neoscroll.scroll(15, { move_cursor = false, duration = 70 })
+        end, opts)
+
+        keymap("i", "<ScrollWheelDown>", function()
+          neoscroll.scroll(15, { move_cursor = false, duration = 70 })
+        end, opts)
+
+        keymap("v", "<ScrollWheelDown>", function()
+          neoscroll.scroll(15, { move_cursor = false, duration = 70 })
+        end, opts)
+      end
+    end,
     keys = {
       {
         "<PageUp>",
@@ -189,50 +225,6 @@ return {
         "<PageDown>",
         function()
           require("neoscroll").scroll(0.5, { move_cursor = true, duration = 100 })
-        end,
-        mode = "v",
-      },
-
-      {
-        "<ScrollWheelUp>",
-        function()
-          require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "n",
-      },
-      {
-        "<ScrollWheelUp>",
-        function()
-          require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "i",
-      },
-      {
-        "<ScrollWheelUp>",
-        function()
-          require("neoscroll").scroll(-15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "v",
-      },
-
-      {
-        "<ScrollWheelDown>",
-        function()
-          require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "n",
-      },
-      {
-        "<ScrollWheelDown>",
-        function()
-          require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
-        end,
-        mode = "i",
-      },
-      {
-        "<ScrollWheelDown>",
-        function()
-          require("neoscroll").scroll(15, { move_cursor = false, duration = 70 })
         end,
         mode = "v",
       },
