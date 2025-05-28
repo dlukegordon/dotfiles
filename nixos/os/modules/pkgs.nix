@@ -8,6 +8,7 @@
   # $ nix search wget
   environment.systemPackages = with pkgs; [
     alejandra
+    appimage-run
     asdf-vm
     bash-language-server
     bc
