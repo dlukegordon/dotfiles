@@ -113,7 +113,7 @@
   fonts.packages = with pkgs; [
     font-awesome
     roboto-mono
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+    nerd-fonts.symbols-only
     (callPackage ./etbembo.nix {})
     dejavu_fonts
     noto-fonts
