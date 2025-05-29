@@ -17,9 +17,9 @@ if hostname_file then
 end
 local top_padding = 0
 if hostname == "valhalla" then
-  top_padding = 30
+  top_padding = 20
 elseif hostname == "asgard" then
-  top_padding = 14
+  top_padding = 40
 end
 
 config.default_prog = { "nu" }
@@ -30,9 +30,8 @@ config.font = w.font_with_fallback({
   -- "Font Awesome 6 Free Solid",
 })
 config.unicode_version = 14
-config.font_size = 10
+config.font_size = 16
 config.color_scheme = "Bamboo"
--- config.color_scheme = "OceanicMaterial"
 config.line_height = 1
 config.audible_bell = "Disabled"
 config.use_fancy_tab_bar = false

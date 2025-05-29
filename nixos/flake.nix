@@ -2,11 +2,12 @@
   description = "NixOS configuration";
 
   inputs = {
-    nixpkgs.url = "github:NixOS/nixpkgs/nixos-24.11";
+    nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
+    nixpkgs-24-11.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
-      url = "github:nix-community/home-manager/release-24.11";
+      url = "github:nix-community/home-manager/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
@@ -17,13 +18,14 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/release-24.11";
+      url = "github:danth/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
   };
 
   outputs = inputs @ {
     nixpkgs,
+    nixpkgs-24-11,
     nixpkgs-unstable,
     home-manager,
     plasma-manager,
@@ -34,11 +36,12 @@
       # Desktop
       valhalla = let
         system = "x86_64-linux";
+        pkgs2411 = import nixpkgs-24-11 {inherit system; config.allowUnfree = true;};
         pkgsUnstable = import nixpkgs-unstable {inherit system;};
       in
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {inherit pkgsUnstable;};
+          specialArgs = {inherit pkgsUnstable pkgs2411;};
 
           modules = [
             ./os/valhalla.nix
@@ -53,7 +56,7 @@
                 sharedModules = [
                   plasma-manager.homeManagerModules.plasma-manager
                 ];
-                extraSpecialArgs = {inherit pkgsUnstable;};
+                extraSpecialArgs = {inherit pkgsUnstable pkgs2411;};
               };
             }
           ];

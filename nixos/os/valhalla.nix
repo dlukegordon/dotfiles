@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgsUnstable,
+  pkgs2411,
   ...
 }: {
   imports = [
@@ -13,4 +14,6 @@
   ];
 
   networking.hostName = "valhalla";
+
+  boot.kernelPackages = pkgs2411.linuxPackages_6_12;
 }

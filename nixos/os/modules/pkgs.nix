@@ -118,7 +118,6 @@
   # Fonts
   fonts.packages = with pkgs; [
     (callPackage ./etbembo.nix {})
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     _0xproto
     caladea
     cascadia-code
@@ -135,6 +134,7 @@
     iosevka-comfy.comfy
     jetbrains-mono
     libre-baskerville
+    nerd-fonts.symbols-only
     noto-fonts
     pkgsUnstable.lilex
     pkgsUnstable.nerd-fonts.comic-shanns-mono

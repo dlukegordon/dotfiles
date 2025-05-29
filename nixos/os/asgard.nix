@@ -13,6 +13,8 @@
 
   networking.hostName = "asgard";
 
+  boot.kernelPackages = pkgs.linuxPackages_latest;
+
   # Fingerprint reader
   # For some reason this seems to cause a problem with kdewallet sometimes. If you keep getting
   # annoying popups asking for access to kdewallet, you can solve this by deleting the wallet:

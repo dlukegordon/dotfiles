@@ -10,7 +10,7 @@
     fonts = {
       sizes.applications = 10;
       sizes.popups = 16;
-      sizes.desktop = 7;
+      sizes.desktop = 11;
 
       serif = {
         package = pkgs.noto-fonts;
@@ -27,6 +27,7 @@
       fuzzel.enable = true;
       gtk.enable = true;
       hyprpaper.enable = true;
+      qt.enable = true;
       waybar.enable = true;
     };
   };
