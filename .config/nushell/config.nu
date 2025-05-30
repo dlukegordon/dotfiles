@@ -19,6 +19,7 @@ $env.VISUAL = $env.config.buffer_editor
 $env.PAGER = 'nvimpager'
 $env.FZF_DEFAULT_OPTS = "--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
+$env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
 
 # Defs
 def la [...pattern] {
