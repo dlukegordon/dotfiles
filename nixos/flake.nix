@@ -86,6 +86,21 @@
             }
           ];
         };
+
+      # Local server
+      nidavellir = let
+        system = "x86_64-linux";
+        pkgsUnstable = import nixpkgs-unstable {inherit system;};
+      in
+        nixpkgs.lib.nixosSystem {
+          inherit system;
+          specialArgs = {inherit pkgsUnstable;};
+
+          modules = [
+            ./os/nidavellir.nix
+          ];
+        };
+
     };
   };
 }

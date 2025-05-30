@@ -41,6 +41,7 @@ asdf-install:
 	asdf install golang latest
 	asdf global golang latest
 
-install-1: check-host stow nixos-cp-hardware nixos-boot
+install: check-host stow nixos-cp-hardware nixos-boot
 
-install-2: asdf-install
+install-server: check-host nixos-cp-hardware nixos-boot
+

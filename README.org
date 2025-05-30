@@ -16,16 +16,17 @@ My personal dotfiles including configs for nixos, hyprland, emacs, tmux, wezterm
 
 We can now install the full system. These commands will clone the repo, link the dotfiles into =~=, apply the NixOs configuration, setup asdf, and install Doom emacs. Set =new_host= to the hostname for the configuration from [[file:nixos/flake.nix][flake.nix]] you are installing.
 
+If you are installing the server, run =make install-server= instead of =make install=.
+
 #+begin_src bash
 cd ~
 nix-shell -p git gnumake stow --extra-experimental-features 'nix-command flakes'
 new_host="<set hostname from flake.nix>"
 git clone https://github.com/dlukegordon/dotfiles.git
 cd dotfiles
-make install-1 host=$new_host
+make install host=$new_host
 reboot
-# Reboot and log back in
-make install-2
+make asdf-install
 #+end_src
 
 After the reboot, make sure to select an X11 session on the SDDM screen. Wayland is not currently supported.
