@@ -102,6 +102,7 @@ def grbm [] {
 
 # Git aliases
 alias g = git
+alias gc = git commit
 alias gs = git status
 alias gl = git pull
 alias gp = git push
