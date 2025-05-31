@@ -97,6 +97,7 @@
   environment.systemPackages = with pkgs; [
     btop
     cmake
+    electrs
     fastfetch
     fd
     fzf

@@ -6,8 +6,8 @@
 }: {
   imports = [
     ./hardware-configuration.nix
-    ./modules/server.nix
-    ./modules/bitcoin.nix
+    ./server/server.nix
+    ./server/bitcoin.nix
   ];
 
   networking.hostName = "nidavellir";
