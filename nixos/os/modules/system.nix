@@ -160,6 +160,7 @@ in
     description = "Luke";
     extraGroups = ["networkmanager" "wheel" "input"];
   };
+  security.sudo.wheelNeedsPassword = false;
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.
