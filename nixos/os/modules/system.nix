@@ -3,7 +3,40 @@
   pkgs,
   pkgsUnstable,
   ...
-}: {
+}:
+let
+  customSddmTheme = pkgs.stdenv.mkDerivation {
+    name = "custom-where-is-my-sddm-theme";
+    src = pkgs.where-is-my-sddm-theme;
+    installPhase = ''
+      mkdir -p $out/share/sddm/themes/where_is_my_sddm_theme
+      cp -r $src/share/sddm/themes/where_is_my_sddm_theme/* $out/share/sddm/themes/where_is_my_sddm_theme/
+      chmod u+w $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      cp $out/share/sddm/themes/where_is_my_sddm_theme/example_configs/blue.conf \
+       $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      echo "hideCursor=true" >> $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      sed -i 's/showUsersByDefault=false/showUsersByDefault=true/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      sed -i 's/showSessionsByDefault=false/showSessionsByDefault=true/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      sed -i 's/backgroundFill=#8aadf4/backgroundFill=#252623/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      sed -i 's/basicTextColor=#ffffff/basicTextColor=#f1e9d2/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      sed -i 's/passwordInputBackground=#7b9fe7/passwordInputBackground=#383b35/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/theme.conf
+      sed -i 's/property string prevText: "<"/property string prevText: ""/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/SessionsChoose.qml
+      sed -i 's/property string nextText: ">"/property string nextText: ""/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/SessionsChoose.qml
+      sed -i 's/property string prevText: "<"/property string prevText: ""/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/UsersChoose.qml
+      sed -i 's/property string nextText: ">"/property string nextText: ""/' \
+        $out/share/sddm/themes/where_is_my_sddm_theme/UsersChoose.qml
+    '';
+  };
+in
+{
   # Enable the Flakes feature and the accompanying new nix command-line tool
   nix.settings.experimental-features = ["nix-command" "flakes"];
 
@@ -61,8 +94,11 @@
   services.xserver.enable = true;
 
   # Enable the KDE Plasma Desktop Environment.
-  services.displayManager.sddm.enable = true;
   services.desktopManager.plasma6.enable = true;
+  services.displayManager.sddm = {
+    enable = true;
+    theme = "${customSddmTheme}/share/sddm/themes/where_is_my_sddm_theme";
+  };
 
   # Window Managers
   programs.hyprland = {
