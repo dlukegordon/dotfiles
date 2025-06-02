@@ -1,6 +1,7 @@
 {config, pkgs, options, lib, ...}:
 let
   eachElectrs = config.services.electrs;
+
   electrsOpts = { name, ... }: {
     options = {
       enable = lib.mkEnableOption "Electrs daemon";

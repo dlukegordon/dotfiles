@@ -16,7 +16,7 @@ path add "~/bin"
 # Env vars
 $env.EDITOR = $env.config.buffer_editor
 $env.VISUAL = $env.config.buffer_editor
-$env.PAGER = 'nvimpager'
+$env.PAGER = 'less --raw-control-chars --quit-if-one-screen'
 $env.FZF_DEFAULT_OPTS = "--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
 $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
@@ -75,7 +75,7 @@ alias ns = nix-shell --command nu
 alias t = tms ~/scratch
 alias v = nvim
 
-# Git Defs
+# Git defs
 def is-git-repo [] {
     let git_check = git rev-parse --is-inside-work-tree | complete | get exit_code
     if $git_check != 0 {
@@ -84,7 +84,7 @@ def is-git-repo [] {
     $git_check == 0
 }
 
-def git-main-branch [] {
+def git-trunk-branch [] {
     if (is-git-repo) == false {
         return
     }
@@ -97,7 +97,7 @@ def git-main-branch [] {
 }
 
 def grbm [] {
-    git checkout (git-main-branch); git pull; git checkout -; git rebase (git-main-branch)
+    git checkout (git-trunk-branch); git pull; git checkout -; git rebase (git-trunk-branch)
 }
 
 # Git aliases
@@ -109,7 +109,7 @@ alias gp = git push
 alias gpf = git push --force
 alias gaa = git add -A
 alias gd = git diff
-alias gcom = git checkout (git-main-branch)
+alias gcom = git checkout (git-trunk-branch)
 alias gcob = git checkout -b
 alias gcol = git checkout -
 alias gcf = git commit --fixup HEAD
@@ -126,6 +126,51 @@ alias gri4 = git rebase -i --autosquash HEAD~4
 alias gri5 = git rebase -i --autosquash HEAD~5
 alias gsu = git submodule update --init --recursive --force
 alias ghh = git rev-parse HEAD
+
+# Jj defs
+def is-jj-repo [] {
+    let jj_check = jj status | complete | get exit_code
+    if $jj_check != 0 {
+        print "Not a jj repository"
+    }
+    $jj_check == 0
+}
+
+def jj-trunk-bookmark [] {
+    let bookmarks = jj bookmark list -T name | lines
+    let has_master = "master" in bookmarks
+    let has_main = "main" in bookmarks
+    if $has_main and not $has_master {
+        "main"
+    } else {
+        "master"
+    }
+}
+
+# Jj aliases
+alias j = jj status
+alias jl = jj log --revisions 'all()' --limit 20
+alias jla = jj log --revisions 'all()'
+alias jr = jj describe
+alias jd = jj diff
+alias jn = jj new
+alias jnn = jj new --insert-before @ --no-edit
+alias js = jj squash
+alias jsf = jj squash --ignore-immutable
+alias jsi = jj squash --interactive
+alias jg = jj git
+alias jgf = jj git fetch
+alias jgp = jj git push
+alias jb = jj bookmark
+alias jbl = jj bookmark list
+alias jbc = jj bookmark create
+alias jbs = jj bookmark set
+alias jbsm = jj bookmark set (jj-trunk-bookmark) --revision @
+alias jbsmm = jj bookmark set (jj-trunk-bookmark) --revision @-
+alias ja = jj abandon
+alias ju = jj undo
+alias jc = jj git clone --colocate
+alias lj = lazyjj
 
 # Zoxide
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")

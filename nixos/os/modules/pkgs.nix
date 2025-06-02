@@ -42,7 +42,6 @@
     mosh
     nixfmt-classic
     nushell
-    nvimpager
     opensc
     pandoc
     pkgsUnstable.dioxus-cli
