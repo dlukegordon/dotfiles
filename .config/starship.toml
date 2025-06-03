@@ -16,6 +16,7 @@ $git_commit\
 $git_status\
 $git_state\
 $git_metrics\
+$custom\
 $hg_branch\
 $pijul_channel\
 $docker_context\
@@ -79,7 +80,6 @@ $nats\
 $direnv\
 $env_var\
 $crystal\
-$custom\
 $sudo\
 $cmd_duration\
 $line_break\
@@ -118,11 +118,46 @@ success_symbol = "[❯](yellow)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
+[custom.jj]
+ignore_timeout = true
+description = "The current jj status"
+# detect_folders = [".jj"]
+when = "jj root --ignore-working-copy"
+symbol = "󰘬 "
+style = 'bright-black'
+command = '''
+jj log --revisions @ --no-graph --limit 1 --template '
+  separate(" ",
+    change_id.shortest(4),
+    raw_escape_sequence("\x1b[1;34m") ++ bookmarks,
+    concat(
+      if(conflict, "💥"),
+      if(divergent, "🚧"),
+      if(hidden, "👻"),
+      if(immutable, "🔒"),
+    ),
+    if(!empty, raw_escape_sequence("\x1b[1;32m") ++ "+" ++ diff.stat().total_added()),
+    if(!empty, raw_escape_sequence("\x1b[1;31m") ++ "+" ++ diff.stat().total_removed()),
+    if(empty, raw_escape_sequence("\x1b[0;90m") ++ "±0"),
+    coalesce(
+      raw_escape_sequence("\x1b[0;33m") ++ truncate_end(64, description.first_line(), "…"),
+      raw_escape_sequence("\x1b[0;90m") ++ "∅",
+    )
+    ++ raw_escape_sequence("\x1b[0m"),
+  )
+'
+'''
+
+[custom.git_branch]
+when = true
+command = "if (do { jj root --ignore-working-copy } | complete | get exit_code) != 0 { starship module git_branch } else { '' }"
+description = "Only show git_branch if we're not in a jj repo"
+
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
 style = "bright-black"
 symbol = " "
-# symbol = " "
+disabled = true
 
 [git_commit]
 format = '[ $hash$tag]($style) '
@@ -130,9 +165,10 @@ style = 'bright-black'
 commit_hash_length = 6
 only_detached = false
 tag_symbol = ' '
+disabled = true
 
 [git_metrics]
-disabled = false
+# disabled = false
 
 [git_status]
 format = '([$conflicted$stashed$untracked$ahead_behind]($style) )'

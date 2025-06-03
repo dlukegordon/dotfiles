@@ -7,7 +7,7 @@ $env.config.history = {
   file_format: sqlite
   max_size: 1_000_000
   sync_on_enter: true
-  isolation: true
+  isolation: false
 }
 
 # Path
@@ -149,28 +149,32 @@ def jj-trunk-bookmark [] {
 
 # Jj aliases
 alias j = jj status
-alias jl = jj log --revisions 'all()' --limit 20
+alias jl = jj log --revisions 'all()' --limit 10
 alias jla = jj log --revisions 'all()'
 alias jr = jj describe
 alias jd = jj diff
+alias je = jj edit
+alias jeb = jj edit @-
 alias jn = jj new
-alias jnn = jj new --insert-before @ --no-edit
+alias jnm = jj new (jj-trunk-bookmark)
+alias jnb = jj new --insert-before @ --no-edit
 alias js = jj squash
 alias jsf = jj squash --ignore-immutable
 alias jsi = jj squash --interactive
 alias jg = jj git
-alias jgf = jj git fetch
-alias jgp = jj git push
+alias jf = jj git fetch
+alias jp = jj git push
 alias jb = jj bookmark
 alias jbl = jj bookmark list
 alias jbc = jj bookmark create
 alias jbs = jj bookmark set
 alias jbsm = jj bookmark set (jj-trunk-bookmark) --revision @
-alias jbsmm = jj bookmark set (jj-trunk-bookmark) --revision @-
+alias jbsmb = jj bookmark set (jj-trunk-bookmark) --revision @-
 alias ja = jj abandon
 alias ju = jj undo
-alias jc = jj git clone --colocate
-alias lj = lazyjj
+alias jc = jj commit
+alias jclone = jj git clone --colocate
+alias lj = lazyjj --revisions 'all()'
 
 # Zoxide
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
