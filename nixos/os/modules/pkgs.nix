@@ -16,6 +16,7 @@
     carapace
     ccid
     cmake
+    difftastic
     dockfmt
     fastfetch
     fd

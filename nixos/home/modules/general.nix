@@ -39,6 +39,23 @@
     };
   };
 
+  # Jj
+  programs.jujutsu = {
+    enable = true;
+    package = pkgsUnstable.jujutsu;
+    ediff = false;
+    settings = {
+      user = {
+        name = "luke";
+      };
+      ui = {
+        default-command = "log";
+        diff.tool = ["difft" "--color=always" "$left" "$right"];
+        merge-editor = "mergiraf";
+      };
+    };
+  };
+
   # Emacs
   programs.emacs = {
     enable = true;
