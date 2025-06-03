@@ -43,6 +43,7 @@ vim.o.guicursor = "r-cr-o:hor20,n-v-c-sm:block-blinkon100,i-ci-ve:ver10-blinkon1
 vim.opt.scrolloff = 10
 
 vim.opt.tabstop = 4
+vim.opt.expandtab = true
 
 vim.o.wildoptions = "pum,tagfile,fuzzy"
 

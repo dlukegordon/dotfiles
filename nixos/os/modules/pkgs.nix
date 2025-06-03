@@ -35,7 +35,7 @@
     inetutils
     ivpn
     ivpn-service
-    jq
+    just
     less
     libsForQt5.kdbusaddons
     libtool
@@ -46,11 +46,9 @@
     nushell
     opensc
     pandoc
-    pkgsUnstable.dioxus-cli
     pkgsUnstable.jujutsu
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
-    pkgsUnstable.wasm-bindgen-cli
     rage
     re2
     ripgrep
@@ -63,6 +61,7 @@
     tinymist
     tmux
     tree-sitter
+    trunk
     typst
     unzip
     usbutils
