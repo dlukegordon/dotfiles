@@ -12,6 +12,7 @@ $env.config.history = {
 
 # Path
 path add "~/bin"
+path add "~/.cargo/bin"
 
 # Env vars
 $env.EDITOR = $env.config.buffer_editor
@@ -176,9 +177,6 @@ alias jc = jj commit
 alias jclone = jj git clone --colocate
 alias lj = lazyjj --revisions 'all()'
 
-# Zoxide
-zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
-
 # Asdf
 let shims_dir = (
   if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
@@ -188,6 +186,13 @@ let shims_dir = (
   } | path join 'shims'
 )
 $env.PATH = ( $env.PATH | split row (char esep) | where { |p| $p != $shims_dir } | prepend $shims_dir )
+
+# Zoxide
+zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
+
+# Carapace
+$env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
+carapace _carapace nushell | save -f ($nu.data-dir | path join "vendor/autoload/carapace.nu")
 
 # Prompt
 mkdir ($nu.data-dir | path join "vendor/autoload")

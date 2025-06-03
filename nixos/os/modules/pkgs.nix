@@ -13,6 +13,7 @@
     bash-language-server
     bc
     btop
+    carapace
     ccid
     cmake
     dockfmt
