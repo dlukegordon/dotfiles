@@ -14,11 +14,11 @@
     ghostty
     keepassxc
     obsidian
+    pkgsUnstable.wezterm
     signal-desktop
     sparrow
     transmission_4-qt
     vlc
-    pkgsUnstable.wezterm
   ];
 
   # Btop. We also add to os pkgs, but we also add here so Stylix will theme.

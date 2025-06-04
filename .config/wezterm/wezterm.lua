@@ -17,16 +17,17 @@ if hostname_file then
 end
 local top_padding = 0
 if hostname == "valhalla" then
-  top_padding = 20
+  top_padding = 30
 elseif hostname == "asgard" then
-  top_padding = 5
+  top_padding = 14
 end
 
 config.default_prog = { "nu" }
 config.font = w.font_with_fallback({
-  "Roboto Mono",
-  "Font Awesome 6 Free Regular",
-  "Font Awesome 6 Free Solid",
+  "JetBrains Mono",
+  "Symbols Nerd Font",
+  -- "Font Awesome 6 Free Regular",
+  -- "Font Awesome 6 Free Solid",
 })
 config.unicode_version = 14
 config.font_size = 10

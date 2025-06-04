@@ -165,6 +165,7 @@ alias jl = jj log --revisions 'all()' --limit 10
 alias jla = jj log --revisions 'all()'
 alias jr = jj describe
 alias je = jj edit
+alias jef = jj edit --ignore-immutable
 alias jeb = jj edit @-
 alias jn = jj new
 alias jnm = jj new (jj-trunk-bookmark)

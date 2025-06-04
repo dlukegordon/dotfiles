@@ -113,15 +113,27 @@
 
   # Fonts
   fonts.packages = with pkgs; [
-    font-awesome
-    roboto-mono
-    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
     (callPackage ./etbembo.nix {})
+    (nerdfonts.override {fonts = ["NerdFontsSymbolsOnly"];})
+    _0xproto
+    caladea
+    cascadia-code
+    comic-mono
+    commit-mono
+    cozette
     dejavu_fonts
-    noto-fonts
+    fantasque-sans-mono
+    fira-code
+    font-awesome
     garamond-libre
     gelasio
-    caladea
+    iosevka
+    iosevka-comfy.comfy
+    jetbrains-mono
     libre-baskerville
+    noto-fonts
+    pkgsUnstable.lilex
+    pkgsUnstable.nerd-fonts.comic-shanns-mono
+    roboto-mono
   ];
 }
