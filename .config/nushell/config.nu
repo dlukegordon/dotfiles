@@ -17,7 +17,8 @@ path add "~/.cargo/bin"
 # Env vars
 $env.EDITOR = $env.config.buffer_editor
 $env.VISUAL = $env.config.buffer_editor
-$env.PAGER = 'less --raw-control-chars --quit-if-one-screen'
+$env.PAGER = 'ov --quit-if-one-screen --exit-write'
+$env.BAT_PAGER = 'ov --quit-if-one-screen --exit-write'
 $env.FZF_DEFAULT_OPTS = "--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
 $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
@@ -75,6 +76,8 @@ alias lt3 = lsd --color always -A --date relative --group-directories-first --tr
 alias ns = nix-shell --command nu
 alias t = tms ~/scratch
 alias v = nvim
+alias less = bat --plain
+alias cat = bat --plain --paging=never
 
 # Git defs
 def is-git-repo [] {
@@ -148,12 +151,15 @@ def jj-trunk-bookmark [] {
     }
 }
 
+def --wrapped jd [...args] {
+    PAGER='ov' jj diff ...$args
+}
+
 # Jj aliases
 alias j = jj status
 alias jl = jj log --revisions 'all()' --limit 10
 alias jla = jj log --revisions 'all()'
 alias jr = jj describe
-alias jd = jj diff
 alias je = jj edit
 alias jeb = jj edit @-
 alias jn = jj new

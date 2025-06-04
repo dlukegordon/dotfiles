@@ -50,7 +50,7 @@
       };
       ui = {
         default-command = "log";
-        diff.tool = ["difft" "--color=always" "$left" "$right"];
+        diff.tool = ["difft" "--display=side-by-side-show-both" "--color=always" "$left" "$right"];
         merge-editor = "mergiraf";
       };
     };

@@ -45,7 +45,9 @@
     nixfmt-classic
     nushell
     opensc
+    ov
     pandoc
+    pkgsUnstable.bat
     pkgsUnstable.jujutsu
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
