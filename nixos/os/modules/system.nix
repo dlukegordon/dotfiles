@@ -159,6 +159,7 @@ in
     isNormalUser = true;
     description = "Luke";
     extraGroups = ["networkmanager" "wheel" "input"];
+    shell = pkgs.nushell;
   };
   security.sudo.wheelNeedsPassword = false;
 

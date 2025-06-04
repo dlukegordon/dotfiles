@@ -90,7 +90,6 @@
     enable = true;
     enableCompletion = false;
   };
-  users.defaultUserShell = pkgs.zsh;
 
   # GPG and Yubikeys
   services.pcscd.enable = true;
