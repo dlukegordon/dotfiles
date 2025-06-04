@@ -78,6 +78,10 @@ alias t = tms ~/scratch
 alias v = nvim
 alias less = bat --plain
 alias cat = bat --plain --paging=never
+alias wat = hwatch --interval 2 --differences=word --color --exec nu --login -c
+alias wat1 = hwatch --interval 1 --differences=word --color --exec nu --login -c
+alias wat5 = hwatch --interval 5 --differences=word --color --exec nu --login -c
+alias wat10 = hwatch --interval 10 --differences=word --color --exec nu --login -c
 
 # Git defs
 def is-git-repo [] {

@@ -32,6 +32,7 @@
     gopls
     gore
     gotests
+    hwatch
     inetutils
     ivpn
     ivpn-service
