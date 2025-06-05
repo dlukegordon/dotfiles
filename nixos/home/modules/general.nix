@@ -53,6 +53,17 @@
         diff.tool = ["difft" "--display=side-by-side-show-both" "--color=always" "$left" "$right"];
         merge-editor = "mergiraf";
       };
+      templates = {
+        log_node = ''
+        coalesce(
+          if(!self, "🮀"),
+          if(current_working_copy, "@"),
+          if(root, "┴"),
+          if(immutable, "●", "○"),
+        )
+        '';
+        op_log_node = ''if(current_operation, "@", "○")'';
+      };
     };
   };
 
