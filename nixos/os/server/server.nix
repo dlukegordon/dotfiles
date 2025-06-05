@@ -76,6 +76,7 @@
   };
   security.sudo.wheelNeedsPassword = false;
 
+  # Ssh
   services.openssh = {
     enable = true;
     ports = [ 22 ];
@@ -86,7 +87,18 @@
     };
   };
 
-  # TODO: Setup real alerts?
+  # Gitea
+  services.gitea = {
+    enable = true;
+    package = pkgsUnstable.gitea;
+    settings = {
+      server.HTTP_PORT = 3000;
+    };
+  };
+  networking.firewall.allowedTCPPorts = [3000];
+
+  # Hack to stop a warning during nix build
+  # TODO: Setup real alerts for issues with RAID?
   boot.swraid = {
     # Already enabled in hardware_configuration.nix
     mdadmConf = ''
@@ -96,6 +108,7 @@
 
   environment.systemPackages = with pkgs; [
     btop
+    carapace
     cmake
     fastfetch
     fd
@@ -109,7 +122,10 @@
     lsof
     mosh
     nushell
+    pkgsUnstable.bat
+    pkgsUnstable.jujutsu
     pkgsUnstable.neovim
+    pkgsUnstable.ov
     ripgrep
     starship
     stow
