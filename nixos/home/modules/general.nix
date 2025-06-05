@@ -14,8 +14,8 @@
     ghostty
     keepassxc
     obsidian
+    pkgsUnstable.signal-desktop
     pkgsUnstable.wezterm
-    signal-desktop
     sparrow
     transmission_4-qt
     vlc
