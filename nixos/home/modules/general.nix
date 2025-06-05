@@ -51,7 +51,6 @@
       ui = {
         default-command = "log";
         diff.tool = ["difft" "--display=side-by-side-show-both" "--color=always" "$left" "$right"];
-        merge-editor = "mergiraf";
       };
       templates = {
         log_node = ''
