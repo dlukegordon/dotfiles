@@ -23,6 +23,7 @@
     font-manager
     fzf
     gcc
+    gh
     git
     gnumake
     gnupg
@@ -46,12 +47,13 @@
     nixfmt-classic
     nushell
     opensc
-    ov
     pandoc
     pkgsUnstable.bat
     pkgsUnstable.jujutsu
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
+    pkgsUnstable.ov
+    psmisc
     rage
     re2
     ripgrep
@@ -103,6 +105,7 @@
 
   # Flatpak (yes it sucks but need for zen browser)
   services.flatpak.enable = true;
+  services.flatpak.package = pkgsUnstable.flatpak;
 
   # Other programs/services
   programs.nix-ld.enable = true;
