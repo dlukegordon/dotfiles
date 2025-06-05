@@ -30,6 +30,7 @@ vim.keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split window [h]orizontall
 vim.keymap.set("n", "<leader>wd", "<C-w>q", { desc = "[D]elete window" })
 vim.keymap.set("n", "<leader>jd", vim.diagnostic.goto_next)
 vim.keymap.set("n", "<leader>kd", vim.diagnostic.goto_prev)
+vim.keymap.set("v", "<leader>o", ":sort<CR>", { desc = "S[o]rt/[O]rder" })
 
 -- Swap PageUp/PageDown and C-u/C-d
 -- vim.keymap.set("n", "<PageUp>", "<C-u>", { noremap = true, silent = true })
