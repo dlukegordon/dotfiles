@@ -2,6 +2,7 @@ vim.keymap.set("n", "<Esc>", "<cmd>nohlsearch<CR>")
 
 vim.keymap.set("n", "\\", "gcc", { remap = true, desc = "Comment line" })
 vim.keymap.set("v", "\\", "gc", { remap = true, desc = "Comment lines" })
+vim.keymap.set("n", "<CR>", "G", { remap = true, desc = "[G]oto line" })
 
 vim.keymap.set("n", "<A-s>", ":w<CR>", { desc = "Save the buffer" })
 vim.keymap.set("i", "<A-s>", "<ESC>:w<CR>", { desc = "Save the buffer" })
