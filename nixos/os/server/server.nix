@@ -110,6 +110,7 @@
     btop
     carapace
     cmake
+    difftastic
     fastfetch
     fd
     fzf

@@ -98,6 +98,16 @@
 
           modules = [
             ./os/nidavellir.nix
+
+            home-manager.nixosModules.home-manager
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                useUserPackages = true;
+                users.luke = import ./home/nidavellir.nix;
+                extraSpecialArgs = {inherit pkgsUnstable;};
+              };
+            }
           ];
         };
 

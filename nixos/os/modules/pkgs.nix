@@ -49,6 +49,7 @@
     opensc
     pandoc
     pkgsUnstable.bat
+    pkgsUnstable.jjui
     pkgsUnstable.jujutsu
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
