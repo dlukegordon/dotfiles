@@ -123,12 +123,12 @@ ignore_timeout = true
 description = "The current jj status"
 # detect_folders = [".jj"]
 when = "jj root --ignore-working-copy"
-symbol = "󰘬 "
+symbol = "󱁊 "
 style = 'bright-black'
 command = '''
 jj log --revisions @ --no-graph --limit 1 --template '
   separate(" ",
-    change_id.shortest(4),
+    commit_id.shortest(6),
     raw_escape_sequence("\x1b[1;34m") ++ bookmarks,
     concat(
       if(conflict, "💥"),
@@ -138,20 +138,23 @@ jj log --revisions @ --no-graph --limit 1 --template '
     ),
     if(!empty, raw_escape_sequence("\x1b[1;32m") ++ "+" ++ diff.stat().total_added()),
     if(!empty, raw_escape_sequence("\x1b[1;31m") ++ "+" ++ diff.stat().total_removed()),
-    if(empty, raw_escape_sequence("\x1b[0;90m") ++ "±0"),
+    if(empty, raw_escape_sequence("\x1b[0;33m") ++ "±0"),
     coalesce(
       raw_escape_sequence("\x1b[0;33m") ++ truncate_end(64, description.first_line(), "…"),
-      raw_escape_sequence("\x1b[0;90m") ++ "∅",
+      raw_escape_sequence("\x1b[0;33m") ++ "∅",
     )
     ++ raw_escape_sequence("\x1b[0m"),
   )
 '
 '''
 
-[custom.git_branch]
-when = true
-command = "if (do { jj root --ignore-working-copy } | complete | get exit_code) != 0 { starship module git_branch } else { '' }"
-description = "Only show git_branch if we're not in a jj repo"
+# [custom.git_branch]
+# when = true
+# command = "if (do { jj root --ignore-working-copy } | complete | get exit_code) == 0 { '' } else { starship module git_branch }"
+
+# [custom.git_commit]
+# when = true
+# command = "if (do { jj root --ignore-working-copy } | complete | get exit_code) == 0 { '' } else { starship module git_commit }"
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
@@ -168,7 +171,7 @@ tag_symbol = ' '
 disabled = true
 
 [git_metrics]
-# disabled = false
+disabled = true
 
 [git_status]
 format = '([$conflicted$stashed$untracked$ahead_behind]($style) )'
@@ -189,10 +192,12 @@ diverged = '↕'
 # staged = '+${count} '
 # renamed = '»${count} '
 # deleted = '${count} '
+disabled = true
 
 [git_state]
 format = '\([$state( $progress_current/$progress_total)]($style)\) '
 style = "bright-black"
+disabled = true
 
 [package]
 disabled = true
