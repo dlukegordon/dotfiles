@@ -82,6 +82,7 @@ alias wat = hwatch --interval 2 --differences=word --color --exec nu --login -c
 alias wat1 = hwatch --interval 1 --differences=word --color --exec nu --login -c
 alias wat5 = hwatch --interval 5 --differences=word --color --exec nu --login -c
 alias wat10 = hwatch --interval 10 --differences=word --color --exec nu --login -c
+alias sha = hash sha256
 
 # Git defs
 def is-git-repo [] {
@@ -161,8 +162,12 @@ def --wrapped jd [...args] {
 
 # Jj aliases
 alias j = jj status
+alias jjs = jj --stat
 alias jl = jj log --revisions 'all()' --limit 10
+alias jls = jj log --revisions 'all()' --limit 10 --stat
 alias jla = jj log --revisions 'all()'
+alias jlas = jj log --revisions 'all()' --stat
+alias ji = jj git init --colocate
 alias jr = jj describe
 alias jrm = jj describe -m
 alias jrb = jj describe -r @-
