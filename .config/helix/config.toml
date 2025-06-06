@@ -1,4 +1,4 @@
-# theme = "onedark"
+theme = "onedark"
 
 [editor]
 idle-timeout = 10

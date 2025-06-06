@@ -65,29 +65,29 @@ return {
 
       local builtin = require("telescope.builtin")
 
-      vim.keymap.set("n", "<A-f>", builtin.current_buffer_fuzzy_find, { desc = "Search the current buffer" })
       vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Resume last search" })
-      vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Search [b]uffers" })
-      vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Search [d]iagnostics" })
-      vim.keymap.set("n", "<leader>l", builtin.oldfiles, { desc = "Search [l]ast files" })
+      vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Find [b]uffers" })
+      vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Find [d]iagnostics" })
+      vim.keymap.set("n", "<leader>l", builtin.oldfiles, { desc = "Find [l]ast files" })
       vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Live grep" })
-      vim.keymap.set("n", "<leader>sh", builtin.help_tags, { desc = "Search [h]elp" })
-      vim.keymap.set("n", "<leader>sk", builtin.keymaps, { desc = "Search [k]eymaps" })
-      vim.keymap.set("n", "<leader>sc", builtin.grep_string, { desc = "Search [c]urrent word" })
-      vim.keymap.set("n", "<leader>sj", builtin.jumplist, { desc = "Search [j]umplist" })
-      vim.keymap.set("n", "<leader>sm", builtin.marks, { desc = "Search [m]arks" })
-      vim.keymap.set("n", "<leader>sr", builtin.resume, { desc = "[R]esume last search" })
+      vim.keymap.set("n", "<leader>ff", builtin.current_buffer_fuzzy_find, { desc = "Find in the current buffer" })
+      vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find [h]elp" })
+      vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find [k]eymaps" })
+      vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find [c]urrent word" })
+      vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "Find [j]umplist" })
+      vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Find [m]arks" })
+      vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[R]esume last find" })
 
       vim.keymap.set("n", "<leader><leader>", function()
         builtin.find_files({ hidden = true })
       end, { desc = "Search files" })
 
-      vim.keymap.set("n", "<leader>s/", function()
+      vim.keymap.set("n", "<leader>f/", function()
         builtin.live_grep({
           grep_open_files = true,
           prompt_title = "Live Grep in Open Files",
         })
-      end, { desc = "Search in open files" })
+      end, { desc = "Find in open files" })
     end,
   },
 
@@ -182,7 +182,7 @@ return {
     "MagicDuck/grug-far.nvim",
     config = {},
     keys = {
-      { "<leader>sg", ":GrugFar<CR>", desc = "[S]earch with grug-far" },
+      { "<leader>fg", ":GrugFar<CR>", desc = "Find with [g]rug-far" },
     },
   },
 
