@@ -78,7 +78,7 @@
       isDefault = true;
       settings = {
         # If we don't do this, the browser ui is strangely large
-        "browser.display.os-zoom-behavior" = 0;
+        "browser.display.os-zoom-behavior" = 1;
       };
     };
   };
