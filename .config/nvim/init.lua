@@ -71,9 +71,14 @@ vim.api.nvim_create_autocmd("TextYankPost", {
   end,
 })
 
+vim.api.nvim_create_autocmd("VimResized", {
+  pattern = "*",
+  command = "wincmd =",
+})
+
 require("load_lazy")
 require("keys")
 
 local hl = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextInfo" })
-local color = string.format("#%06x", hl.bg)
-vim.api.nvim_set_hl(0, "NormalFloat", { bg = color })
+-- local color = string.format("#%06x", hl.bg)
+-- vim.api.nvim_set_hl(0, "NormalFloat", { bg = color })

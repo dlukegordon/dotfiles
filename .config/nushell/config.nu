@@ -156,6 +156,11 @@ def jj-trunk-bookmark [] {
     }
 }
 
+def ji [] {
+    jj git init --colocate
+    jj bookmark create master
+}
+
 def --wrapped jd [...args] {
     PAGER='ov' jj diff ...$args
 }
@@ -167,7 +172,6 @@ alias jl = jj log --revisions 'all()' --limit 10
 alias jls = jj log --revisions 'all()' --limit 10 --stat
 alias jla = jj log --revisions 'all()'
 alias jlas = jj log --revisions 'all()' --stat
-alias ji = jj git init --colocate
 alias jr = jj describe
 alias jrm = jj describe -m
 alias jrb = jj describe -r @-
