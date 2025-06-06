@@ -21,7 +21,7 @@ if hostname == "valhalla" then
   top_padding = 20
   font_size = 16
 elseif hostname == "asgard" then
-  top_padding = 9
+  top_padding = 8
   font_size = 19
 end
 
