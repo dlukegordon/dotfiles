@@ -50,8 +50,8 @@ let
       };
       user = lib.mkOption {
         type = lib.types.str;
-        default = "electrs-${name}";
-        example = "electrs-mainnet";
+        default = "bitcoind-${name}";
+        example = "bitcoind-mainnet";
         description = ''
           The user to run the service as
         '';
@@ -107,15 +107,5 @@ in
     systemd.tmpfiles.rules = lib.mapAttrsToList (name: cfg: 
       "d '${cfg.db_dir}' 0770 ${cfg.user} ${cfg.group} - -"
     ) eachElectrs;
-
-    users.users = lib.mkMerge (lib.mapAttrsToList (name: cfg: {
-      ${cfg.user} = {
-        name = cfg.user;
-        group = cfg.group;
-        description = "Electrs daemon user";
-        home = cfg.db_dir;
-        isSystemUser = true;
-      };
-    }) eachElectrs);
   };
 }
