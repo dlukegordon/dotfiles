@@ -18,8 +18,8 @@ end
 local top_padding = 0
 local font_size = 12
 if hostname == "valhalla" then
-  top_padding = 20
-  font_size = 16
+  top_padding = 0
+  font_size = 15
 elseif hostname == "asgard" then
   top_padding = 8
   font_size = 19

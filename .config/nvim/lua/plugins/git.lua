@@ -31,18 +31,18 @@ return {
   },
 
   -- Magit for neovim
-  -- {
-  --   "NeogitOrg/neogit",
-  --   event = "VeryLazy",
-  --   branch = "master",
-  --   dependencies = {
-  --     "nvim-lua/plenary.nvim",
-  --     "nvim-telescope/telescope.nvim",
-  --     "sindrets/diffview.nvim",
-  --   },
-  --   config = {},
-  --   keys = {
-  --     { "<leader>gg", ":Neogit<CR>", { desc = "Open neo[g]it" } },
-  --   },
-  -- },
+  {
+    "NeogitOrg/neogit",
+    event = "VeryLazy",
+    branch = "master",
+    dependencies = {
+      "nvim-lua/plenary.nvim",
+      "nvim-telescope/telescope.nvim",
+      "sindrets/diffview.nvim",
+    },
+    config = {},
+    keys = {
+      { "<leader>gg", ":Neogit<CR>", { desc = "Open neo[g]it" } },
+    },
+  },
 }

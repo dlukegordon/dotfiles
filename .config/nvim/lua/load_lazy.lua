@@ -14,8 +14,6 @@ require("lazy").setup({
   spec = {
     { import = "plugins" },
   },
-  -- Check for updates every week
-  checker = { enabled = true, frequency = 604800 },
   change_detection = {
     enabled = false,
     notify = true,
