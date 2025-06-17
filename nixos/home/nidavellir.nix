@@ -34,7 +34,7 @@
       };
       ui = {
         default-command = "log";
-        diff.tool = ["difft" "--display=side-by-side-show-both" "--color=always" "$left" "$right"];
+        diff-formatter = ["difft" "--display=inline" "--color=always" "$left" "$right"];
       };
       templates = {
         log_node = ''
