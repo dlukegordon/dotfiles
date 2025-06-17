@@ -33,12 +33,15 @@
     gopls
     gore
     gotests
+    hunspell
+    hunspellDicts.en_US
     hwatch
     inetutils
     ivpn
     ivpn-service
     just
     less
+    libreoffice-qt
     libsForQt5.kdbusaddons
     libtool
     lsd
