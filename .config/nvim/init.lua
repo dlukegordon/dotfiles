@@ -38,8 +38,6 @@ vim.opt.inccommand = "split"
 
 vim.opt.cursorline = true
 
-vim.o.guicursor = "r-cr-o:hor20,n-v-c-sm:block-blinkon100,i-ci-ve:ver10-blinkon100"
-
 vim.opt.scrolloff = 10
 
 vim.opt.tabstop = 4
@@ -82,3 +80,6 @@ require("keys")
 -- local hl = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextInfo" })
 -- local color = string.format("#%06x", hl.bg)
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = color })
+
+vim.o.guicursor = "r-cr-o:hor20-Cursor,n-v-c-sm:block-blinkon100-Cursor,i-ci-ve:ver10-blinkon100-Cursor"
+vim.api.nvim_set_hl(0, "Cursor", { bg = "white" })
