@@ -160,27 +160,27 @@ return {
         local opts = { silent = true }
 
         keymap("n", "<ScrollWheelUp>", function()
-          neoscroll.scroll(-15, { move_cursor = false, duration = 70 })
+          neoscroll.scroll(-15, { move_cursor = false, duration = 50 })
         end, opts)
 
         keymap("i", "<ScrollWheelUp>", function()
-          neoscroll.scroll(-15, { move_cursor = false, duration = 70 })
+          neoscroll.scroll(-15, { move_cursor = false, duration = 50 })
         end, opts)
 
         keymap("v", "<ScrollWheelUp>", function()
-          neoscroll.scroll(-15, { move_cursor = false, duration = 70 })
+          neoscroll.scroll(-15, { move_cursor = false, duration = 50 })
         end, opts)
 
         keymap("n", "<ScrollWheelDown>", function()
-          neoscroll.scroll(15, { move_cursor = false, duration = 70 })
+          neoscroll.scroll(15, { move_cursor = false, duration = 50 })
         end, opts)
 
         keymap("i", "<ScrollWheelDown>", function()
-          neoscroll.scroll(15, { move_cursor = false, duration = 70 })
+          neoscroll.scroll(15, { move_cursor = false, duration = 50 })
         end, opts)
 
         keymap("v", "<ScrollWheelDown>", function()
-          neoscroll.scroll(15, { move_cursor = false, duration = 70 })
+          neoscroll.scroll(15, { move_cursor = false, duration = 50 })
         end, opts)
       end
     end,
