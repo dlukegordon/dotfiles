@@ -21,6 +21,8 @@
       url = "github:danth/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
+
+    ghostty.url = "github:ghostty-org/ghostty/7f9bb3c0e54f585e11259bc0c9064813d061929c";
   };
 
   outputs = inputs @ {
@@ -41,7 +43,7 @@
       in
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {inherit pkgsUnstable pkgs2411;};
+          specialArgs = {inherit pkgsUnstable pkgs2411 inputs;};
 
           modules = [
             ./os/valhalla.nix
@@ -56,7 +58,7 @@
                 sharedModules = [
                   plasma-manager.homeManagerModules.plasma-manager
                 ];
-                extraSpecialArgs = {inherit pkgsUnstable pkgs2411;};
+                extraSpecialArgs = {inherit pkgsUnstable pkgs2411 inputs;};
               };
             }
           ];
@@ -69,7 +71,7 @@
       in
         nixpkgs.lib.nixosSystem {
           inherit system;
-          specialArgs = {inherit pkgsUnstable;};
+          specialArgs = {inherit pkgsUnstable inputs;};
 
           modules = [
             ./os/asgard.nix
@@ -84,7 +86,7 @@
                 sharedModules = [
                   plasma-manager.homeManagerModules.plasma-manager
                 ];
-                extraSpecialArgs = {inherit pkgsUnstable;};
+                extraSpecialArgs = {inherit pkgsUnstable inputs;};
               };
             }
           ];

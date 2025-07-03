@@ -1,7 +1,6 @@
 # theme = Afterglow
 # theme = citruszest
 # theme = Dark+
-theme = Dimidium
 # theme = DimmedMonokai
 # theme = Espresso Libre
 # theme = Japanesque
@@ -14,5 +13,19 @@ theme = Dimidium
 # theme = SpaceGray Eighties
 # theme = SoftServer
 # theme = Sundried
+theme = Dimidium
 font-family = JetBrains Mono
 font-size = 10
+window-padding-x = 0
+window-padding-y = 0
+window-padding-balance = true
+window-padding-color = extend-always
+confirm-close-surface = false
+mouse-scroll-multiplier = 1
+window-decoration = none
+
+keybind = super+c=copy_to_clipboard
+keybind = super+v=paste_from_clipboard
+# Bind some super combos to alt for passthru to neovim, etc
+keybind = super+a=text:\x1ba
+keybind = super+s=text:\x1bs

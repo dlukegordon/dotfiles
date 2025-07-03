@@ -3,6 +3,7 @@
   pkgs,
   pkgsUnstable,
   lib,
+  inputs,
   ...
 }: {
   home.username = "luke";
@@ -11,7 +12,7 @@
   # Packages that should be installed to the user profile.
   # In general, GUI apps should be added here.
   home.packages = with pkgs; [
-    ghostty
+    inputs.ghostty.packages.${pkgs.system}.default
     keepassxc
     obsidian
     pkgsUnstable.signal-desktop
