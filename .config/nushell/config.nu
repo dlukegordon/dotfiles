@@ -202,6 +202,7 @@ alias jc = jj commit
 alias jcm = jj commit -m
 alias jclone = jj git clone --colocate
 alias lj = lazyjj --revisions 'all()'
+alias mj = ~/projects/majjit/target/release/majjit
 
 # Asdf
 let shims_dir = (
