@@ -9,17 +9,27 @@ return {
     opts = { signs = false },
   },
 
+  -- Autopairs
+  {
+    "windwp/nvim-autopairs",
+    event = "InsertEnter",
+    config = function()
+      local npairs = require("nvim-autopairs")
+      local Rule = require("nvim-autopairs.rule")
+
+      npairs.setup({
+        check_ts = true,
+      })
+      -- npairs.clear_rules()
+      -- npairs.add_rule(Rule("{", "}"))
+      npairs.add_rule(Rule("<", ">"))
+    end,
+  },
+
   -- Collection of various small independent plugins/modules
   {
     "echasnovski/mini.nvim",
     config = function()
-      require("mini.pairs").setup({
-        mappings = {
-          ["<"] = { action = "open", pair = "<>", neigh_pattern = "[^\\]." },
-          [">"] = { action = "close", pair = "<>", neigh_pattern = "[^\\]." },
-        },
-      })
-
       require("mini.comment").setup()
 
       require("mini.files").setup({
