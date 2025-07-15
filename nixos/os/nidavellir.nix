@@ -3,7 +3,8 @@
   pkgs,
   pkgsUnstable,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./server/server.nix

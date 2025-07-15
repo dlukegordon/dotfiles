@@ -1,115 +1,125 @@
-{config, pkgs, options, lib, ...}:
+{
+  config,
+  pkgs,
+  options,
+  lib,
+  ...
+}:
 let
   eachMempool = config.services.mempool;
-  mempoolOpts = { name, ... }: {
-    options = {
-      enable = lib.mkEnableOption "Mempool service";
+  mempoolOpts =
+    { name, ... }:
+    {
+      options = {
+        enable = lib.mkEnableOption "Mempool service";
 
-      frontend = {
-        port = lib.mkOption {
-          type = lib.types.port;
-          default = 80;
-          description = "Port for the mempool frontend";
+        frontend = {
+          port = lib.mkOption {
+            type = lib.types.port;
+            default = 80;
+            description = "Port for the mempool frontend";
+          };
+          image = lib.mkOption {
+            type = lib.types.str;
+            default = "mempool/frontend:latest";
+            description = "Docker image for mempool frontend";
+          };
         };
-        image = lib.mkOption {
-          type = lib.types.str;
-          default = "mempool/frontend:latest";
-          description = "Docker image for mempool frontend";
-        };
-      };
 
-      backend = {
-        electrum_host = lib.mkOption {
-          type = lib.types.str;
-          default = "172.17.0.1";
-          description = "Electrum server host";
+        backend = {
+          electrum_host = lib.mkOption {
+            type = lib.types.str;
+            default = "172.17.0.1";
+            description = "Electrum server host";
+          };
+          electrum_port = lib.mkOption {
+            type = lib.types.str;
+            default = "50001";
+            description = "Electrum server port";
+          };
+          core_rpc_host = lib.mkOption {
+            type = lib.types.str;
+            default = "172.17.0.1";
+            description = "Bitcoin Core RPC host";
+          };
+          core_rpc_port = lib.mkOption {
+            type = lib.types.str;
+            default = "8332";
+            description = "Bitcoin Core RPC port";
+          };
+          image = lib.mkOption {
+            type = lib.types.str;
+            default = "mempool/backend:latest";
+            description = "Docker image for mempool backend";
+          };
         };
-        electrum_port = lib.mkOption {
-          type = lib.types.str;
-          default = "50001";
-          description = "Electrum server port";
-        };
-        core_rpc_host = lib.mkOption {
-          type = lib.types.str;
-          default = "172.17.0.1";
-          description = "Bitcoin Core RPC host";
-        };
-        core_rpc_port = lib.mkOption {
-          type = lib.types.str;
-          default = "8332";
-          description = "Bitcoin Core RPC port";
-        };
-        image = lib.mkOption {
-          type = lib.types.str;
-          default = "mempool/backend:latest";
-          description = "Docker image for mempool backend";
-        };
-      };
 
-      database = {
-        name = lib.mkOption {
-          type = lib.types.str;
-          default = "mempool";
-          description = "Database name";
+        database = {
+          name = lib.mkOption {
+            type = lib.types.str;
+            default = "mempool";
+            description = "Database name";
+          };
+          username = lib.mkOption {
+            type = lib.types.str;
+            default = "mempool";
+            description = "Database username";
+          };
+          password = lib.mkOption {
+            type = lib.types.str;
+            default = "mempool";
+            description = "Database password";
+          };
+          root_password = lib.mkOption {
+            type = lib.types.str;
+            default = "admin";
+            description = "Database root password";
+          };
+          image = lib.mkOption {
+            type = lib.types.str;
+            default = "mariadb:10.5.21";
+            description = "Docker image for database";
+          };
         };
-        username = lib.mkOption {
+
+        data_dir = lib.mkOption {
           type = lib.types.str;
-          default = "mempool";
-          description = "Database username";
+          default = "/var/lib/mempool-${name}";
+          description = "Data directory for mempool";
         };
-        password = lib.mkOption {
+
+        cookie_file = lib.mkOption {
           type = lib.types.str;
-          default = "mempool";
-          description = "Database password";
+          default = "/var/lib/bitcoind-${name}/.cookie";
+          description = "Path to Bitcoin Core cookie file";
         };
-        root_password = lib.mkOption {
+
+        user = lib.mkOption {
           type = lib.types.str;
-          default = "admin";
-          description = "Database root password";
+          default = "bitcoind-${name}";
+          description = "User to run the service as";
         };
-        image = lib.mkOption {
+
+        group = lib.mkOption {
           type = lib.types.str;
-          default = "mariadb:10.5.21";
-          description = "Docker image for database";
+          default = "bitcoind-${name}";
+          description = "Group to run the service as";
         };
-      };
 
-      data_dir = lib.mkOption {
-        type = lib.types.str;
-        default = "/var/lib/mempool-${name}";
-        description = "Data directory for mempool";
-      };
-
-      cookie_file = lib.mkOption {
-        type = lib.types.str;
-        default = "/var/lib/bitcoind-${name}/.cookie";
-        description = "Path to Bitcoin Core cookie file";
-      };
-
-      user = lib.mkOption {
-        type = lib.types.str;
-        default = "bitcoind-${name}";
-        description = "User to run the service as";
-      };
-
-      group = lib.mkOption {
-        type = lib.types.str;
-        default = "bitcoind-${name}";
-        description = "Group to run the service as";
-      };
-
-      network_name = lib.mkOption {
-        type = lib.types.str;
-        default = "mempool-${name}-net";
-        description = "Docker network name for mempool containers";
+        network_name = lib.mkOption {
+          type = lib.types.str;
+          default = "mempool-${name}-net";
+          description = "Docker network name for mempool containers";
+        };
       };
     };
-  };
 
   mempool_containers = mempool_name: cfg: {
     "mempool-${mempool_name}-web" = {
       image = cfg.frontend.image;
-      user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.${cfg.group}.gid}";
+      user = "${toString config.users.users.${cfg.user}.uid}:${
+        toString config.users.groups.${cfg.group}.gid
+      }";
       environment = {
         FRONTEND_HTTP_PORT = "8080";
         BACKEND_MAINNET_HTTP_HOST = "mempool-${mempool_name}-api";
@@ -117,7 +127,15 @@ let
       ports = [
         "${toString cfg.frontend.port}:8080"
       ];
-      cmd = [ "./wait-for" "mempool-${mempool_name}-db:3306" "--timeout=60" "--" "nginx" "-g" "daemon off;" ];
+      cmd = [
+        "./wait-for"
+        "mempool-${mempool_name}-db:3306"
+        "--timeout=60"
+        "--"
+        "nginx"
+        "-g"
+        "daemon off;"
+      ];
       dependsOn = [ "mempool-${mempool_name}-api" ];
       extraOptions = [
         "--network=${cfg.network_name}"
@@ -126,7 +144,9 @@ let
 
     "mempool-${mempool_name}-api" = {
       image = cfg.backend.image;
-      user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.${cfg.group}.gid}";
+      user = "${toString config.users.users.${cfg.user}.uid}:${
+        toString config.users.groups.${cfg.group}.gid
+      }";
       environment = {
         MEMPOOL_BACKEND = "electrum";
         ELECTRUM_HOST = cfg.backend.electrum_host;
@@ -147,7 +167,14 @@ let
         "${cfg.data_dir}/data:/backend/cache"
         "${cfg.cookie_file}:/backend/.cookie:ro"
       ];
-      cmd = [ "./wait-for-it.sh" "mempool-${mempool_name}-db:3306" "--timeout=60" "--strict" "--" "./start.sh" ];
+      cmd = [
+        "./wait-for-it.sh"
+        "mempool-${mempool_name}-db:3306"
+        "--timeout=60"
+        "--strict"
+        "--"
+        "./start.sh"
+      ];
       dependsOn = [ "mempool-${mempool_name}-db" ];
       extraOptions = [
         "--network=${cfg.network_name}"
@@ -156,7 +183,9 @@ let
 
     "mempool-${mempool_name}-db" = {
       image = cfg.database.image;
-      user = "${toString config.users.users.${cfg.user}.uid}:${toString config.users.groups.${cfg.group}.gid}";
+      user = "${toString config.users.users.${cfg.user}.uid}:${
+        toString config.users.groups.${cfg.group}.gid
+      }";
       environment = {
         MYSQL_DATABASE = cfg.database.name;
         MYSQL_USER = cfg.database.username;
@@ -172,7 +201,8 @@ let
     };
   };
 
-  mempool_network_service = mempool_name: cfg:
+  mempool_network_service =
+    mempool_name: cfg:
     lib.nameValuePair "init-mempool-${mempool_name}-network" {
       description = "Create mempool-${mempool_name} docker network";
       after = [ "docker.service" ];
@@ -186,19 +216,23 @@ let
 
   mempool_tmpfiles = mempool_name: cfg: [
     "d ${cfg.data_dir} 0755 root root -"
-    "d ${cfg.data_dir}/data 0755 ${toString config.users.users.${cfg.user}.uid} ${toString config.users.groups.${cfg.group}.gid} -"
-    "d ${cfg.data_dir}/mysql 0755 ${toString config.users.users.${cfg.user}.uid} ${toString config.users.groups.${cfg.group}.gid} -"
+    "d ${cfg.data_dir}/data 0755 ${toString config.users.users.${cfg.user}.uid} ${
+      toString config.users.groups.${cfg.group}.gid
+    } -"
+    "d ${cfg.data_dir}/mysql 0755 ${toString config.users.users.${cfg.user}.uid} ${
+      toString config.users.groups.${cfg.group}.gid
+    } -"
   ];
 
 in
 {
   options.services.mempool = lib.mkOption {
     type = lib.types.attrsOf (lib.types.submodule mempoolOpts);
-    default = {};
+    default = { };
     description = "One or more mempool instances";
   };
 
-  config = lib.mkIf (eachMempool != {}) {
+  config = lib.mkIf (eachMempool != { }) {
     virtualisation.oci-containers = {
       backend = "docker";
       containers = lib.mkMerge (lib.mapAttrsToList mempool_containers eachMempool);

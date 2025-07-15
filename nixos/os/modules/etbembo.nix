@@ -39,6 +39,6 @@ stdenv.mkDerivation {
     homepage = "https://github.com/edwardtufte/et-book";
     license = licenses.mit;
     platforms = platforms.all;
-    maintainers = [];
+    maintainers = [ ];
   };
 }

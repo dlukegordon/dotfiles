@@ -158,10 +158,12 @@ return {
         },
       })
 
-      vim.lsp.enable("nil_ls")
+      vim.lsp.enable('nixd')
 
-      vim.lsp.enable("rust-analyzer")
-      vim.lsp.config("rust-analyzer", {
+      vim.lsp.enable('nushell')
+
+      vim.lsp.enable("rust_analyzer")
+      vim.lsp.config("rust_analyzer", {
         settings = {
           ["rust-analyzer"] = {
             cargo = { allFeatures = true },

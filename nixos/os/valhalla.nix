@@ -4,7 +4,8 @@
   pkgsUnstable,
   pkgs2411,
   ...
-}: {
+}:
+{
   imports = [
     ./hardware-configuration.nix
     ./modules/nvidia.nix

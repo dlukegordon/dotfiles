@@ -61,7 +61,7 @@ return {
       { "au", "<cmd>lua require('various-textobjs').subword('outer')<CR>", mode = { "o", "x" } },
       -- { "iu", "<cmd>lua require('various-textobjs').number('inner')<CR>", mode = { "o", "x" } },
       -- { "au", "<cmd>lua require('various-textobjs').number('outer')<CR>", mode = { "o", "x" } },
-      { "N", "<cmd>lua require('various-textobjs').nearEoL()<CR>", mode = { "o", "x" } },
+      { "N",  "<cmd>lua require('various-textobjs').nearEoL()<CR>",        mode = { "o", "x" } },
     },
   },
 

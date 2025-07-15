@@ -3,21 +3,21 @@
   pkgs,
   pkgsUnstable,
   ...
-}: {
+}:
+{
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    alejandra
     appimage-run
-    asdf-vm
     bash-language-server
     bc
     btop
     carapace
+    cargo
     ccid
+    clippy
     cmake
     difftastic
-    dockfmt
     fastfetch
     fd
     font-manager
@@ -27,12 +27,7 @@
     git
     gnumake
     gnupg
-    golangci-lint
-    gomodifytags
     google-chrome
-    gopls
-    gore
-    gotests
     hunspell
     hunspellDicts.en_US
     hwatch
@@ -46,11 +41,12 @@
     libtool
     lsd
     lsof
+    lua-language-server
     mosh
-    nixfmt-classic
+    nixd
+    nixfmt-rfc-style
     nushell
     opensc
-    pandoc
     pkgsUnstable.bat
     pkgsUnstable.jjui
     pkgsUnstable.jujutsu
@@ -59,23 +55,18 @@
     pkgsUnstable.ov
     psmisc
     rage
-    re2
     ripgrep
     rust-analyzer
-    rustup
+    rustc
+    rustfmt
     shellcheck
     shfmt
     starship
     stow
-    tinymist
     tmux
-    tree-sitter
-    trunk
-    typst
     unzip
     usbutils
     uutils-coreutils
-    uv
     wget
     wireguard-tools
     wl-clipboard-rs
@@ -120,7 +111,7 @@
 
   # Fonts
   fonts.packages = with pkgs; [
-    (callPackage ./etbembo.nix {})
+    (callPackage ./etbembo.nix { })
     _0xproto
     caladea
     cascadia-code

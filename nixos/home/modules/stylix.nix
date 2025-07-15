@@ -3,7 +3,8 @@
   pkgs,
   lib,
   ...
-}: {
+}:
+{
   stylix = {
     autoEnable = false;
 

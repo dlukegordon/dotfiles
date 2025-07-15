@@ -4,8 +4,9 @@
   pkgsUnstable,
   lib,
   ...
-}: {
-  imports = [];
+}:
+{
+  imports = [ ];
 
   home.stateVersion = "24.11";
 
@@ -18,8 +19,12 @@
     userName = "Lucas Gordon";
     # Email is set in the home configs for each host
     extraConfig = {
-      push = {autoSetupRemote = true;};
-      pull = {rebase = true;};
+      push = {
+        autoSetupRemote = true;
+      };
+      pull = {
+        rebase = true;
+      };
     };
   };
 
@@ -34,16 +39,22 @@
       };
       ui = {
         default-command = "log";
-        diff-formatter = ["difft" "--display=inline" "--color=always" "$left" "$right"];
+        diff-formatter = [
+          "difft"
+          "--display=inline"
+          "--color=always"
+          "$left"
+          "$right"
+        ];
       };
       templates = {
         log_node = ''
-        coalesce(
-          if(!self, "🮀"),
-          if(current_working_copy, "@"),
-          if(root, "┴"),
-          if(immutable, "●", "○"),
-        )
+          coalesce(
+            if(!self, "🮀"),
+            if(current_working_copy, "@"),
+            if(root, "┴"),
+            if(immutable, "●", "○"),
+          )
         '';
         op_log_node = ''if(current_operation, "@", "○")'';
       };

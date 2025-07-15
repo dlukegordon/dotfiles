@@ -3,11 +3,15 @@
   pkgs,
   pkgsUnstable,
   ...
-}: {
+}:
+{
   system.stateVersion = "24.11"; # Did you read the comment?
 
   # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Automatic updates
   system.autoUpgrade.enable = true;
@@ -68,7 +72,11 @@
   users.users.luke = {
     isNormalUser = true;
     description = "Luke";
-    extraGroups = ["networkmanager" "wheel" "input"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+    ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGh4an4vSJg76uIk1YpK2CfQxuFMtbDQ4aJMs+344vy"
     ];
@@ -95,7 +103,7 @@
       server.HTTP_PORT = 3000;
     };
   };
-  networking.firewall.allowedTCPPorts = [3000];
+  networking.firewall.allowedTCPPorts = [ 3000 ];
 
   # Hack to stop a warning during nix build
   # TODO: Setup real alerts for issues with RAID?

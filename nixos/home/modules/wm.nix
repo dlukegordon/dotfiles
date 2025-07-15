@@ -4,7 +4,8 @@
   pkgsUnstable,
   lib,
   ...
-}: {
+}:
+{
   # We need to enable this so that stylix makes the config file. But for some reason the
   # service doesn't start automatically, so we need to start in hyprland.conf.
   services.hyprpaper.enable = true;
@@ -84,8 +85,8 @@
     '';
   };
 }
-      # .modules-right #workspaces button.focused,
-      # .modules-right #workspaces button.active {
-      #     border-bottom: none;
-      #     color: white
-      # }
+# .modules-right #workspaces button.focused,
+# .modules-right #workspaces button.active {
+#     border-bottom: none;
+#     color: white
+# }

@@ -4,7 +4,8 @@
   pkgsUnstable,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./modules/general.nix
     ./modules/plasma.nix
@@ -17,5 +18,8 @@
   programs.jujutsu.settings.user.email = "luke@asgard";
 
   # Swap Super and Alt
-  programs.plasma.input.keyboard.options = ["caps:escape" "altwin:swap_lalt_lwin"];
+  programs.plasma.input.keyboard.options = [
+    "caps:escape"
+    "altwin:swap_lalt_lwin"
+  ];
 }

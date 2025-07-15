@@ -204,15 +204,21 @@ alias jclone = jj git clone --colocate
 alias lj = lazyjj --revisions 'all()'
 alias mj = ~/projects/majjit/target/release/majjit
 
-# Asdf
-let shims_dir = (
-  if ( $env | get --ignore-errors ASDF_DATA_DIR | is-empty ) {
-    $env.HOME | path join '.asdf'
-  } else {
-    $env.ASDF_DATA_DIR
-  } | path join 'shims'
-)
-$env.PATH = ( $env.PATH | split row (char esep) | where { |p| $p != $shims_dir } | prepend $shims_dir )
+# Direnv
+# From: https://github.com/nushell/nu_scripts/blob/main/nu-hooks/nu-hooks/direnv/config.nu
+$env.config.hooks.env_change.PWD = [
+  { ||
+    if (which direnv | is-empty) {
+        return
+    }
+
+    direnv export json | from json | default {} | load-env
+    # Direnv outputs $PATH as a string, but nushell silently breaks if isn't a list-like table.
+    # The following behemoth of Nu code turns this into nu's format while following the standards of how to handle quotes, use it if you need quote handling instead of the line below it:
+    # $env.PATH = $env.PATH | parse --regex ('' + `((?:(?:"(?:(?:\\[\\"])|.)*?")|(?:'.*?')|[^` + (char env_sep) + `]*)*)`) | each {|x| $x.capture0 | parse --regex `(?:"((?:(?:\\"|.))*?)")|(?:'(.*?)')|([^'"]*)` | each {|y| if ($y.capture0 != "") { $y.capture0 | str replace -ar `\\([\\"])` `$1` } else if ($y.capture1 != "") { $y.capture1 } else $y.capture2 } | str join }
+    $env.PATH = $env.PATH | split row (char env_sep)
+  }
+]
 
 # Zoxide
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")

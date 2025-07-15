@@ -38,7 +38,10 @@ let
 in
 {
   # Enable the Flakes feature and the accompanying new nix command-line tool
-  nix.settings.experimental-features = ["nix-command" "flakes"];
+  nix.settings.experimental-features = [
+    "nix-command"
+    "flakes"
+  ];
 
   # Automatic updates
   system.autoUpgrade.enable = true;
@@ -155,7 +158,11 @@ in
   users.users.luke = {
     isNormalUser = true;
     description = "Luke";
-    extraGroups = ["networkmanager" "wheel" "input"];
+    extraGroups = [
+      "networkmanager"
+      "wheel"
+      "input"
+    ];
     shell = pkgs.nushell;
   };
   security.sudo.wheelNeedsPassword = false;
@@ -174,13 +181,15 @@ in
   # services.openssh.enable = true;
 
   # Open ports in the firewall.
-  networking.firewall.allowedTCPPorts = [42069];
+  networking.firewall.allowedTCPPorts = [ 42069 ];
   # networking.firewall.allowedUDPPorts = [ ... ];
   # Or disable the firewall altogether.
   # networking.firewall.enable = false;
 
   # Enable OpenGL
-  hardware.graphics = {enable = true;};
+  hardware.graphics = {
+    enable = true;
+  };
 
   # This value determines the NixOS release from which the default
   # settings for stateful data, like file locations and database versions

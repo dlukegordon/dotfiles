@@ -3,7 +3,8 @@
   pkgs,
   pkgsUnstable,
   ...
-}: {
+}:
+{
   imports = [
     ./electrs-overlay.nix
     ./mempool-overlay.nix
@@ -31,5 +32,10 @@
     enable = true;
   };
 
-  networking.firewall.allowedTCPPorts = [80 8332 8333 50001];
+  networking.firewall.allowedTCPPorts = [
+    80
+    8332
+    8333
+    50001
+  ];
 }

@@ -32,15 +32,6 @@ nixos-update:
 	nix flake update --flake path:$(HOME)/dotfiles/nixos
 	sudo nixos-rebuild boot --upgrade --flake path:$(HOME)/dotfiles/nixos#$(host)
 
-asdf-install:
-	asdf plugin add nodejs
-	asdf install nodejs latest
-	asdf global nodejs latest
-
-	asdf plugin add golang
-	asdf install golang latest
-	asdf global golang latest
-
 install: check-host stow nixos-cp-hardware nixos-boot
 
 install-server: check-host nixos-cp-hardware nixos-boot

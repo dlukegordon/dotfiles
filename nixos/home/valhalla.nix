@@ -4,7 +4,8 @@
   pkgsUnstable,
   lib,
   ...
-}: {
+}:
+{
   imports = [
     ./modules/general.nix
     ./modules/plasma.nix
