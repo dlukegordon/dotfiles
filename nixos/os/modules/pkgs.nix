@@ -17,7 +17,6 @@
     ccid
     clippy
     cmake
-    difftastic
     fastfetch
     fd
     font-manager

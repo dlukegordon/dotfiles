@@ -56,13 +56,6 @@
       };
       ui = {
         default-command = "log";
-        diff-formatter = [
-          "difft"
-          "--display=inline"
-          "--color=always"
-          "$left"
-          "$right"
-        ];
       };
       templates = {
         log_node = ''

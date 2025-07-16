@@ -11,7 +11,6 @@
   home.stateVersion = "24.11";
 
   programs.git.userEmail = "nidavellir";
-  programs.jujutsu.settings.user.email = "luke@nidavellir";
 
   # Git
   programs.git = {
@@ -36,16 +35,10 @@
     settings = {
       user = {
         name = "luke";
+        email = "luke@nidavellir";
       };
       ui = {
         default-command = "log";
-        diff-formatter = [
-          "difft"
-          "--display=inline"
-          "--color=always"
-          "$left"
-          "$right"
-        ];
       };
       templates = {
         log_node = ''

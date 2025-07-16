@@ -19,7 +19,7 @@
 ;;;;;;;; Fonts
 ;; Set up fonts so that variable is bigger than fixed in mixed-pitch mode
 ;; (setq doom-font (font-spec :family "TX-02-Trial" :size +my/font-size :height 1.0))
-(setq doom-font (font-spec :family "Roboto Mono" :size +my/font-size :height 1.0))
+(setq doom-font (font-spec :family "JetBrains Mono" :size +my/font-size :height 1.0))
 (setq doom-variable-pitch-font (font-spec :family "ETBembo" :height 1.25))
 ;; If we don't do the below custom-set-faces, for some reason the correct height of the variable
 ;; font will not be applied in mixed-pitch-mode.
