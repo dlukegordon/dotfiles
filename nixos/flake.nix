@@ -45,7 +45,10 @@
               inherit system;
               config.allowUnfree = true;
             };
-            pkgsUnstable = import nixpkgs-unstable { inherit system; };
+            pkgsUnstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           in
           nixpkgs.lib.nixosSystem {
             inherit system;
@@ -74,7 +77,10 @@
         asgard =
           let
             system = "x86_64-linux";
-            pkgsUnstable = import nixpkgs-unstable { inherit system; };
+            pkgsUnstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           in
           nixpkgs.lib.nixosSystem {
             inherit system;
@@ -103,7 +109,10 @@
         nidavellir =
           let
             system = "x86_64-linux";
-            pkgsUnstable = import nixpkgs-unstable { inherit system; };
+            pkgsUnstable = import nixpkgs-unstable {
+              inherit system;
+              config.allowUnfree = true;
+            };
           in
           nixpkgs.lib.nixosSystem {
             inherit system;
