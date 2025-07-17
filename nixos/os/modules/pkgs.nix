@@ -13,9 +13,7 @@
     bc
     btop
     carapace
-    cargo
     ccid
-    clippy
     cmake
     fastfetch
     fd
@@ -44,20 +42,22 @@
     mosh
     nixd
     nixfmt-rfc-style
-    nushell
     opensc
     pkgsUnstable.bat
+    pkgsUnstable.cargo
+    pkgsUnstable.clippy
     pkgsUnstable.jjui
     pkgsUnstable.jujutsu
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
+    pkgsUnstable.nushell
     pkgsUnstable.ov
+    pkgsUnstable.rust-analyzer
+    pkgsUnstable.rustc
+    pkgsUnstable.rustfmt
     psmisc
     rage
     ripgrep
-    rust-analyzer
-    rustc
-    rustfmt
     shellcheck
     shfmt
     starship
@@ -81,7 +81,7 @@
   environment.shells = with pkgs; [
     bash
     zsh
-    nushell
+    pkgsUnstable.nushell
   ];
 
   # Zsh

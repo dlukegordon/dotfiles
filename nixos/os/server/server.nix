@@ -80,7 +80,7 @@
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGh4an4vSJg76uIk1YpK2CfQxuFMtbDQ4aJMs+344vy"
     ];
-    shell = pkgs.nushell;
+    shell = pkgsUnstable.nushell;
   };
   security.sudo.wheelNeedsPassword = false;
 
@@ -129,10 +129,10 @@
     less
     lsof
     mosh
-    nushell
     pkgsUnstable.bat
     pkgsUnstable.jujutsu
     pkgsUnstable.neovim
+    pkgsUnstable.nushell
     pkgsUnstable.ov
     ripgrep
     starship

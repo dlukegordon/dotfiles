@@ -163,7 +163,7 @@ in
       "wheel"
       "input"
     ];
-    shell = pkgs.nushell;
+    shell = pkgsUnstable.nushell;
   };
   security.sudo.wheelNeedsPassword = false;
 
