@@ -47,7 +47,6 @@
     pkgsUnstable.cargo
     pkgsUnstable.clippy
     pkgsUnstable.jjui
-    pkgsUnstable.jujutsu
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
     pkgsUnstable.nushell

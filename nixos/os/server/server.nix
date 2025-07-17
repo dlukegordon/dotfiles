@@ -130,7 +130,6 @@
     lsof
     mosh
     pkgsUnstable.bat
-    pkgsUnstable.jujutsu
     pkgsUnstable.neovim
     pkgsUnstable.nushell
     pkgsUnstable.ov

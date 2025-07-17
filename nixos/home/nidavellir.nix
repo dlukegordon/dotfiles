@@ -43,10 +43,21 @@
       templates = {
         log_node = ''
           coalesce(
-            if(!self, "🮀"),
-            if(current_working_copy, "@"),
-            if(root, "┴"),
-            if(immutable, "●", "○"),
+            if(!self, label("elided", "~")),
+            label(
+              separate(" ",
+                if(current_working_copy, "working_copy"),
+                if(immutable, "immutable"),
+                if(conflict, "conflict"),
+              ),
+              coalesce(
+                if(current_working_copy, "@"),
+                if(root, "┴"),
+                if(immutable, "●"),
+                if(conflict, "⊗"),
+                "○",
+              )
+            )
           )
         '';
         op_log_node = ''if(current_operation, "@", "○")'';
