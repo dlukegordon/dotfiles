@@ -81,5 +81,5 @@ require("keys")
 -- local color = string.format("#%06x", hl.bg)
 -- vim.api.nvim_set_hl(0, "NormalFloat", { bg = color })
 
-vim.o.guicursor = "r-cr-o:hor20-Cursor,n-v-c-sm:block-blinkon100-Cursor,i-ci-ve:ver10-blinkon100-Cursor"
+vim.o.guicursor = "r-cr-o:hor20-Cursor,n-v-c-sm:block-Cursor,i-ci-ve:ver10-Cursor"
 vim.api.nvim_set_hl(0, "Cursor", { bg = "white" })

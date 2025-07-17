@@ -47,7 +47,11 @@ return {
   -- Fancy flying cursor
   {
     "sphamba/smear-cursor.nvim",
-    opts = { legacy_computing_symbols_support = true },
+    opts = {
+      min_horizontal_distance_smear = 2,
+      min_vertical_distance_smear = 2,
+      never_draw_over_target = true,
+    },
   },
 
   -- Better status line
@@ -119,7 +123,7 @@ return {
       -- Document existing key chains
       spec = {
         { "<leader>b", group = "[B]uffers" },
-        { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
+        { "<leader>c", group = "[C]ode",         mode = { "n", "x" } },
         { "<leader>g", group = "[G]it" },
         { "<leader>j", group = "[J]ump forward" },
         { "<leader>k", group = "Jump bac[k]ward" },
