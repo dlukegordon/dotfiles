@@ -9,6 +9,26 @@ $env.config.history = {
   sync_on_enter: true
   isolation: false
 }
+$env.config.menus = [
+  {
+    name: completion_menu
+    only_buffer_difference: false
+    marker: ""
+    type: {
+      layout: ide
+      border: false
+      correct_cursor_pos: true
+      max_completion_height: 25
+    }
+    style: {
+      text: white
+      selected_text: green_reverse
+      description_text: yellow
+      match_text: { attr: u }
+      selected_match_text: { attr: ur }
+    }
+  }
+]
 
 # Path
 path add "~/bin"
@@ -22,6 +42,12 @@ $env.BAT_PAGER = 'ov --quit-if-one-screen --exit-write'
 $env.FZF_DEFAULT_OPTS = "--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
 $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
+
+# Source gitignored.nu for secrets
+const gitignored_path = $nu.default-config-dir | path join "gitignored.nu"
+if ($gitignored_path | path exists) {
+    source ($gitignored_path)
+}
 
 # Defs
 def la [...pattern] {

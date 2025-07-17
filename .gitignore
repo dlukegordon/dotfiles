@@ -1,6 +1,7 @@
 .DS_STORE
 .config/direnv/lib/
 .config/fish/additional_config.fish
+.config/nushell/gitignored.nu
 .config/nvim/plugin/packer_compiled.lua
 .config/zsh/.zcompcache/
 .config/zsh/.zcompdump*
