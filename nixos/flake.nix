@@ -22,7 +22,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
-    ghostty.url = "github:ghostty-org/ghostty/7f9bb3c0e54f585e11259bc0c9064813d061929c";
+    # Need latest version for shaders and other features, but it also breaks caps/esc swapping.
+    # Using this patched fork until issue is fixed.
+    # https://github.com/ghostty-org/ghostty/discussions/7356
+    ghostty.url = "github:weskoerber/ghostty/main";
+    # ghostty.url = "github:ghostty-org/ghostty/tip";
+    # ghostty.url = "github:ghostty-org/ghostty/7f9bb3c0e54f585e11259bc0c9064813d061929c";
   };
 
   outputs =
