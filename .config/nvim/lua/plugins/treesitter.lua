@@ -12,6 +12,7 @@ return {
         "c",
         "diff",
         "html",
+        "kdl",
         "lua",
         "luadoc",
         "markdown",

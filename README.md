@@ -35,7 +35,7 @@ After the reboot, log into either Plasma (Wayland) or Hyprland.
 ### Post install
 
 There are a few things that we can't (currently) setup through NixOS, you'll need to set these up manually.
-- Install Zen browser through flatpak (`flatpak install flathub app.zen_browser.zen`)
+- Install Zen browser through flatpak (`flatpak install flathub app.zen_browser.zen`) ([note](https://github.com/YaLTeR/niri/issues/1042))
 - Set a fingerprint for laptops
 - Customize the Plasma panel and task switcher settings.
 - Set Plasma display, power, and screen lock settings.

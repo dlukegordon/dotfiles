@@ -40,6 +40,7 @@
     lsof
     lua-language-server
     mosh
+    nautilus
     nixd
     nixfmt-rfc-style
     opensc
@@ -71,6 +72,7 @@
     xfce.ristretto
     xfce.thunar
     xorg.xhost
+    xwayland-satellite
     yazi
     yubikey-manager
     zoxide
