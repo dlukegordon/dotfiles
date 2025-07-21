@@ -101,6 +101,11 @@ output "DP-3" {
     // position x=1280 y=0
 }
 
+output "eDP-1" {
+    mode "2880x1800@120"
+    scale 1
+}
+
 // Settings that influence how windows are positioned and sized.
 // Find more information on the wiki:
 // https://github.com/YaLTeR/niri/wiki/Configuration:-Layout
