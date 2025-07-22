@@ -121,12 +121,12 @@ vimcmd_symbol = "[❮](green)"
 [custom.jj]
 ignore_timeout = true
 description = "The current jj status"
-# detect_folders = [".jj"]
-when = "jj root --ignore-working-copy"
+detect_folders = [".jj"]
+# when = "jj root --ignore-working-copy"
 symbol = "󱁊 "
 style = 'bright-black'
 command = '''
-jj log --revisions @ --no-graph --limit 1 --template '
+jj log --revisions @ --no-graph --template '
   separate(" ",
     commit_id.shortest(6),
     raw_escape_sequence("\x1b[1;34m") ++ bookmarks,

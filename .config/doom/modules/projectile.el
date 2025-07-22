@@ -62,7 +62,7 @@ Uses projectile to get project files and consult for selection with preview."
       (lambda (&rest _)
         (require 'consult)
         (+my/consult-project-file-preview)))
-(setq projectile-project-search-path '("~/scratch" "~/dotfiles" "~/org" ("~/projects" . 1) ("~/gits" . 1) ("~/u410" . 1)))
+(setq projectile-project-search-path '("~/scratch" "~/dotfiles" "~/org" ("~/projects" . 1) ("~/gits" . 1)))
 (setq projectile-auto-discover t)
 (setq projectile-enable-caching nil)
 (setq projectile-track-known-projects-automatically nil)

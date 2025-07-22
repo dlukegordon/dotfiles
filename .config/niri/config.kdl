@@ -28,11 +28,11 @@ input {
         // dwtp
         // drag-lock
         // natural-scroll
-        // accel-speed 0.2
+        accel-speed 0.5
         // accel-profile "flat"
         // scroll-method "two-finger"
         // disabled-on-external-mouse
-        scroll-factor 0.3
+        // scroll-factor 0.3
     }
 
     mouse {

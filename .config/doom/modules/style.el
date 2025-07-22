@@ -9,7 +9,7 @@
 (setq mode-line-right-align-edge 'right-fringe)
 (setq dired-free-space nil)
 (after! vertico
-  (setq vertico-count 33))
+  (setq vertico-count 20))
 (after! org
   (custom-set-faces!
     `(org-block :background ,(doom-color 'bg))

@@ -11,12 +11,7 @@
 
    ((string-equal hostname "valhalla")
     (setq +my/font-size 20)
-    (pixel-scroll-precision-mode 1))
-
-   ((eq system-type 'darwin)
-    (setq +my/font-size 14)
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\deps\\'")
-    (add-to-list 'lsp-file-watch-ignored-directories "[/\\\\]\\ops-gcs\\'"))))
+    (pixel-scroll-precision-mode 1))))
 
 ;;;;;;;; Garbage Collection
 ;; Set garbage collection threshold very high.
