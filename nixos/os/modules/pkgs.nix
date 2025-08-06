@@ -45,16 +45,13 @@
     nixfmt-rfc-style
     opensc
     pkgsUnstable.bat
-    pkgsUnstable.cargo
-    pkgsUnstable.clippy
+    pkgsUnstable.gitu
     pkgsUnstable.jjui
     pkgsUnstable.lazyjj
     pkgsUnstable.neovim
     pkgsUnstable.nushell
     pkgsUnstable.ov
-    pkgsUnstable.rust-analyzer
-    pkgsUnstable.rustc
-    pkgsUnstable.rustfmt
+    pkgsUnstable.rustup
     psmisc
     rage
     ripgrep
@@ -130,6 +127,7 @@
     libre-baskerville
     nerd-fonts.symbols-only
     noto-fonts
+    noto-fonts-color-emoji
     pkgsUnstable.lilex
     pkgsUnstable.nerd-fonts.comic-shanns-mono
     roboto-mono
