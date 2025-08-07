@@ -12,7 +12,6 @@
     bash-language-server
     bc
     btop
-    carapace
     ccid
     cmake
     fastfetch
@@ -45,6 +44,7 @@
     nixfmt-rfc-style
     opensc
     pkgsUnstable.bat
+    pkgsUnstable.carapace
     pkgsUnstable.gitu
     pkgsUnstable.jjui
     pkgsUnstable.lazyjj
