@@ -1,4 +1,4 @@
-theme = "onedark"
+theme = "adwaita-dark"
 
 [editor]
 idle-timeout = 10
