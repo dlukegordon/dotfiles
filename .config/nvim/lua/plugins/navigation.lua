@@ -13,7 +13,7 @@ return {
       },
     },
     keys = {
-      { "-", ":Oil<CR>", { desc = "Open oil file browser" } },
+      { "-", function() require("oil").open(nil, { preview = {} }) end, { desc = "Open oil file browser" } },
     },
   },
 
