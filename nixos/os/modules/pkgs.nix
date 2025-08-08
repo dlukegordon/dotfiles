@@ -27,6 +27,7 @@
     hunspell
     hunspellDicts.en_US
     hwatch
+    imagemagick
     inetutils
     ivpn
     ivpn-service
@@ -59,6 +60,7 @@
     shfmt
     starship
     stow
+    stylua
     tmux
     unzip
     usbutils

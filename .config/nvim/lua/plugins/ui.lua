@@ -123,7 +123,7 @@ return {
       -- Document existing key chains
       spec = {
         { "<leader>b", group = "[B]uffers" },
-        { "<leader>c", group = "[C]ode",         mode = { "n", "x" } },
+        { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
         { "<leader>g", group = "[G]it" },
         { "<leader>j", group = "[J]ump forward" },
         { "<leader>k", group = "Jump bac[k]ward" },
@@ -247,6 +247,13 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter", "nvim-tree/nvim-web-devicons" },
     opts = {
       file_types = { "markdown", "Avante" },
+      sign = { enabled = false },
+      code = { border = "thick" },
+      heading = {
+        position = "inline",
+        sign = false,
+        width = { "block" },
+      },
     },
     ft = { "markdown", "Avante" },
   },
