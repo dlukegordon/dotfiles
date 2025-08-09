@@ -1,8 +1,14 @@
-theme = "adwaita-dark"
+theme = "onedarker"
 
 [editor]
 idle-timeout = 10
-# true-color = true
+cursorline = true
+color-modes = true
+text-width = 100
+
+[editor.statusline]
+left = ["mode", "spinner", "file-type", "file-name", "read-only-indicator", "file-modification-indicator"]
+right = ["diagnostics", "selections", "register", "version-control", "spacer", "position-percentage", "position", "file-encoding"]
 
 [editor.cursor-shape]
 insert = "bar"
@@ -11,3 +17,6 @@ select = "underline"
 
 [editor.file-picker]
 hidden = false
+
+[editor.inline-diagnostics]
+cursor-line = "hint"
