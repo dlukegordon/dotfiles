@@ -13,7 +13,13 @@ return {
       },
     },
     keys = {
-      { "-", function() require("oil").open(nil, { preview = {} }) end, { desc = "Open oil file browser" } },
+      {
+        "-",
+        function()
+          require("oil").open(nil, { preview = {} })
+        end,
+        { desc = "Open oil file browser" },
+      },
     },
   },
 
@@ -31,7 +37,7 @@ return {
         end,
       },
       { "nvim-telescope/telescope-ui-select.nvim" },
-      { "nvim-tree/nvim-web-devicons",            enabled = vim.g.have_nerd_font },
+      { "nvim-tree/nvim-web-devicons", enabled = vim.g.have_nerd_font },
     },
     config = function()
       require("telescope").setup({
@@ -46,6 +52,20 @@ return {
           },
         },
         defaults = {
+          -- layout_strategy = "bottom_pane",
+          layout_config = {
+            width = 0.9,
+            height = 0.9,
+            prompt_position = "top",
+            preview_width = 0.495,
+          },
+          sorting_strategy = "ascending",
+
+          borderchars = {
+            prompt = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            results = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+            preview = { "─", "│", "─", "│", "┌", "┐", "┘", "└" },
+          },
           file_ignore_patterns = { ".git/", "deps/", "node_modules/" },
           vimgrep_arguments = {
             "rg",
@@ -120,10 +140,10 @@ return {
       "TmuxNavigatorProcessList",
     },
     keys = {
-      { "<c-h>",  "<cmd><C-U>TmuxNavigateLeft<cr>" },
-      { "<c-j>",  "<cmd><C-U>TmuxNavigateDown<cr>" },
-      { "<c-k>",  "<cmd><C-U>TmuxNavigateUp<cr>" },
-      { "<c-l>",  "<cmd><C-U>TmuxNavigateRight<cr>" },
+      { "<c-h>", "<cmd><C-U>TmuxNavigateLeft<cr>" },
+      { "<c-j>", "<cmd><C-U>TmuxNavigateDown<cr>" },
+      { "<c-k>", "<cmd><C-U>TmuxNavigateUp<cr>" },
+      { "<c-l>", "<cmd><C-U>TmuxNavigateRight<cr>" },
       { "<c-\\>", "<cmd><C-U>TmuxNavigatePrevious<cr>" },
     },
   },
@@ -225,9 +245,9 @@ return {
       },
     },
     keys = {
-      { "<leader>a",  ":AerialToggle<CR>", desc = "Open aerial outline" },
-      { "<leader>jj", ":AerialNext<CR>",   desc = "Goto next code structure" },
-      { "<leader>kk", ":AerialPrev<CR>",   desc = "Goto previous code structure" },
+      { "<leader>a", ":AerialToggle<CR>", desc = "Open aerial outline" },
+      { "<leader>jj", ":AerialNext<CR>", desc = "Goto next code structure" },
+      { "<leader>kk", ":AerialPrev<CR>", desc = "Goto previous code structure" },
     },
   },
 }

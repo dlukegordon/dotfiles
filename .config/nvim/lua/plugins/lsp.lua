@@ -111,8 +111,9 @@ return {
 
       -- Diagnostic settings
       vim.diagnostic.config({
+        float = false,
         virtual_text = false,
-        -- virtual_lines = true,
+        virtual_lines = { current_line = true },
         severity_sort = true,
       })
 
@@ -127,7 +128,7 @@ return {
       end
 
       -- Open diagnostic floating window on hover
-      vim.cmd("autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })")
+      -- vim.cmd("autocmd CursorHold * lua vim.diagnostic.open_float(nil, { focusable = false })")
 
       -- LSP servers and clients are able to communicate to each other what features they support.
       --  By default, Neovim doesn't support everything that is in the LSP specification.
@@ -158,9 +159,9 @@ return {
         },
       })
 
-      vim.lsp.enable('nixd')
+      vim.lsp.enable("nixd")
 
-      vim.lsp.enable('nushell')
+      vim.lsp.enable("nushell")
 
       vim.lsp.enable("rust_analyzer")
       vim.lsp.config("rust_analyzer", {

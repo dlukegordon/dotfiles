@@ -5,8 +5,11 @@ return {
     lazy = false,
     priority = 1000,
     config = function()
-      require("bamboo").setup({})
+      require("bamboo").setup({
+        colors = { bg0 = "#1d1e1b" },
+      })
       require("bamboo").load()
+      vim.api.nvim_set_hl(0, "CursorLine", { bg = "#272924" })
     end,
   },
   -- "Mofiqul/vscode.nvim",
@@ -119,7 +122,12 @@ return {
     "folke/which-key.nvim",
     event = "VimEnter",
     opts = {
-      delay = 200,
+      delay = 1,
+      preset = "helix",
+      show_help = false,
+      show_keys = false,
+      icons = { rules = false },
+      win = { border = "single" },
       -- Document existing key chains
       spec = {
         { "<leader>b", group = "[B]uffers" },

@@ -45,21 +45,7 @@ vim.opt.expandtab = true
 
 vim.o.wildoptions = "pum,tagfile,fuzzy"
 
-vim.o.winborder = "rounded"
-
--- Hack to fix double borders until winborder is better supported by telescope
-vim.api.nvim_create_autocmd("User", {
-  pattern = "TelescopeFindPre",
-  callback = function()
-    vim.opt_local.winborder = "none"
-    vim.api.nvim_create_autocmd("WinLeave", {
-      once = true,
-      callback = function()
-        vim.opt_local.winborder = "rounded"
-      end,
-    })
-  end,
-})
+vim.o.winborder = "single"
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",
@@ -76,10 +62,6 @@ vim.api.nvim_create_autocmd("VimResized", {
 
 require("load_lazy")
 require("keys")
-
--- local hl = vim.api.nvim_get_hl(0, { name = "DiagnosticVirtualTextInfo" })
--- local color = string.format("#%06x", hl.bg)
--- vim.api.nvim_set_hl(0, "NormalFloat", { bg = color })
 
 vim.o.guicursor = "r-cr-o:hor20-Cursor,n-v-c-sm:block-Cursor,i-ci-ve:ver10-Cursor"
 vim.api.nvim_set_hl(0, "Cursor", { bg = "white" })
