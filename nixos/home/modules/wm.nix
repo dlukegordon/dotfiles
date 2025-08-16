@@ -21,6 +21,7 @@
     hyprsunset
     networkmanagerapplet
     pavucontrol
+    pasystray
   ];
 
   programs.waybar = {
