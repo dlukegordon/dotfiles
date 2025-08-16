@@ -20,6 +20,8 @@ end)
 
 vim.opt.undofile = true
 
+vim.opt.swapfile = false
+
 vim.opt.ignorecase = true
 vim.opt.smartcase = true
 
@@ -43,9 +45,9 @@ vim.opt.scrolloff = 10
 vim.opt.tabstop = 4
 vim.opt.expandtab = true
 
-vim.o.wildoptions = "pum,tagfile,fuzzy"
+vim.opt.wildoptions = "pum,tagfile,fuzzy"
 
-vim.o.winborder = "single"
+vim.opt.winborder = "single"
 
 vim.api.nvim_create_autocmd("TextYankPost", {
   desc = "Highlight when yanking (copying) text",

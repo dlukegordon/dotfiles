@@ -15,9 +15,10 @@ return {
     keys = {
       {
         "-",
-        function()
-          require("oil").open(nil, { preview = {} })
-        end,
+        ":Oil<CR>",
+        -- function()
+        --   require("oil").open(nil, { preview = {} })
+        -- end,
         { desc = "Open oil file browser" },
       },
     },
