@@ -33,7 +33,7 @@ def main [...args] {
         tmux new-session -ds $selected_name -c $full_path
     }
 
-    if ($env | get -i TMUX) != null {
+    if ($env | get --optional TMUX) != null {
         # We're in tmux, so switch
         tmux switch-client -t $selected_name
     } else {
