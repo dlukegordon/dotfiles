@@ -18,7 +18,7 @@
     };
 
     stylix = {
-      url = "github:danth/stylix/release-25.05";
+      url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
