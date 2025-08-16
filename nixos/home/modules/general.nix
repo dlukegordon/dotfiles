@@ -131,33 +131,4 @@
 
   # Let home Manager install and manage itself.
   programs.home-manager.enable = true;
-
-  xdg.mimeApps = {
-    enable = true;
-    defaultApplications = {
-      "application/pdf" = "org.kde.okular.desktop";
-      "application/x-bzpdf" = "org.kde.okular.desktop";
-      "application/x-gzpdf" = "org.kde.okular.desktop";
-      "application/x-pdf" = "org.kde.okular.desktop";
-      "image/bmp" = "org.xfce.ristretto.desktop";
-      "image/gif" = "org.xfce.ristretto.desktop";
-      "image/heic" = "org.xfce.ristretto.desktop";
-      "image/heif" = "org.xfce.ristretto.desktop";
-      "image/jpeg" = "org.xfce.ristretto.desktop";
-      "image/png" = "org.xfce.ristretto.desktop";
-      "image/svg+xml" = "org.xfce.ristretto.desktop";
-      "image/tiff" = "org.xfce.ristretto.desktop";
-      "image/vnd.microsoft.icon" = "org.xfce.ristretto.desktop";
-      "image/webp" = "org.xfce.ristretto.desktop";
-      "image/x-icon" = "org.xfce.ristretto.desktop";
-      "image/x-pcx" = "org.xfce.ristretto.desktop";
-      "image/x-portable-bitmap" = "org.xfce.ristretto.desktop";
-      "image/x-portable-graymap" = "org.xfce.ristretto.desktop";
-      "image/x-portable-pixmap" = "org.xfce.ristretto.desktop";
-      "image/x-tga" = "org.xfce.ristretto.desktop";
-      "image/x-xbitmap" = "org.xfce.ristretto.desktop";
-      "image/x-xcf" = "org.xfce.ristretto.desktop";
-      "image/x-xpixmap" = "org.xfce.ristretto.desktop";
-    };
-  };
 }

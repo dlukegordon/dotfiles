@@ -32,6 +32,7 @@
     ivpn
     ivpn-service
     just
+    lazyjournal
     less
     libreoffice-qt
     libsForQt5.kdbusaddons
@@ -68,8 +69,6 @@
     wget
     wireguard-tools
     wl-clipboard-rs
-    xfce.ristretto
-    xfce.thunar
     xorg.xhost
     xwayland-satellite
     yazi
@@ -106,7 +105,6 @@
   programs.steam.enable = true;
   services.blueman.enable = true;
   services.ivpn.enable = true;
-  services.tumbler.enable = true;
 
   # Fonts
   fonts.packages = with pkgs; [

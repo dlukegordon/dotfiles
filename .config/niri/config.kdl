@@ -401,6 +401,7 @@ binds {
     Mod+Return { spawn "ghostty" "--launched-from=desktop" "-e" "nu" "-il" "-c" "tms ~/scratch"; }
     Mod+Space { spawn "fuzzel"; }
     // Super+Alt+L { spawn "swaylock"; }
+    Mod+O { spawn "dolphin"; }
 
     // You can also use a shell. Do this if you need pipes, multiple commands, etc.
     // Note: the entire command goes as a single argument in the end.
