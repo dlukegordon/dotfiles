@@ -18,6 +18,7 @@
     obsidian
     pkgsUnstable.signal-desktop
     pkgsUnstable.wezterm
+    qalculate-qt
     sparrow
     transmission_4-qt
     vlc
