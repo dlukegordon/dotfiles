@@ -3,7 +3,6 @@
 
   inputs = {
     nixpkgs.url = "github:NixOS/nixpkgs/nixos-25.05";
-    nixpkgs-24-11.url = "github:NixOS/nixpkgs/nixos-24.11";
     nixpkgs-unstable.url = "github:NixOS/nixpkgs/nixos-unstable";
 
     home-manager = {
@@ -33,7 +32,6 @@
   outputs =
     inputs@{
       nixpkgs,
-      nixpkgs-24-11,
       nixpkgs-unstable,
       home-manager,
       plasma-manager,
@@ -46,10 +44,6 @@
         valhalla =
           let
             system = "x86_64-linux";
-            pkgs2411 = import nixpkgs-24-11 {
-              inherit system;
-              config.allowUnfree = true;
-            };
             pkgsUnstable = import nixpkgs-unstable {
               inherit system;
               config.allowUnfree = true;
@@ -57,7 +51,7 @@
           in
           nixpkgs.lib.nixosSystem {
             inherit system;
-            specialArgs = { inherit pkgsUnstable pkgs2411 inputs; };
+            specialArgs = { inherit pkgsUnstable inputs; };
 
             modules = [
               ./os/valhalla.nix
@@ -72,7 +66,7 @@
                   sharedModules = [
                     plasma-manager.homeManagerModules.plasma-manager
                   ];
-                  extraSpecialArgs = { inherit pkgsUnstable pkgs2411 inputs; };
+                  extraSpecialArgs = { inherit pkgsUnstable inputs; };
                 };
               }
             ];
