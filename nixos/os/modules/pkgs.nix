@@ -32,10 +32,10 @@
     ivpn
     ivpn-service
     just
+    kdePackages.kdbusaddons
     lazyjournal
     less
     libreoffice-qt
-    libsForQt5.kdbusaddons
     libtool
     lsd
     lsof

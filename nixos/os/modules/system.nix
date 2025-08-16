@@ -93,11 +93,6 @@ in
   # You can disable this if you're only using the Wayland session.
   services.xserver.enable = true;
 
-  # Enable the KDE Plasma Desktop Environment.
-  services.desktopManager.plasma6.enable = true;
-  environment.etc."/xdg/menus/applications.menu".text =
-    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
-
   # Enable SDDM
   services.displayManager.sddm = {
     enable = true;
@@ -109,6 +104,12 @@ in
     pkgsUnstable.niri
     pkgsUnstable.hyprland
   ];
+
+  # Enable the KDE Plasma Desktop Environment.
+  services.desktopManager.plasma6.enable = true;
+  environment.etc."/xdg/menus/applications.menu".text =
+    builtins.readFile "${pkgs.kdePackages.plasma-workspace}/etc/xdg/menus/plasma-applications.menu";
+  programs.kdeconnect.enable = true;
 
   # Window Managers
   programs.hyprland = {

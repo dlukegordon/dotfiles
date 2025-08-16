@@ -278,6 +278,8 @@ workspace "terminal"
 workspace "comms"
 
 spawn-at-startup "waybar"
+spawn-at-startup "kdeconnectd"
+spawn-at-startup "kdeconnect-indicator"
 spawn-at-startup "flatpak" "run" "app.zen_browser.zen"
 spawn-at-startup "ghostty" "--launched-from=desktop" "-e" "nu" "-il" "-c" "tms ~/dotfiles"
 spawn-at-startup "thunderbird"
