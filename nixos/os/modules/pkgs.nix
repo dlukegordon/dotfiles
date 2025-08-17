@@ -45,8 +45,10 @@
     nixd
     nixfmt-rfc-style
     opensc
+    ouch
     pkgsUnstable.bat
     pkgsUnstable.carapace
+    pkgsUnstable.claude-code
     pkgsUnstable.gitu
     pkgsUnstable.jjui
     pkgsUnstable.lazyjj
@@ -63,6 +65,7 @@
     stow
     stylua
     tmux
+    tokei
     unzip
     usbutils
     uutils-coreutils
