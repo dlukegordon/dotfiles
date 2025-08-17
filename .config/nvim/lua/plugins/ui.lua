@@ -62,7 +62,7 @@ return {
     "nvim-lualine/lualine.nvim",
     dependencies = { "nvim-tree/nvim-web-devicons" },
     config = function()
-      local function cwd()
+      local function get_cwd()
         local cwd = vim.loop.cwd()
         local home = os.getenv("HOME")
         local new_cwd
@@ -99,7 +99,7 @@ return {
             },
           },
           lualine_c = { { "filename", file_status = true, path = 1, symbols = { unnamed = "∅" } } },
-          lualine_x = { cwd, "diff", "branch" },
+          lualine_x = { get_cwd, "diff", "branch" },
           lualine_y = { "progress", lines_cols },
           lualine_z = { "location" },
         },
@@ -130,14 +130,14 @@ return {
       win = { border = "single" },
       -- Document existing key chains
       spec = {
-        { "<leader>b", group = "[B]uffers" },
-        { "<leader>c", group = "[C]ode", mode = { "n", "x" } },
-        { "<leader>g", group = "[G]it" },
-        { "<leader>j", group = "[J]ump forward" },
-        { "<leader>k", group = "Jump bac[k]ward" },
-        { "<leader>s", group = "[S]earch" },
-        { "<leader>t", group = "[T]oggle" },
-        { "<leader>w", group = "[W]indow" },
+        { "<leader>a", group = "All lines", mode = { "n", "x" } },
+        { "<leader>b", group = "Buffers" },
+        { "<leader>f", group = "Find" },
+        { "<leader>g", group = "Git", mode = { "n", "x" } },
+        { "<leader>j", group = "Jump forward", mode = { "n", "x" } },
+        { "<leader>k", group = "Jump backward", mode = { "n", "x" } },
+        { "<leader>t", group = "Toggle" },
+        { "<leader>w", group = "Window" },
       },
     },
   },

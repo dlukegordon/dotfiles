@@ -53,12 +53,14 @@ return {
           },
         },
         defaults = {
-          -- layout_strategy = "bottom_pane",
+          layout_strategy = "horizontal",
           layout_config = {
-            width = 0.9,
-            height = 0.9,
-            prompt_position = "top",
-            preview_width = 0.495,
+            horizontal = {
+              width = 0.9,
+              height = 0.9,
+              prompt_position = "top",
+              preview_width = 0.495,
+            },
           },
           sorting_strategy = "ascending",
 
@@ -87,26 +89,29 @@ return {
       local builtin = require("telescope.builtin")
 
       vim.keymap.set("n", "<leader>'", builtin.resume, { desc = "Resume last search" })
-      vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Find [b]uffers" })
-      vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Find [d]iagnostics" })
-      vim.keymap.set("n", "<leader>l", builtin.oldfiles, { desc = "Find [l]ast files" })
+      vim.keymap.set("n", "<leader>bb", builtin.buffers, { desc = "Find buffers" })
+      vim.keymap.set("n", "<leader>d", builtin.diagnostics, { desc = "Find diagnostics" })
+      vim.keymap.set("n", "<leader>l", builtin.oldfiles, { desc = "Find last files" })
       vim.keymap.set("n", "<leader>/", builtin.live_grep, { desc = "Live grep" })
       vim.keymap.set("n", "<leader>ff", builtin.current_buffer_fuzzy_find, { desc = "Find in the current buffer" })
-      vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find [h]elp" })
-      vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find [k]eymaps" })
-      vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find [c]urrent word" })
-      vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "Find [j]umplist" })
-      vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Find [m]arks" })
-      vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "[R]esume last find" })
+      vim.keymap.set("n", "<leader>fF", function()
+        builtin.find_files({ hidden = true })
+      end, { desc = "Find files" })
+      vim.keymap.set("n", "<leader>fh", builtin.help_tags, { desc = "Find help" })
+      vim.keymap.set("n", "<leader>fk", builtin.keymaps, { desc = "Find keymaps" })
+      vim.keymap.set("n", "<leader>fc", builtin.grep_string, { desc = "Find current word" })
+      vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "Find jumplist" })
+      vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Find marks" })
+      vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Resume last find" })
 
       vim.keymap.set("n", "<leader><leader>", function()
         builtin.find_files({ hidden = true })
-      end, { desc = "Search files" })
+      end, { desc = "Find files" })
 
       vim.keymap.set("n", "<leader>f/", function()
         builtin.live_grep({
           grep_open_files = true,
-          prompt_title = "Live Grep in Open Files",
+          prompt_title = "Live grep in open files",
         })
       end, { desc = "Find in open files" })
     end,
@@ -180,22 +185,21 @@ return {
       },
     },
     -- Toggle and go back to previous window
-    keys = {
-      -- { "<leader>tt", ":NvimTreeToggle<CR>:wincmd w<CR>", desc = "Toggle NvimTree" },
-      {
-        "<leader>tt",
-        function()
-          local nvim_tree = require("nvim-tree.api")
-          if nvim_tree.tree.is_visible() then
-            nvim_tree.tree.toggle()
-          else
-            nvim_tree.tree.toggle()
-            vim.cmd("wincmd p")
-          end
-        end,
-        desc = "Toggle NvimTree",
-      },
-    },
+    -- keys = {
+    --   {
+    --     "<leader>tt",
+    --     function()
+    --       local nvim_tree = require("nvim-tree.api")
+    --       if nvim_tree.tree.is_visible() then
+    --         nvim_tree.tree.toggle()
+    --       else
+    --         nvim_tree.tree.toggle()
+    --         vim.cmd("wincmd p")
+    --       end
+    --     end,
+    --     desc = "Toggle NvimTree",
+    --   },
+    -- },
   },
 
   -- Grug-far
@@ -203,7 +207,7 @@ return {
     "MagicDuck/grug-far.nvim",
     config = {},
     keys = {
-      { "<leader>fg", ":GrugFar<CR>", desc = "Find with [g]rug-far" },
+      { "<leader>fg", ":GrugFar<CR>", desc = "Find with GrugFar" },
     },
   },
 
@@ -246,7 +250,7 @@ return {
       },
     },
     keys = {
-      { "<leader>a", ":AerialToggle<CR>", desc = "Open aerial outline" },
+      { "<leader>c", ":AerialToggle<CR>", desc = "Code outline" },
       { "<leader>jj", ":AerialNext<CR>", desc = "Goto next code structure" },
       { "<leader>kk", ":AerialPrev<CR>", desc = "Goto previous code structure" },
     },
