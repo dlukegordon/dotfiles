@@ -53,9 +53,6 @@ in
   nix.gc.options = "--delete-older-than 10d";
   nix.settings.auto-optimise-store = true;
 
-  # Kernel
-  boot.kernelPackages = pkgsUnstable.linuxPackages_latest;
-
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
