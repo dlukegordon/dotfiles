@@ -49,17 +49,30 @@ vim.opt.wildoptions = "pum,tagfile,fuzzy"
 
 vim.opt.winborder = "single"
 
+-- Highlight when yanking (copying) text
 vim.api.nvim_create_autocmd("TextYankPost", {
-  desc = "Highlight when yanking (copying) text",
   group = vim.api.nvim_create_augroup("kickstart-highlight-yank", { clear = true }),
   callback = function()
     vim.highlight.on_yank()
   end,
 })
 
+-- Handle some weird resizing issues when switching tmux sessions
 vim.api.nvim_create_autocmd("VimResized", {
   pattern = "*",
   command = "wincmd =",
+})
+
+-- Hide diagnostics in insert mode, show when leaving
+vim.api.nvim_create_autocmd("InsertEnter", {
+  callback = function()
+    vim.diagnostic.hide()
+  end,
+})
+vim.api.nvim_create_autocmd("InsertLeave", {
+  callback = function()
+    vim.diagnostic.show()
+  end,
 })
 
 require("load_lazy")
