@@ -402,7 +402,8 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "ghostty" "--launched-from=desktop" "-e" "nu" "-il" "-c" "tms ~/scratch"; }
-    Mod+Space { spawn "fuzzel"; }
+    Mod+Space { spawn "walker"; }
+    // Mod+Space { spawn "fuzzel"; }
     // Super+Alt+L { spawn "swaylock"; }
     Mod+O { spawn "dolphin"; }
 

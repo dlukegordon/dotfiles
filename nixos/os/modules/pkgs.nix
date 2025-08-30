@@ -35,6 +35,7 @@
     kdePackages.kdbusaddons
     lazyjournal
     less
+    libqalculate
     libreoffice-qt
     libtool
     lsd
