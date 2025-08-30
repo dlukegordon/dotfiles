@@ -25,7 +25,6 @@
     };
 
     targets = {
-      fuzzel.enable = true;
       gtk.enable = true;
       hyprpaper.enable = true;
       qt.enable = true;

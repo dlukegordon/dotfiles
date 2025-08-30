@@ -281,6 +281,7 @@ spawn-at-startup "waybar"
 spawn-at-startup "kdeconnectd"
 spawn-at-startup "kdeconnect-indicator"
 spawn-at-startup "sh" "-c" "sleep 1 && pasystray"
+spawn-at-startup "walker" "--gapplication-service"
 spawn-at-startup "flatpak" "run" "app.zen_browser.zen"
 spawn-at-startup "ghostty" "--launched-from=desktop" "-e" "nu" "-il" "-c" "tms ~/dotfiles"
 spawn-at-startup "thunderbird"
@@ -402,7 +403,8 @@ binds {
 
     // Suggested binds for running programs: terminal, app launcher, screen locker.
     Mod+Return { spawn "ghostty" "--launched-from=desktop" "-e" "nu" "-il" "-c" "tms ~/scratch"; }
-    Mod+Space { spawn "fuzzel"; }
+    Mod+Space { spawn "walker"; }
+    Mod+E { spawn "walker" "--modules" "emojis"; }
     // Super+Alt+L { spawn "swaylock"; }
     Mod+O { spawn "dolphin"; }
 

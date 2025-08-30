@@ -17,6 +17,7 @@
     keepassxc
     obsidian
     pkgsUnstable.signal-desktop
+    pkgsUnstable.walker
     pkgsUnstable.wezterm
     qalculate-qt
     sparrow

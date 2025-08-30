@@ -11,7 +11,6 @@
   services.hyprpaper.enable = true;
   services.hypridle.enable = true;
 
-  programs.fuzzel.enable = true;
   services.swaync.enable = true;
 
   home.packages = with pkgs; [

@@ -1,0 +1,16 @@
+[ui.window.box]
+width = 1000
+min_width = 1000
+max_width = 1000
+height = 618
+min_height = 618
+max_height = 618
+
+# List constraints are critical - without these, the window shrinks when empty
+[ui.window.box.scroll.list]
+height = 624
+min_height = 624
+max_height = 624
+
+[ui.window.box.scroll.list.item.icon]
+pixel_size = 64
