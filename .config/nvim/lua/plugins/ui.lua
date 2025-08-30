@@ -256,14 +256,32 @@ return {
     opts = {
       file_types = { "markdown", "Avante" },
       sign = { enabled = false },
-      code = { border = "thick" },
+      code = {
+        border = "thin",
+        width = "block",
+        left_pad = 1,
+        right_pad = 1,
+        highlight = "RenderMarkdownH6Bg",
+        highlight_border = "RenderMarkdownH6Bg",
+      },
       heading = {
-        position = "inline",
-        sign = false,
-        width = { "block" },
+        enabled = false,
       },
     },
+
     ft = { "markdown", "Avante" },
+  },
+
+  -- Better markdown editing
+  {
+    "roodolv/markdown-toggle.nvim",
+    opts = {
+      filetypes = { "markdown" },
+      use_default_keymaps = true,
+    },
+    ft = {
+      "markdown",
+    },
   },
 
   -- Delete a buffer without closing window

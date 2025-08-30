@@ -53,6 +53,12 @@ return {
           },
         },
         defaults = {
+          mappings = {
+            i = {
+              ["<esc>"] = require("telescope.actions").close,
+            },
+          },
+
           layout_strategy = "horizontal",
           layout_config = {
             horizontal = {
