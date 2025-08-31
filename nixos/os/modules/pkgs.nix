@@ -41,6 +41,7 @@
     lsd
     lsof
     lua-language-server
+    marksman
     mosh
     nautilus
     nixd

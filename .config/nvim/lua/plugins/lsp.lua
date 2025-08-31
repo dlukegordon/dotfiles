@@ -163,6 +163,8 @@ return {
 
       vim.lsp.enable("nushell")
 
+      vim.lsp.enable("marksman")
+
       vim.lsp.enable("rust_analyzer")
       vim.lsp.config("rust_analyzer", {
         settings = {
