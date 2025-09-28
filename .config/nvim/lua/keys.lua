@@ -43,6 +43,18 @@ vim.keymap.set("n", "<leader>kd", function()
 end, { desc = "Goto previous diagnostic" })
 vim.keymap.set("v", "<leader>o", ":sort<CR>", { desc = "Order" })
 
+-- Toggle virtual lines
+vim.keymap.set("n", "<leader>tl", function()
+  vim.diagnostic.config({
+    virtual_lines = not vim.diagnostic.config().virtual_lines,
+  })
+end, { desc = "Toggle virtual lines" })
+
+-- Toggle inlay hints
+vim.keymap.set("n", "<leader>th", function()
+  vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
+end, { desc = "Toggle inlay hints" })
+
 -- Swap PageUp/PageDown and C-u/C-d
 -- vim.keymap.set("n", "<PageUp>", "<C-u>", { noremap = true, silent = true })
 -- vim.keymap.set("v", "<PageUp>", "<C-u>", { noremap = true, silent = true })

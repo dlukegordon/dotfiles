@@ -113,7 +113,7 @@ return {
       vim.diagnostic.config({
         float = false,
         virtual_text = false,
-        virtual_lines = { current_line = true },
+        virtual_lines = false,
         severity_sort = true,
       })
 
