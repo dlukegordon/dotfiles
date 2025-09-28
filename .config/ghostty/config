@@ -12,5 +12,4 @@ window-decoration = none
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
 
-# https://www.reddit.com/r/neovim/comments/1llyqsg/ghostty_now_has_neovide_like_cursor_trails_though/
 # custom-shader = shaders/cursor_smear_fade_custom.glsl

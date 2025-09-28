@@ -21,13 +21,6 @@
       url = "github:nix-community/stylix/release-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
     };
-
-    # Need latest version for shaders and other features, but it also breaks caps/esc swapping.
-    # Using this patched fork until issue is fixed.
-    # https://github.com/ghostty-org/ghostty/discussions/7356
-    ghostty.url = "github:weskoerber/ghostty/main";
-    # ghostty.url = "github:ghostty-org/ghostty/tip";
-    # ghostty.url = "github:ghostty-org/ghostty/7f9bb3c0e54f585e11259bc0c9064813d061929c";
   };
 
   outputs =

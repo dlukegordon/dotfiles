@@ -13,9 +13,9 @@
   # Packages that should be installed to the user profile.
   # In general, GUI apps should be added here.
   home.packages = with pkgs; [
-    inputs.ghostty.packages.${pkgs.system}.default
     keepassxc
     obsidian
+    pkgsUnstable.ghostty
     pkgsUnstable.signal-desktop
     pkgsUnstable.walker
     pkgsUnstable.wezterm
