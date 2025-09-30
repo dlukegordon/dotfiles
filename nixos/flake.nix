@@ -63,7 +63,7 @@
                   useUserPackages = true;
                   users.luke = import ./home/valhalla.nix;
                   sharedModules = [
-                    plasma-manager.homeManagerModules.plasma-manager
+                    plasma-manager.homeModules.plasma-manager
                   ];
                   extraSpecialArgs = { inherit pkgsUnstable pkgs2411 inputs; };
                 };
@@ -95,7 +95,7 @@
                   useUserPackages = true;
                   users.luke = import ./home/asgard.nix;
                   sharedModules = [
-                    plasma-manager.homeManagerModules.plasma-manager
+                    plasma-manager.homeModules.plasma-manager
                   ];
                   extraSpecialArgs = { inherit pkgsUnstable inputs; };
                 };
