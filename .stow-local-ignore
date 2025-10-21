@@ -2,7 +2,7 @@
 .gitignore
 .jj
 Makefile
-README-old.md
 README.org
-bin/
-nixos/
+README.md
+README-old.md
+nixos

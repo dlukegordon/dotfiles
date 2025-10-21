@@ -32,6 +32,13 @@ nixos-update:
 	nix flake update --flake path:$(HOME)/dotfiles/nixos
 	sudo nixos-rebuild boot --upgrade --flake path:$(HOME)/dotfiles/nixos#$(host)
 
+darwin-switch: check-host
+	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nixos#$(host)
+
+darwin-update:
+	nix flake update --flake path:$(HOME)/dotfiles/nixos
+	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nixos#$(host)
+
 install: check-host stow nixos-cp-hardware nixos-boot
 
 install-server: check-host nixos-cp-hardware nixos-boot

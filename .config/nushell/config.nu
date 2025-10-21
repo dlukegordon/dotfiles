@@ -33,6 +33,13 @@ $env.config.menus = [
 # Path
 path add "~/bin"
 path add "~/.cargo/bin"
+if ($nu.os-info.name == "macos") {
+    path add "/usr/local/bin"
+    path add $"($nu.home-path)/.nix-profile/bin"
+    path add $"/etc/profiles/per-user/($env.user)/bin"
+    path add "/run/current-system/sw/bin"
+    path add "/nix/var/nix/profiles/default/bin"
+}
 
 # Env vars
 $env.EDITOR = $env.config.buffer_editor
