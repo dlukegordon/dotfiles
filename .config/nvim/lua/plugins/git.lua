@@ -13,16 +13,16 @@ return {
     "tpope/vim-rhubarb",
     event = "VeryLazy",
     keys = {
-      { "<leader>gb", ":GBrowse<CR>", desc = "Browse github" },
-      { "<leader>gb", ":GBrowse<CR>", desc = "Browse github", mode = "v" },
+      { "<leader>gb", ":GBrowse!<CR>", desc = "Browse github" },
+      { "<leader>gb", ":GBrowse!<CR>", desc = "Browse github", mode = "v" },
     },
   },
 
   -- Link fugitive with gitlab
-  {
-    "shumphrey/fugitive-gitlab.vim",
-    event = "VeryLazy",
-  },
+  -- {
+  --   "shumphrey/fugitive-gitlab.vim",
+  --   event = "VeryLazy",
+  -- },
 
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
@@ -40,7 +40,7 @@ return {
       "nvim-telescope/telescope.nvim",
       "sindrets/diffview.nvim",
     },
-    config = {},
+    opts = {},
     keys = {
       { "<leader>gg", ":Neogit<CR>", { desc = "Open neogit" } },
     },

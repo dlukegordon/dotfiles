@@ -2,7 +2,7 @@ return {
   -- Edit your filesystem like a normal neovim buffer
   {
     "stevearc/oil.nvim",
-    config = {
+    opts = {
       default_file_explorer = true,
       skip_confirm_for_simple_edits = true,
       keymaps = {
@@ -164,54 +164,54 @@ return {
   {
     "chentoast/marks.nvim",
     event = "VeryLazy",
-    config = {},
+    opts = {},
   },
 
   -- File tree
-  {
-    "nvim-tree/nvim-tree.lua",
-    dependencies = { "nvim-tree/nvim-web-devicons" },
-    event = "VeryLazy",
-    config = {
-      sync_root_with_cwd = true,
-      respect_buf_cwd = true,
-      update_focused_file = {
-        enable = true,
-        update_root = true,
-      },
-      diagnostics = {
-        enable = true,
-        show_on_dirs = true,
-        icons = {
-          hint = "󰌶 ",
-          info = " ",
-          warning = "󰀪 ",
-          error = "󰅚 ",
-        },
-      },
-    },
-    -- Toggle and go back to previous window
-    -- keys = {
-    --   {
-    --     "<leader>tt",
-    --     function()
-    --       local nvim_tree = require("nvim-tree.api")
-    --       if nvim_tree.tree.is_visible() then
-    --         nvim_tree.tree.toggle()
-    --       else
-    --         nvim_tree.tree.toggle()
-    --         vim.cmd("wincmd p")
-    --       end
-    --     end,
-    --     desc = "Toggle NvimTree",
-    --   },
-    -- },
-  },
+  -- {
+  --   "nvim-tree/nvim-tree.lua",
+  --   dependencies = { "nvim-tree/nvim-web-devicons" },
+  --   event = "VeryLazy",
+  --   config = {
+  --     sync_root_with_cwd = true,
+  --     respect_buf_cwd = true,
+  --     update_focused_file = {
+  --       enable = true,
+  --       update_root = true,
+  --     },
+  --     diagnostics = {
+  --       enable = true,
+  --       show_on_dirs = true,
+  --       icons = {
+  --         hint = "󰌶 ",
+  --         info = " ",
+  --         warning = "󰀪 ",
+  --         error = "󰅚 ",
+  --       },
+  --     },
+  --   },
+  --   -- Toggle and go back to previous window
+  --   -- keys = {
+  --   --   {
+  --   --     "<leader>tt",
+  --   --     function()
+  --   --       local nvim_tree = require("nvim-tree.api")
+  --   --       if nvim_tree.tree.is_visible() then
+  --   --         nvim_tree.tree.toggle()
+  --   --       else
+  --   --         nvim_tree.tree.toggle()
+  --   --         vim.cmd("wincmd p")
+  --   --       end
+  --   --     end,
+  --   --     desc = "Toggle NvimTree",
+  --   --   },
+  --   -- },
+  -- },
 
   -- Grug-far
   {
     "MagicDuck/grug-far.nvim",
-    config = {},
+    opts = {},
     keys = {
       { "<leader>fg", ":GrugFar<CR>", desc = "Find with GrugFar" },
     },

@@ -49,7 +49,7 @@ return {
   {
     "chrisgrieser/nvim-various-textobjs",
     event = "VeryLazy",
-    config = {
+    opts = {
       keymaps = {
         useDefaults = true,
         disabledDefaults = { "io", "ao", "in", "an", "n", "iS", "aS" },
@@ -69,7 +69,7 @@ return {
   {
     "kylechui/nvim-surround",
     event = "VeryLazy",
-    config = {
+    opts = {
       keymaps = {
         insert = "<C-g>z",
         insert_line = "<C-g>Z",
@@ -95,7 +95,7 @@ return {
 
   {
     "smoka7/hop.nvim",
-    config = {},
+    opts = {},
     keys = {
       { "s", ":HopWord<CR>", mode = { "n" } },
     },
