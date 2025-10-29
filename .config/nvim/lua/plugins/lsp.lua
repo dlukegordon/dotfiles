@@ -159,12 +159,6 @@ return {
         },
       })
 
-      vim.lsp.enable("nixd")
-
-      vim.lsp.enable("nushell")
-
-      vim.lsp.enable("marksman")
-
       vim.lsp.enable("rust_analyzer")
       vim.lsp.config("rust_analyzer", {
         settings = {
@@ -181,6 +175,9 @@ return {
       })
 
       vim.lsp.enable("bashls")
+      vim.lsp.enable("marksman")
+      vim.lsp.enable("nixd")
+      vim.lsp.enable("nushell")
     end,
   },
 }
