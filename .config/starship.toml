@@ -119,6 +119,7 @@ error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
 [custom.jj]
+disabled = true
 ignore_timeout = true
 description = "The current jj status"
 detect_folders = [".jj"]
@@ -168,10 +169,10 @@ style = 'bright-black'
 commit_hash_length = 6
 only_detached = false
 tag_symbol = ' '
-disabled = true
+disabled = false
 
 [git_metrics]
-disabled = true
+disabled = false
 
 [git_status]
 format = '([$conflicted$stashed$untracked$ahead_behind]($style) )'
@@ -291,6 +292,7 @@ symbol = "󰔷 "
 symbol = "󰆥 "
 
 [nodejs]
+disabled = true
 symbol = " "
 
 [ocaml]
