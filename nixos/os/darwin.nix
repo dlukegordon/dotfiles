@@ -18,6 +18,7 @@
     pkgs.just
     pkgs.lua-language-server
     pkgs.marksman
+    pkgs.mise
     pkgs.mosh
     pkgs.nixd
     pkgs.nixfmt-rfc-style
@@ -42,7 +43,6 @@
     pkgsUnstable.carapace
     pkgsUnstable.gh
     pkgsUnstable.neovim
-    pkgsUnstable.nodejs_24
     pkgsUnstable.nushell
     pkgsUnstable.ov
     pkgsUnstable.rustup

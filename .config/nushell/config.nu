@@ -39,6 +39,7 @@ if ($nu.os-info.name == "macos") {
     path add $"/etc/profiles/per-user/($env.user)/bin"
     path add "/run/current-system/sw/bin"
     path add "/nix/var/nix/profiles/default/bin"
+    path add $"($nu.home-path)/.local/share/mise/shims"
 }
 
 # Env vars
