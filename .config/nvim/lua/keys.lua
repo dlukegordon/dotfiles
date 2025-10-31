@@ -43,17 +43,37 @@ vim.keymap.set("n", "<leader>kd", function()
 end, { desc = "Goto previous diagnostic" })
 vim.keymap.set("v", "<leader>o", ":sort<CR>", { desc = "Order" })
 
--- Toggle virtual lines
+-- Toggle virtual line diagnostics
 vim.keymap.set("n", "<leader>tl", function()
   vim.diagnostic.config({
     virtual_lines = not vim.diagnostic.config().virtual_lines,
   })
-end, { desc = "Toggle virtual lines" })
+end, { desc = "Toggle virtual line diagnostics" })
+
+-- Toggle virtual text diagnostics
+vim.keymap.set("n", "<leader>tt", function()
+  vim.diagnostic.config({
+    virtual_text = not vim.diagnostic.config().virtual_text,
+  })
+end, { desc = "Toggle virtual text diagnostics" })
 
 -- Toggle inlay hints
 vim.keymap.set("n", "<leader>th", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })
+
+-- Toggle floating diagnostics
+local diagnostics_hover_enabled = true
+vim.api.nvim_create_autocmd("CursorHold", {
+  callback = function()
+    if diagnostics_hover_enabled then
+      vim.diagnostic.open_float(nil, { focusable = false })
+    end
+  end,
+})
+vim.keymap.set("n", "<leader>tf", function()
+  diagnostics_hover_enabled = not diagnostics_hover_enabled
+end, { desc = "Toggle floating diagnostics" })
 
 -- Swap PageUp/PageDown and C-u/C-d
 -- vim.keymap.set("n", "<PageUp>", "<C-u>", { noremap = true, silent = true })

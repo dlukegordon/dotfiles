@@ -111,7 +111,6 @@ return {
 
       -- Diagnostic settings
       vim.diagnostic.config({
-        float = false,
         virtual_text = false,
         virtual_lines = false,
         severity_sort = true,
