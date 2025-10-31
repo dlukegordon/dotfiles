@@ -17,4 +17,4 @@ command = /run/current-system/sw/bin/nu -il
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
 
-# custom-shader = shaders/cursor_smear_fade_custom.glsl
+custom-shader = shaders/cursor_smear_fade_custom.glsl
