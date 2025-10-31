@@ -178,6 +178,13 @@ return {
       vim.lsp.enable("marksman")
       vim.lsp.enable("nixd")
       vim.lsp.enable("nushell")
+
+      vim.lsp.config("move_analyzer", {
+        cmd = { "move-analyzer" },
+        filetypes = { "move" },
+        root_markers = { "Move.toml", ".git" },
+      })
+      vim.lsp.enable("move_analyzer")
     end,
   },
 }

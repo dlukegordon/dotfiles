@@ -224,6 +224,7 @@ return {
       formatters_by_ft = {
         lua = { "stylua" },
         nix = { "nixfmt" },
+        -- move = { "prettier_move" },
       },
       formatters = {
         stylua = {
@@ -234,6 +235,11 @@ return {
             "2",
           },
         },
+        -- prettier_move = {
+        --   command = "prettier-move",
+        --   stdin = false,
+        --   args = { "--use-tabs", "false", "--tab-width", "4", "-w", "$FILENAME" },
+        -- },
       },
     },
   },

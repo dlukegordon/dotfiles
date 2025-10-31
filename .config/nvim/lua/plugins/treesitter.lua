@@ -5,7 +5,19 @@ return {
     dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
     main = "nvim-treesitter.configs", -- Sets main module to use for opts
-    -- [[ Configure Treesitter ]] See `:help nvim-treesitter`
+    config = function(_, opts)
+      require("nvim-treesitter.configs").setup(opts)
+      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
+      parser_config["move"] = {
+        install_info = {
+          url = "~/mysten/sui/external-crates/move/tooling/tree-sitter/",
+          files = { "src/parser.c" },
+          branch = "main",
+          generate_requires_npm = false,
+          requires_generate_from_grammar = false,
+        },
+      }
+    end,
     opts = {
       ensure_installed = {
         "bash",
