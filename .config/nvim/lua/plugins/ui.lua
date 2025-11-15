@@ -12,10 +12,21 @@ return {
       vim.api.nvim_set_hl(0, "CursorLine", { bg = "#272924" })
     end,
   },
-  -- "Mofiqul/vscode.nvim",
-  -- "tomasiser/vim-code-dark",
-  -- "christianchiarulli/nvcode-color-schemes.vim",
-  -- "marko-cerovac/material.nvim",
+  {
+    "EdenEast/nightfox.nvim",
+    opts = {
+      options = {
+        colorblind = {
+          enable = true,
+          severity = {
+            protan = 1.0,
+            deutan = 0.4,
+            tritan = 0.2,
+          },
+        },
+      },
+    },
+  },
 
   -- Custom start screen
   {
