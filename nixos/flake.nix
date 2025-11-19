@@ -140,7 +140,7 @@
       };
 
       # Macbook
-      darwinConfigurations."-MacBook-Pro-C7KM27FNVJ-M" =
+      darwinConfigurations."Gordon-MacBook-Pro-C7KM27FNVJ-M" =
         let
           system = "aarch64-darwin";
           pkgsUnstable = import nixpkgs-unstable {

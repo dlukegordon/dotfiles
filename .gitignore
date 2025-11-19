@@ -1,4 +1,4 @@
-.DS_STORE
+.DS_Store
 .config/direnv/lib/
 .config/fish/additional_config.fish
 .config/nushell/gitignored.nu

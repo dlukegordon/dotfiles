@@ -40,6 +40,8 @@ if ($nu.os-info.name == "macos") {
     path add "/run/current-system/sw/bin"
     path add "/nix/var/nix/profiles/default/bin"
     path add $"($nu.home-path)/.local/share/mise/shims"
+    path add "/opt/homebrew/bin/"
+    path add "/opt/homebrew/opt/rustup/bin"
 }
 
 # Env vars
@@ -107,7 +109,7 @@ alias lla = lsd --color always -lA --date relative --group-directories-first --g
 alias lt = lsd --color always -A --date relative --group-directories-first --tree
 alias lt2 = lsd --color always -A --date relative --group-directories-first --tree --depth 2
 alias lt3 = lsd --color always -A --date relative --group-directories-first --tree --depth 3
-alias ns = nix-shell --command nu
+alias ns = nix-shell --command /opt/homebrew/bin/nu
 alias t = tms ~/scratch
 alias v = nvim
 alias less = bat --plain

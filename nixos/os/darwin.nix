@@ -24,28 +24,20 @@
     pkgs.nixfmt-rfc-style
     pkgs.opensc
     pkgs.ouch
-    pkgs.raycast
     pkgs.ripgrep
     pkgs.shellcheck
     pkgs.shfmt
-    pkgs.starship
     pkgs.stow
     pkgs.stylua
-    pkgs.tmux
     pkgs.tokei
     pkgs.unzip
     pkgs.wget
     pkgs.yubikey-manager
     pkgs.zoxide
-    pkgsUnstable.aerospace
-    pkgsUnstable.autoraise
     pkgsUnstable.bat
     pkgsUnstable.carapace
     pkgsUnstable.gh
-    pkgsUnstable.neovim
-    pkgsUnstable.nushell
     pkgsUnstable.ov
-    pkgsUnstable.rustup
   ];
 
   homebrew = {
@@ -55,13 +47,23 @@
       cleanup = "zap";
       upgrade = true;
     };
+    brews = [
+      "neovim"
+      "nushell"
+      "rustup"
+      "starship"
+      "tmux"
+    ];
     casks = [
       "docker-desktop"
       "ghostty"
       "iterm2"
       "meetingbar"
+      "nikitabobko/tap/aerospace"
+      "raycast"
       "slack"
       "ungoogled-chromium"
+      "utm"
       "zed"
       "zen"
       "zoom"
@@ -72,7 +74,8 @@
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
   nixpkgs.hostPlatform = "aarch64-darwin";
-  security.sudo.extraConfig = "luke ALL=(ALL) NOPASSWD: ALL";
+  # security.sudo.extraConfig = "luke ALL=(ALL) NOPASSWD: ALL";
+  security.pam.services.sudo_local.touchIdAuth = true;
   system.defaults.NSGlobalDomain.NSAutomaticWindowAnimationsEnabled = false;
   system.defaults.NSGlobalDomain.NSWindowShouldDragOnGesture = true;
   system.defaults.controlcenter.Bluetooth = true;

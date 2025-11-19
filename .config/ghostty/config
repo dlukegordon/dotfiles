@@ -1,8 +1,8 @@
 theme = Dimidium
 font-family = JetBrains Mono
 font-size = 15
-window-padding-x = 0
-window-padding-y = 7
+window-padding-x = 2
+window-padding-y = 4
 window-padding-balance = false
 window-padding-color = extend-always
 window-decoration = none
@@ -11,8 +11,10 @@ confirm-close-surface = false
 mouse-scroll-multiplier = 1
 quit-after-last-window-closed = true
 
-initial-command = /run/current-system/sw/bin/nu -il -c "tms ~/dotfiles"
-command = /run/current-system/sw/bin/nu -il
+#initial-command = /run/current-system/sw/bin/nu -il -c "tms ~/dotfiles"
+#command = /run/current-system/sw/bin/nu -il
+initial-command = /opt/homebrew/bin/nu -il -c "tms ~/dotfiles"
+command = /opt/homebrew/bin/nu -il
 
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard

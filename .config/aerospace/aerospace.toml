@@ -97,6 +97,7 @@ automatically-unhide-macos-hidden-apps = false
     alt-slash = 'layout tiles horizontal vertical'
     alt-comma = 'layout accordion horizontal vertical'
 
+    alt-enter = 'exec-and-forget open -a "Ghostty"'
     alt-o = 'exec-and-forget open ~'
     alt-z = 'fullscreen'
     alt-f = 'layout floating tiling'
