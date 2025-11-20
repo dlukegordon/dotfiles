@@ -33,7 +33,6 @@
             iconTasks = {
               launchers = [
                 "applications:org.wezfurlong.wezterm.desktop"
-                "applications:emacsclient.desktop"
               ];
             };
           }
