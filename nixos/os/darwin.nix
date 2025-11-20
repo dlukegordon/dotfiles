@@ -62,6 +62,7 @@
       "nikitabobko/tap/aerospace"
       "raycast"
       "slack"
+      "spotify"
       "ungoogled-chromium"
       "utm"
       "zed"
