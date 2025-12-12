@@ -182,17 +182,6 @@ def is-jj-repo [] {
     $jj_check == 0
 }
 
-def jj-trunk-bookmark [] {
-    let bookmarks = jj bookmark list -T name | lines
-    let has_master = "master" in bookmarks
-    let has_main = "main" in bookmarks
-    if $has_main and not $has_master {
-        "main"
-    } else {
-        "master"
-    }
-}
-
 def ji [] {
     jj git init --colocate
     jj bookmark create master
@@ -204,40 +193,42 @@ def --wrapped jd [...args] {
 
 # Jj aliases
 alias j = jj status
+alias ja = jj abandon
+alias jab = jj abandon -r @-
+alias jb = jj bookmark
+alias jbc = jj bookmark create
+alias jbl = jj bookmark list
+alias jbmt = jj bookmark move --from 'heads(::@- & bookmarks())' --to @
+alias jbs = jj bookmark set
+alias jc = jj commit
+alias jclone = jj git clone --colocate
+alias jcm = jj commit -m
+alias jdb = jd -r @-
+alias jdr = jj describe
+alias jdrb = jj describe -r @-
+alias jdrm = jj describe -m
+alias jdrmb = jj describe -r @- -m
+alias je = jj edit
+alias jeb = jj edit @-
+alias jef = jj edit --ignore-immutable
+alias jf = jj git fetch
+alias jg = jj git
 alias jjs = jj --stat
 alias jl = jj log --revisions 'all()' --limit 10
-alias jls = jj log --revisions 'all()' --limit 10 --stat
 alias jla = jj log --revisions 'all()'
 alias jlas = jj log --revisions 'all()' --stat
-alias jr = jj describe
-alias jrm = jj describe -m
-alias jrb = jj describe -r @-
-alias jrmb = jj describe -r @- -m
-alias je = jj edit
-alias jef = jj edit --ignore-immutable
-alias jeb = jj edit @-
-alias jdb = jd -r @-
+alias jls = jj log --revisions 'all()' --limit 10 --stat
+alias jm = jj bookmark set (jj-trunk-bookmark) --revision @
+alias jmb = jj bookmark set (jj-trunk-bookmark) --revision @-
 alias jn = jj new
-alias jnm = jj new (jj-trunk-bookmark)
 alias jnb = jj new --insert-before @ --no-edit
+alias jnm = jj new 'trunk()'
+alias jp = jj git push
+alias jrm = jj rebase -s @ -d 'trunk()'
 alias js = jj squash
 alias jsf = jj squash --ignore-immutable
 alias jsi = jj squash --interactive
-alias jg = jj git
-alias jf = jj git fetch
-alias jp = jj git push
-alias jb = jj bookmark
-alias jbl = jj bookmark list
-alias jbc = jj bookmark create
-alias jbs = jj bookmark set
-alias jm = jj bookmark set (jj-trunk-bookmark) --revision @
-alias jmb = jj bookmark set (jj-trunk-bookmark) --revision @-
-alias ja = jj abandon
-alias jab = jj abandon -r @-
 alias ju = jj undo
-alias jc = jj commit
-alias jcm = jj commit -m
-alias jclone = jj git clone --colocate
 alias lj = lazyjj --revisions 'all()'
 alias mj = ~/projects/majjit/target/release/majjit
 
