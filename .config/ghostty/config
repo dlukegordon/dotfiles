@@ -14,9 +14,9 @@ quit-after-last-window-closed = true
 #initial-command = /run/current-system/sw/bin/nu -il -c "tms ~/dotfiles"
 #command = /run/current-system/sw/bin/nu -il
 initial-command = /opt/homebrew/bin/nu -il -c "tms ~/dotfiles"
-command = /opt/homebrew/bin/nu -il
 
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
+keybind = shift+enter=text:\x1b\r
 
 custom-shader = shaders/cursor_smear_fade_custom.glsl

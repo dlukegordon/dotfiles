@@ -55,6 +55,8 @@
       "tmux"
     ];
     casks = [
+      "brave-browser"
+      "claude-code"
       "docker-desktop"
       "ghostty"
       "iterm2"
@@ -96,4 +98,5 @@
   system.primaryUser = "luke";
   system.stateVersion = 6;
   users.users.luke.home = "/Users/luke";
+  environment.shells = [ "/opt/homebrew/bin/nu" ];
 }
