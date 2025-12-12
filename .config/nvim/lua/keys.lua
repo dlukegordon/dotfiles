@@ -62,28 +62,33 @@ vim.keymap.set("n", "<leader>th", function()
   vim.lsp.inlay_hint.enable(not vim.lsp.inlay_hint.is_enabled())
 end, { desc = "Toggle inlay hints" })
 
--- Toggle floating diagnostics
+-- Show floating diagnostics on hover
 local diagnostics_hover_enabled = true
-vim.api.nvim_create_autocmd("CursorHold", {
+local current_diagnostic_win = nil
+local function show_diagnostics_on_hover()
+  if diagnostics_hover_enabled then
+    local _, win_id = vim.diagnostic.open_float({ focus = false, focusable = true, scope = "cursor" })
+    current_diagnostic_win = win_id
+  end
+end
+vim.api.nvim_create_autocmd({ "CursorHold" }, { callback = show_diagnostics_on_hover })
+
+-- Reload diagnostic float window after the diagnostics have changed
+vim.api.nvim_create_autocmd("DiagnosticChanged", {
   callback = function()
-    if diagnostics_hover_enabled then
-      vim.diagnostic.open_float(nil, { focusable = false })
+    if current_diagnostic_win and vim.api.nvim_win_is_valid(current_diagnostic_win) then
+      vim.api.nvim_win_close(current_diagnostic_win, false)
+      current_diagnostic_win = nil
     end
+
+    show_diagnostics_on_hover()
   end,
 })
+
+-- Keymap to toggle floating diagnostics
 vim.keymap.set("n", "<leader>tf", function()
   diagnostics_hover_enabled = not diagnostics_hover_enabled
 end, { desc = "Toggle floating diagnostics" })
-
--- Swap PageUp/PageDown and C-u/C-d
--- vim.keymap.set("n", "<PageUp>", "<C-u>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<PageUp>", "<C-u>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<PageDown>", "<C-d>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<PageDown>", "<C-d>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<C-u>", "<PageUp>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<C-u>", "<PageUp>", { noremap = true, silent = true })
--- vim.keymap.set("n", "<C-d>", "<PageDown>", { noremap = true, silent = true })
--- vim.keymap.set("v", "<C-d>", "<PageDown>", { noremap = true, silent = true })
 
 -- " Function key mappings
 -- nnoremap <F5> :lua require('nvim-dap-projects').search_project_config()<CR>:lua require("dapui").open()<CR>:lua require'dap'.continue()<CR>
