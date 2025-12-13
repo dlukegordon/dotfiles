@@ -110,6 +110,7 @@ return {
       vim.keymap.set("n", "<leader>fj", builtin.jumplist, { desc = "Find jumplist" })
       vim.keymap.set("n", "<leader>fm", builtin.marks, { desc = "Find marks" })
       vim.keymap.set("n", "<leader>fr", builtin.resume, { desc = "Resume last find" })
+      vim.keymap.set("n", "<leader>fd", builtin.git_status, { desc = "Find in git diffs" })
 
       vim.keymap.set("n", "<leader><leader>", function()
         builtin.find_files({ hidden = true })
