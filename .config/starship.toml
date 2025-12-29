@@ -11,12 +11,12 @@ $directory\
 $vcsh\
 $fossil_branch\
 $fossil_metrics\
+$custom\
 $git_branch\
 $git_commit\
 $git_status\
 $git_state\
 $git_metrics\
-$custom\
 $hg_branch\
 $pijul_channel\
 $docker_context\
@@ -118,44 +118,45 @@ success_symbol = "[❯](yellow)"
 error_symbol = "[❯](red)"
 vimcmd_symbol = "[❮](green)"
 
-[custom.jj]
-disabled = true
+[custom.jj-1]
+disabled = false
+shell = ["sh"]
 ignore_timeout = true
 description = "The current jj status"
 detect_folders = [".jj"]
-# when = "jj root --ignore-working-copy"
 symbol = "󱁊 "
 style = 'bright-black'
 command = '''
-jj log --revisions @ --no-graph --template '
+jj log --ignore-working-copy --revisions @ --no-graph --template '
   separate(" ",
     commit_id.shortest(6),
-    raw_escape_sequence("\x1b[1;34m") ++ bookmarks,
     concat(
       if(conflict, "💥"),
       if(divergent, "🚧"),
       if(hidden, "👻"),
       if(immutable, "🔒"),
     ),
+    if(!empty, raw_escape_sequence("\x1b[1;37m") ++ "~" ++ diff.stat().files().len()),
     if(!empty, raw_escape_sequence("\x1b[1;32m") ++ "+" ++ diff.stat().total_added()),
     if(!empty, raw_escape_sequence("\x1b[1;31m") ++ "+" ++ diff.stat().total_removed()),
-    if(empty, raw_escape_sequence("\x1b[0;33m") ++ "±0"),
+    if(empty, raw_escape_sequence("\x1b[0;92m") ++ "(empty)"),
     coalesce(
-      raw_escape_sequence("\x1b[0;33m") ++ truncate_end(64, description.first_line(), "…"),
-      raw_escape_sequence("\x1b[0;33m") ++ "∅",
+      if(description.first_line(),
+        raw_escape_sequence("\x1b[1;92m") ++ "\"" ++ truncate_end(64, description.first_line(), "…") ++ "\""
+      ),
+      raw_escape_sequence("\x1b[0;92m") ++ "(no description set)",
     )
     ++ raw_escape_sequence("\x1b[0m"),
   )
-'
+' 
 '''
 
-# [custom.git_branch]
-# when = true
-# command = "if (do { jj root --ignore-working-copy } | complete | get exit_code) == 0 { '' } else { starship module git_branch }"
-
-# [custom.git_commit]
-# when = true
-# command = "if (do { jj root --ignore-working-copy } | complete | get exit_code) == 0 { '' } else { starship module git_commit }"
+[custom.jj-2]
+disabled = false
+command = "starship-jj --ignore-working-copy starship prompt"
+detect_folders = [".jj"]
+shell = ["sh"]
+format = "$output "
 
 [git_branch]
 format = '[$symbol$branch(:$remote_branch)]($style) '
@@ -169,10 +170,10 @@ style = 'bright-black'
 commit_hash_length = 6
 only_detached = false
 tag_symbol = ' '
-disabled = false
+disabled = true
 
 [git_metrics]
-disabled = false
+disabled = true
 
 [git_status]
 format = '([$conflicted$stashed$untracked$ahead_behind]($style) )'
