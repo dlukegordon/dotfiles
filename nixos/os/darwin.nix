@@ -19,6 +19,7 @@
     pkgs.lua-language-server
     pkgs.marksman
     pkgs.mise
+    pkgs.moreutils
     pkgs.mosh
     pkgs.nixd
     pkgs.nixfmt-rfc-style
@@ -48,6 +49,10 @@
       upgrade = true;
     };
     brews = [
+      "aichat"
+      "bufbuild/buf/buf"
+      "cargo-nextest"
+      "foundry"
       "neovim"
       "nushell"
       "rustup"
@@ -59,10 +64,13 @@
       "claude-code"
       "docker-desktop"
       "ghostty"
+      "google-chrome"
       "iterm2"
+      "ivpn"
       "meetingbar"
       "nikitabobko/tap/aerospace"
       "raycast"
+      "signal"
       "slack"
       "spotify"
       "ungoogled-chromium"
