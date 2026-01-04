@@ -36,7 +36,6 @@
     pkgs.yubikey-manager
     pkgs.zoxide
     pkgsUnstable.bat
-    pkgsUnstable.carapace
     pkgsUnstable.gh
     pkgsUnstable.ov
   ];
@@ -51,10 +50,12 @@
     brews = [
       "aichat"
       "bufbuild/buf/buf"
+      "carapace"
       "cargo-nextest"
       "foundry"
       "neovim"
       "nushell"
+      "opencode"
       "rustup"
       "starship"
       "tmux"
@@ -74,7 +75,6 @@
       "slack"
       "spotify"
       "ungoogled-chromium"
-      "utm"
       "zed"
       "zen"
       "zoom"
