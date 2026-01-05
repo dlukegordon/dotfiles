@@ -13,6 +13,7 @@
     bc
     btop
     ccid
+    chromium
     cmake
     fastfetch
     fd
@@ -110,6 +111,10 @@
   programs.steam.enable = true;
   services.blueman.enable = true;
   services.ivpn.enable = true;
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
 
   # Postgres
   services.postgresql = {
