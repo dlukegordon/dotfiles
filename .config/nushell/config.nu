@@ -196,6 +196,7 @@ alias j = jj status
 alias ja = jj abandon
 alias jab = jj abandon -r @-
 alias jb = jj bookmark
+alias jbr = jj log -r "heads(::@ & bookmarks())" --no-graph -T 'bookmarks.map(|b| b.name())'
 alias jbc = jj bookmark create
 alias jbl = jj bookmark list
 alias jbmt = jj bookmark move --from 'heads(::@- & bookmarks())' --to @
@@ -218,8 +219,6 @@ alias jl = jj log --revisions 'all()' --limit 10
 alias jla = jj log --revisions 'all()'
 alias jlas = jj log --revisions 'all()' --stat
 alias jls = jj log --revisions 'all()' --limit 10 --stat
-alias jm = jj bookmark set (jj-trunk-bookmark) --revision @
-alias jmb = jj bookmark set (jj-trunk-bookmark) --revision @-
 alias jn = jj new
 alias jnb = jj new --insert-before @ --no-edit
 alias jnm = jj new 'trunk()'
@@ -231,6 +230,18 @@ alias jsi = jj squash --interactive
 alias ju = jj undo
 alias lj = lazyjj --revisions 'all()'
 alias mj = ~/projects/majjit/target/release/majjit
+alias pr = gh pr view --web (jbr)
+alias prnew = gh pr new --head (jbr)
+alias prnewdraft = gh pr new --draft --head (jbr)
+alias prchecks = gh pr checks --web (jbr)
+alias prready = gh pr ready (jbr)
+alias prdraft = gh pr ready --undo (jbr)
+alias predit = gh pr edit (jbr)
+alias prcomment = gh pr comment (jbr)
+alias prreview = gh pr review (jbr)
+alias browse = gh browse
+alias browseb = gh browse --branch (jbr)
+alias repo = gh repo view --web
 
 # Direnv
 # From: https://github.com/nushell/nu_scripts/blob/main/nu-hooks/nu-hooks/direnv/config.nu
