@@ -276,6 +276,7 @@ environment {
 workspace "browser"
 workspace "terminal"
 workspace "comms"
+workspace "media"
 
 spawn-at-startup "waybar"
 spawn-at-startup "kdeconnectd"
@@ -284,30 +285,31 @@ spawn-at-startup "sh" "-c" "sleep 1 && pasystray"
 spawn-at-startup "walker" "--gapplication-service"
 spawn-at-startup "flatpak" "run" "app.zen_browser.zen"
 spawn-at-startup "ghostty" "-e" "nu" "-il" "-c" "tms ~/dotfiles"
-spawn-at-startup "thunderbird"
 spawn-at-startup "signal-desktop"
+spawn-at-startup "spotify"
 
 window-rule {
     match app-id="zen" at-startup=true
     open-on-workspace "browser"
     open-maximized true
-    open-focused true
 }
 
 window-rule {
     match app-id="ghostty" at-startup=true
     open-on-workspace "terminal"
     open-maximized true
-}
-
-window-rule {
-    match app-id="thunderbird" at-startup=true
-    open-on-workspace "comms"
+    open-focused true
 }
 
 window-rule {
     match app-id="signal" at-startup=true
     open-on-workspace "comms"
+}
+
+window-rule {
+    match app-id="spotify" at-startup=true
+    open-on-workspace "media"
+    open-maximized true
 }
 
 // Uncomment this line to ask the clients to omit their client-side decorations if possible.

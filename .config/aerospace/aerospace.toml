@@ -222,5 +222,8 @@ automatically-unhide-macos-hidden-apps = false
     if.app-id = 'com.tinyspeck.slackmacgap'
     run = 'move-node-to-workspace 3'
 [[on-window-detected]]
-    if.app-id = 'us.zoom.xos'
+    if.app-id = 'com.spotify.client'
     run = 'move-node-to-workspace 4'
+[[on-window-detected]]
+    if.app-id = 'us.zoom.xos'
+    run = 'move-node-to-workspace 5'
