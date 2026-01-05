@@ -95,6 +95,12 @@
     };
   };
 
+  # Tailscale
+  services.tailscale = {
+    enable = true;
+    useRoutingFeatures = "client";
+  };
+
   # Gitea
   services.gitea = {
     enable = true;
