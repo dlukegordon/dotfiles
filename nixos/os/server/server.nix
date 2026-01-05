@@ -123,7 +123,6 @@
 
   environment.systemPackages = with pkgs; [
     btop
-    carapace
     cmake
     fastfetch
     fd
@@ -137,6 +136,7 @@
     lsof
     mosh
     pkgsUnstable.bat
+    pkgsUnstable.carapace
     pkgsUnstable.neovim
     pkgsUnstable.nushell
     pkgsUnstable.ov
