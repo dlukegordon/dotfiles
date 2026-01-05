@@ -61,6 +61,7 @@
     pkgsUnstable.ov
     pkgsUnstable.python3
     pkgsUnstable.rustup
+    pkgsUnstable.slack
     pkgsUnstable.spotify
     psmisc
     rage
