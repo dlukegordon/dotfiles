@@ -59,6 +59,14 @@
       ui = {
         default-command = "log";
       };
+      "--scope" = [
+        {
+          "--when" = {
+            repositories = [ "~/mysten" ];
+          };
+          user.email = "luke.gordon@mystenlabs.com";
+        }
+      ];
       templates = {
         log_node = ''
           coalesce(
