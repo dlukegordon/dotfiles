@@ -11,9 +11,7 @@ confirm-close-surface = false
 mouse-scroll-multiplier = 1
 quit-after-last-window-closed = true
 
-#initial-command = /run/current-system/sw/bin/nu -il -c "tms ~/dotfiles"
-#command = /run/current-system/sw/bin/nu -il
-initial-command = /opt/homebrew/bin/nu -il -c "tms ~/dotfiles"
+initial-command = /usr/local/bin/nu -il -c "tms ~/dotfiles"
 
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard

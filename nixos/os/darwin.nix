@@ -81,6 +81,11 @@
     ];
   };
 
+  # Link nushell to /usr/local/bin to make a single path for nixos and darwin
+  system.activationScripts.postActivation.text = ''
+    sudo ln -sfn /opt/homebrew/bin/nu /usr/local/bin/nu
+  '';
+
   nix.enable = false; # For determinate nix
   nix.settings.experimental-features = "nix-command flakes";
   nixpkgs.config.allowUnfree = true;
@@ -106,5 +111,4 @@
   system.primaryUser = "luke";
   system.stateVersion = 6;
   users.users.luke.home = "/Users/luke";
-  environment.shells = [ "/opt/homebrew/bin/nu" ];
 }
