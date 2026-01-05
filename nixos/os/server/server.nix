@@ -98,6 +98,7 @@
   # Tailscale
   services.tailscale = {
     enable = true;
+    package = pkgsUnstable.tailscale;
     useRoutingFeatures = "client";
   };
 

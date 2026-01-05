@@ -121,6 +121,7 @@
   services.ivpn.enable = true;
   services.tailscale = {
     enable = true;
+    package = pkgsUnstable.tailscale;
     useRoutingFeatures = "client";
   };
 
