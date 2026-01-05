@@ -32,7 +32,7 @@ bold = true
 # Text background color. Can also be TrueColor.
 # bg_color = "Yellow"
 # A suffix that will be printed when the given bookmark is behind the working copy.
-behind_symbol = "＊"
+behind_symbol = "*"
 # Ignore Commits without a description.
 # Possible values: None, Current, All
 # None=> [default] Count all commits even ones without description
@@ -44,5 +44,5 @@ max_bookmarks = 10
 # Maximum length the bookmark name will be truncated to.
 max_length = 72
 # Surround the bookmark names with double-quotes
-surround_with_quotes = false
+surround_with_quotes = true
 
