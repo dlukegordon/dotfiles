@@ -58,6 +58,7 @@
     pkgsUnstable.neovim
     pkgsUnstable.nodejs
     pkgsUnstable.nushell
+    pkgsUnstable.opencode
     pkgsUnstable.ov
     pkgsUnstable.python3
     pkgsUnstable.rustup
