@@ -175,9 +175,23 @@ in
       "wheel"
       "input"
     ];
+    openssh.authorizedKeys.keys = [
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGh4an4vSJg76uIk1YpK2CfQxuFMtbDQ4aJMs+344vy"
+    ];
     shell = pkgsUnstable.nushell;
   };
   security.sudo.wheelNeedsPassword = false;
+
+  # Ssh
+  services.openssh = {
+    enable = true;
+    ports = [ 22 ];
+    settings = {
+      PasswordAuthentication = false;
+      AllowUsers = null;
+      X11Forwarding = false;
+    };
+  };
 
   # Some programs need SUID wrappers, can be configured further or are
   # started in user sessions.

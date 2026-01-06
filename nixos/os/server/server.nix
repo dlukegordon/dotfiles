@@ -90,7 +90,7 @@
     ports = [ 22 ];
     settings = {
       PasswordAuthentication = false;
-      AllowUsers = null; # Allows all users by default. Can be [ "user1" "user2" ]
+      AllowUsers = null;
       X11Forwarding = false;
     };
   };
