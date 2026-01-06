@@ -74,6 +74,7 @@
       "signal"
       "slack"
       "spotify"
+      "tailscale-app"
       "ungoogled-chromium"
       "zed"
       "zen"
@@ -111,4 +112,11 @@
   system.primaryUser = "luke";
   system.stateVersion = 6;
   users.users.luke.home = "/Users/luke";
+  users.users.luke.openssh.authorizedKeys.keys = [
+    "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGh4an4vSJg76uIk1YpK2CfQxuFMtbDQ4aJMs+344vy"
+  ];
+
+  services.openssh = {
+    enable = true;
+  };
 }
