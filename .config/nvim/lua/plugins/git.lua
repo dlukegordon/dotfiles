@@ -27,7 +27,45 @@ return {
   -- Adds git related signs to the gutter, as well as utilities for managing changes
   {
     "lewis6991/gitsigns.nvim",
-    opts = {},
+    opts = {
+      on_attach = function(bufnr)
+        local gitsigns = require("gitsigns")
+
+        local function map(mode, l, r, opts)
+          opts = opts or {}
+          opts.buffer = bufnr
+          vim.keymap.set(mode, l, r, opts)
+        end
+
+        -- Navigation
+        map("n", "<leader>jc", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "]c", bang = true })
+          else
+            gitsigns.nav_hunk("next")
+          end
+        end, { desc = "Goto next git change" })
+
+        map("n", "<leader>kc", function()
+          if vim.wo.diff then
+            vim.cmd.normal({ "[c", bang = true })
+          else
+            gitsigns.nav_hunk("prev")
+          end
+        end, { desc = "Goto previous git change" })
+
+        map("n", "<leader>gl", function()
+          gitsigns.blame_line({ full = true })
+        end, { desc = "Git blame line" })
+
+        map("n", "<leader>gq", gitsigns.setqflist, { desc = "Load buffer hunks into quickfix list" })
+        map("n", "<leader>gQ", function()
+          gitsigns.setqflist("all")
+        end, { desc = "Load project hunks into quickfix list" })
+
+        map({ "o", "x" }, "ih", gitsigns.select_hunk, { desc = "Select git hunk" })
+      end,
+    },
   },
 
   -- Magit for neovim
