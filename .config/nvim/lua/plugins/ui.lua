@@ -143,6 +143,7 @@ return {
       spec = {
         { "<leader>a", group = "All lines", mode = { "n", "x" } },
         { "<leader>b", group = "Buffers" },
+        { "<leader>e", group = "Ai", mode = { "n", "x" } },
         { "<leader>f", group = "Find" },
         { "<leader>g", group = "Git", mode = { "n", "x" } },
         { "<leader>j", group = "Jump forward", mode = { "n", "x" } },
