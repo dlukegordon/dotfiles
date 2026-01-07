@@ -52,6 +52,7 @@ $env.BAT_PAGER = 'ov --quit-if-one-screen --exit-write'
 $env.FZF_DEFAULT_OPTS = "--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
 $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
+$env.OPENCODE_EXPERIMENTAL_LSP_TOOL = true
 
 # Source gitignored.nu for secrets
 const gitignored_path = $nu.default-config-dir | path join "gitignored.nu"
@@ -85,91 +86,41 @@ def wbrln [] {
     niri msg action spawn -- waybar
 }
 
-def c [input?: string] {
-    if $input != null {
-        wl-copy $input
-    } else {
-        wl-copy $in
-    }
-}
-
-def p [] {
-    wl-paste
-}
-
 def clc [] {
     history | last 2 | get 0.command | c
 }
 
 # Aliases
+alias cat = bat --plain --paging=never
+alias ff = fastfetch
+alias less = bat --plain
 alias ll = lsd --color always -1 --group-directories-first
 alias lla = lsd --color always -lA --date relative --group-directories-first --git
 alias lt = lsd --color always -A --date relative --group-directories-first --tree
 alias lt2 = lsd --color always -A --date relative --group-directories-first --tree --depth 2
 alias lt3 = lsd --color always -A --date relative --group-directories-first --tree --depth 3
+alias mj = ~/projects/majjit/target/release/majjit
 alias ns = nix-shell --command /usr/local/bin/nu
+alias oc = zsh -i -c $"export PATH='($env.PATH | str join ':')'; opencode $@" # Need to run like this so opencode gets the proper PATH
+alias sha = hash sha256
 alias t = tms ~/scratch
 alias v = nvim
-alias less = bat --plain
-alias cat = bat --plain --paging=never
 alias wat = hwatch --interval 2 --differences=word --color --exec nu --login -c
 alias wat1 = hwatch --interval 1 --differences=word --color --exec nu --login -c
-alias wat5 = hwatch --interval 5 --differences=word --color --exec nu --login -c
 alias wat10 = hwatch --interval 10 --differences=word --color --exec nu --login -c
-alias sha = hash sha256
-alias ff = fastfetch
-
-# Git defs
-def is-git-repo [] {
-    let git_check = git rev-parse --is-inside-work-tree | complete | get exit_code
-    if $git_check != 0 {
-        print "Not a git repository"
-    }
-    $git_check == 0
-}
-
-def git-trunk-branch [] {
-    if (is-git-repo) == false {
-        return
-    }
-    let branches = (git branch --format="%(refname:short)" | lines)
-    if ('master' in $branches) {
-        'master'
-    } else {
-        'main'
-    }
-}
-
-def grbm [] {
-    git checkout (git-trunk-branch); git pull; git checkout -; git rebase (git-trunk-branch)
-}
-
-# Git aliases
-alias g = git
-alias gc = git commit
-alias gs = git status
-alias gl = git pull
-alias gp = git push
-alias gpf = git push --force
-alias gaa = git add -A
-alias gd = git diff
-alias gcom = git checkout (git-trunk-branch)
-alias gcob = git checkout -b
-alias gcol = git checkout -
-alias gcf = git commit --fixup HEAD
-alias gcaf = git commit -a -m "fixup"
-alias gdh = git diff HEAD
-alias gdh1 = git diff HEAD~1
-alias gdh2 = git diff HEAD~2
-alias gdh3 = git diff HEAD~3
-alias gdh4 = git diff HEAD~4
-alias grim = git rebase -i --autosquash (git_main_branch)
-alias gri2 = git rebase -i --autosquash HEAD~2
-alias gri3 = git rebase -i --autosquash HEAD~3
-alias gri4 = git rebase -i --autosquash HEAD~4
-alias gri5 = git rebase -i --autosquash HEAD~5
-alias gsu = git submodule update --init --recursive --force
-alias ghh = git rev-parse HEAD
+alias wat5 = hwatch --interval 5 --differences=word --color --exec nu --login -c
+alias pr = gh pr view --web (jbr)
+alias prnew = gh pr new --head (jbr)
+alias prnewdraft = gh pr new --draft --head (jbr)
+alias prchecks = gh pr checks --web (jbr)
+alias prready = gh pr ready (jbr)
+alias prdraft = gh pr ready --undo (jbr)
+alias predit = gh pr edit (jbr)
+alias prcomment = gh pr comment (jbr)
+alias prreview = gh pr review (jbr)
+alias browse = gh browse
+alias browseb = gh browse --branch (jbr)
+alias repo = gh repo view --web
 
 # Jj defs
 def is-jj-repo [] {
@@ -226,20 +177,6 @@ alias js = jj squash
 alias jsf = jj squash --ignore-immutable
 alias jsi = jj squash --interactive
 alias ju = jj undo
-alias lj = lazyjj --revisions 'all()'
-alias mj = ~/projects/majjit/target/release/majjit
-alias pr = gh pr view --web (jbr)
-alias prnew = gh pr new --head (jbr)
-alias prnewdraft = gh pr new --draft --head (jbr)
-alias prchecks = gh pr checks --web (jbr)
-alias prready = gh pr ready (jbr)
-alias prdraft = gh pr ready --undo (jbr)
-alias predit = gh pr edit (jbr)
-alias prcomment = gh pr comment (jbr)
-alias prreview = gh pr review (jbr)
-alias browse = gh browse
-alias browseb = gh browse --branch (jbr)
-alias repo = gh repo view --web
 
 # Direnv
 # From: https://github.com/nushell/nu_scripts/blob/main/nu-hooks/nu-hooks/direnv/config.nu
