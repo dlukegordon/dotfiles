@@ -63,6 +63,7 @@
     casks = [
       "brave-browser"
       "claude-code"
+      "cursor"
       "docker-desktop"
       "ghostty"
       "google-chrome"
