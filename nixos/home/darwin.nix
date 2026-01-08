@@ -24,6 +24,11 @@
         rebase = true;
       };
     };
+    ignores = [
+      "/shell.nix"
+      "/opencode.jsonc"
+      "/AGENTS.md"
+    ];
   };
 
   # Jj
