@@ -54,10 +54,6 @@ $env.LESS = '--mouse --wheel-lines=1'
 $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
 $env.OPENCODE_EXPERIMENTAL_LSP_TOOL = true
 
-# Source gitignored.nu for secrets
-const gitignored_path = $nu.default-config-dir | path join "gitignored.nu"
-source ($gitignored_path)
-
 # Defs
 def la [...pattern] {
     let pattern = if ($pattern | is-empty) { 

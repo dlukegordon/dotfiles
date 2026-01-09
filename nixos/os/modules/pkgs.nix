@@ -33,6 +33,7 @@
     ivpn
     ivpn-service
     just
+    kdePackages.discover
     kdePackages.kdbusaddons
     lazyjournal
     less
@@ -113,9 +114,14 @@
     enableSSHSupport = true;
   };
 
-  # Flatpak (yes it sucks but need for zen browser)
+  # Flatpak
   services.flatpak.enable = true;
   services.flatpak.package = pkgsUnstable.flatpak;
+  system.activationScripts.flatpak-repo = {
+    text = ''
+      ${pkgs.flatpak}/bin/flatpak remote-add --if-not-exists flathub https://flathub.org/repo/flathub.flatpakrepo
+    '';
+  };
 
   # Other programs/services
   programs.nix-ld.enable = true;
