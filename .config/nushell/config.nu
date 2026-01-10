@@ -86,6 +86,13 @@ def clc [] {
     history | last 2 | get 0.command | c
 }
 
+# Need to run like this so opencode gets the proper PATH
+def --wrapped oc [...args] {
+    let path_string = $env.PATH | str join ':'
+    let passed_args = $args | str join ' '
+    zsh -i -c $"export PATH='($path_string)'; opencode ($passed_args)"
+}
+
 # Aliases
 alias cat = bat --plain --paging=never
 alias ff = fastfetch
@@ -97,7 +104,6 @@ alias lt2 = lsd --color always -A --date relative --group-directories-first --tr
 alias lt3 = lsd --color always -A --date relative --group-directories-first --tree --depth 3
 alias mj = ~/projects/majjit/target/release/majjit
 alias ns = nix-shell --command /usr/local/bin/nu
-alias oc = zsh -i -c $"export PATH='($env.PATH | str join ':')'; opencode $@" # Need to run like this so opencode gets the proper PATH
 alias sha = hash sha256
 alias t = tms ~/scratch
 alias v = nvim
