@@ -2,120 +2,309 @@ return {
   -- Highlight, edit, and navigate code
   {
     "nvim-treesitter/nvim-treesitter",
-    dependencies = { "nvim-treesitter/nvim-treesitter-textobjects" },
     build = ":TSUpdate",
-    main = "nvim-treesitter.configs", -- Sets main module to use for opts
-    config = function(_, opts)
-      require("nvim-treesitter.configs").setup(opts)
-      local parser_config = require("nvim-treesitter.parsers").get_parser_configs()
-      parser_config["move"] = {
-        install_info = {
-          url = "~/mysten/sui/external-crates/move/tooling/tree-sitter/",
-          files = { "src/parser.c" },
-          branch = "main",
-          generate_requires_npm = false,
-          requires_generate_from_grammar = false,
-        },
-      }
+    lazy = false,
+    config = function()
+      vim.api.nvim_create_autocmd("User", {
+        pattern = "TSUpdate",
+        callback = function()
+          require("nvim-treesitter.parsers").move = {
+            tier = 1,
+            install_info = {
+              url = "",
+              revision = "",
+              path = "/home/luke/mysten/sui/external-crates/move/tooling/tree-sitter/",
+            },
+          }
+        end,
+      })
+
+      require("nvim-treesitter")
+        .install({
+          "bash",
+          "c",
+          "diff",
+          "html",
+          "json",
+          "kdl",
+          "lua",
+          "luadoc",
+          "markdown",
+          "markdown_inline",
+          "move",
+          "nix",
+          "nu",
+          "query",
+          "rust",
+          "vim",
+          "vimdoc",
+          "yaml",
+        })
+        :wait(60000)
+
+      vim.api.nvim_create_autocmd("BufReadPost", {
+        pattern = "*",
+        callback = function()
+          pcall(vim.treesitter.start)
+        end,
+      })
     end,
-    opts = {
-      ensure_installed = {
-        "bash",
-        "c",
-        "diff",
-        "html",
-        "kdl",
-        "lua",
-        "luadoc",
-        "markdown",
-        "markdown_inline",
-        "nu",
-        "query",
-        "rust",
-        "vim",
-        "vimdoc",
+  },
+
+  {
+    "nvim-treesitter/nvim-treesitter-textobjects",
+    branch = "main",
+    dependencies = { "nvim-treesitter/nvim-treesitter" },
+    keys = {
+      {
+        "af",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@function.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around function",
       },
-      -- Autoinstall languages that are not installed
-      auto_install = true,
-      highlight = {
-        enable = true,
-        -- Some languages depend on vim's regex highlighting system (such as Ruby) for indent rules.
-        --  If you are experiencing weird indenting issues, add the language to
-        --  the list of additional_vim_regex_highlighting and disabled languages for indent.
-        additional_vim_regex_highlighting = { "false" },
+      {
+        "if",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@function.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside function",
       },
-      indent = { enable = true, disable = { "ruby" } },
-      textobjects = {
-        select = {
-          enable = true,
-          lookahead = true,
+      {
+        "al",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@loop.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around loop",
+      },
+      {
+        "il",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@loop.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside loop",
+      },
+      {
+        "aa",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@parameter.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around parameter",
+      },
+      {
+        "ia",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@parameter.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside parameter",
+      },
+      {
+        "ac",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@conditional.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around conditional",
+      },
+      {
+        "ic",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@conditional.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside conditional",
+      },
+      {
+        "ay",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@return.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around return",
+      },
+      {
+        "iy",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@return.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside return",
+      },
+      {
+        "ad",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@comment.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around comment",
+      },
+      {
+        "id",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@comment.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside comment",
+      },
+      {
+        "ao",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@block.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around block",
+      },
+      {
+        "io",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@block.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside block",
+      },
+      {
+        "ar",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@class.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around class",
+      },
+      {
+        "ir",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@class.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside class",
+      },
+      {
+        "ae",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@call.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around call",
+      },
+      {
+        "ie",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@call.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside call",
+      },
+      {
+        "an",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@assignment.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around assignment",
+      },
+      {
+        "in",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@assignment.inner")
+        end,
+        mode = { "x", "o" },
+        desc = "Select inside assignment",
+      },
+      {
+        "nh",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@assignment.lhs")
+        end,
+        mode = { "x", "o" },
+        desc = "Select lhs of assignment",
+      },
+      {
+        "nl",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@assignment.rhs")
+        end,
+        mode = { "x", "o" },
+        desc = "Select rhs of assignment",
+      },
+      {
+        "x",
+        function()
+          require("nvim-treesitter-textobjects.select").select_textobject("@statement.outer")
+        end,
+        mode = { "x", "o" },
+        desc = "Select around statement",
+      },
+      {
+        "<leader>jf",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_start("@function.outer")
+        end,
+        mode = "n",
+        desc = "Goto next start of outer function",
+      },
+      {
+        "<leader>jF",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_start("@function.inner")
+        end,
+        mode = "n",
+        desc = "Goto next start of inner function",
+      },
+      {
+        "<leader>jr",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_start("@class.outer")
+        end,
+        mode = "n",
+        desc = "Goto next start of outer class",
+      },
+      {
+        "<leader>jR",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_next_start("@class.inner")
+        end,
+        mode = "n",
+        desc = "Goto next start of inner class",
+      },
 
-          keymaps = {
-            ["af"] = "@function.outer",
-            ["if"] = "@function.inner",
-
-            ["al"] = "@loop.outer",
-            ["il"] = "@loop.inner",
-
-            ["aa"] = "@parameter.outer",
-            ["ia"] = "@parameter.inner",
-
-            ["ac"] = "@conditional.outer",
-            ["ic"] = "@conditional.inner",
-
-            ["ay"] = "@return.outer",
-            ["iy"] = "@return.inner",
-
-            ["ad"] = "@comment.outer",
-            ["id"] = "@comment.inner",
-
-            ["ao"] = "@block.outer",
-            ["io"] = "@block.inner",
-
-            ["ar"] = "@class.outer",
-            ["ir"] = "@class.inner",
-
-            ["ae"] = "@call.outer",
-            ["ie"] = "@call.inner",
-
-            ["an"] = "@assignment.outer",
-            ["in"] = "@assignment.inner",
-            ["nh"] = "@assignment.lhs",
-            ["nl"] = "@assignment.rhs",
-
-            ["x"] = "@statement.outer",
-          },
-        },
-        move = {
-          enable = true,
-          set_jumps = true, -- whether to set jumps in the jumplist
-          goto_next_start = {
-            ["<leader>jf"] = "@function.outer",
-            ["<leader>jF"] = "@function.inner",
-
-            ["<leader>jr"] = "@class.outer",
-            ["<leader>jR"] = "@class.inner",
-            --     ["<leader>jl"] = "@loop.outer",
-            --     ["<leader>jL"] = "@loop.inner",
-
-            --     ["<leader>ja"] = "@parameter.outer",
-            --     ["<leader>jA"] = "@parameter.inner",
-          },
-          goto_previous_start = {
-            ["<leader>kf"] = "@function.outer",
-            ["<leader>kF"] = "@function.inner",
-
-            ["<leader>kr"] = "@class.outer",
-            ["<leader>kR"] = "@class.inner",
-          },
-        },
+      {
+        "<leader>kf",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_start("@function.outer")
+        end,
+        mode = "n",
+        desc = "Goto previous start of outer function",
+      },
+      {
+        "<leader>kF",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_start("@function.inner")
+        end,
+        mode = "n",
+        desc = "Goto previous start of inner function",
+      },
+      {
+        "<leader>kr",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_start("@class.outer")
+        end,
+        mode = "n",
+        desc = "Goto previous start of outer class",
+      },
+      {
+        "<leader>kR",
+        function()
+          require("nvim-treesitter-textobjects.move").goto_previous_start("@class.inner")
+        end,
+        mode = "n",
+        desc = "Goto previous start of inner class",
       },
     },
-    -- There are additional nvim-treesitter modules that you can use to interact
-    -- with nvim-treesitter. You should go explore a few and see what interests you:
-    --
-    --    - Incremental selection: Included, see `:help nvim-treesitter-incremental-selection-mod`
-    --    - Show your current context: https://github.com/nvim-treesitter/nvim-treesitter-context
-    --    - Treesitter + textobjects: https://github.com/nvim-treesitter/nvim-treesitter-textobjects
   },
 }

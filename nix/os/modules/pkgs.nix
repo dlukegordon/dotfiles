@@ -81,6 +81,7 @@
     stylua
     tmux
     tokei
+    tree-sitter
     unzip
     usbutils
     uutils-coreutils
