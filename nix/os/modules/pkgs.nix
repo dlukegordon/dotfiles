@@ -8,7 +8,6 @@
   # List packages installed in system profile. To search, run:
   # $ nix search wget
   environment.systemPackages = with pkgs; [
-    appimage-run
     bash-language-server
     bc
     btop
@@ -128,9 +127,25 @@
     '';
   };
 
+  # Steam / games
+  programs.steam = {
+    enable = true;
+    gamescopeSession.enable = true;
+    protontricks.enable = true;
+    extraCompatPackages = [ pkgs.proton-ge-bin ];
+    remotePlay.openFirewall = true;
+    dedicatedServer.openFirewall = true;
+    localNetworkGameTransfers.openFirewall = true;
+  };
+  programs.gamescope = {
+    enable = true;
+    capSysNice = true;
+  };
+  programs.gamemode.enable = true;
+
   # Other programs/services
   programs.nix-ld.enable = true;
-  programs.steam.enable = true;
+  programs.appimage.enable = true;
   services.tailscale = {
     enable = true;
     package = pkgsUnstable.tailscale;
