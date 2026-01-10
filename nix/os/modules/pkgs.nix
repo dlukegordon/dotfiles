@@ -2,6 +2,7 @@
   config,
   pkgs,
   pkgsUnstable,
+  inputs,
   ...
 }:
 {
@@ -28,6 +29,7 @@
     hwatch
     imagemagick
     inetutils
+    inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
     just
     kdePackages.discover
     kdePackages.isoimagewriter
@@ -63,7 +65,6 @@
     pkgsUnstable.neovim
     pkgsUnstable.nodejs
     pkgsUnstable.nushell
-    pkgsUnstable.opencode
     pkgsUnstable.ov
     pkgsUnstable.python3
     pkgsUnstable.rustup
