@@ -67,6 +67,18 @@
   services.desktopManager.plasma6.enable = true;
   programs.kdeconnect.enable = true;
 
+  # Kmscon
+  services.kmscon = {
+    enable = true;
+    fonts = [
+      {
+        name = "JetBrains Mono";
+        package = pkgs.jetbrains-mono;
+      }
+    ];
+    extraConfig = "font-dpi=192";
+  };
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 

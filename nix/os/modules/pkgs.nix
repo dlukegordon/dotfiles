@@ -16,7 +16,6 @@
     cmake
     fastfetch
     fd
-    font-manager
     fzf
     gcc
     gh
