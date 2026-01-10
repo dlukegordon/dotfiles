@@ -17,27 +17,27 @@ stow:
 	stow . --target=$(HOME)
 
 nixos-cp-hardware:
-	cp /etc/nixos/hardware-configuration.nix nixos/os/hardware-configuration.nix
+	cp /etc/nixos/hardware-configuration.nix nix/os/hardware-configuration.nix
 
 nixos-test: check-host
-	sudo nixos-rebuild test --flake path:$(HOME)/dotfiles/nixos#$(host)
+	sudo nixos-rebuild test --flake path:$(HOME)/dotfiles/nix#$(host)
 
 nixos-switch: check-host
-	sudo nixos-rebuild switch --flake path:$(HOME)/dotfiles/nixos#$(host)
+	sudo nixos-rebuild switch --flake path:$(HOME)/dotfiles/nix#$(host)
 
 nixos-boot: check-host
-	sudo nixos-rebuild boot --flake path:$(HOME)/dotfiles/nixos#$(host)
+	sudo nixos-rebuild boot --flake path:$(HOME)/dotfiles/nix#$(host)
 
 nixos-update:
-	nix flake update --flake path:$(HOME)/dotfiles/nixos
-	sudo nixos-rebuild boot --upgrade --flake path:$(HOME)/dotfiles/nixos#$(host)
+	nix flake update --flake path:$(HOME)/dotfiles/nix
+	sudo nixos-rebuild boot --upgrade --flake path:$(HOME)/dotfiles/nix#$(host)
 
 darwin-switch: check-host
-	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nixos#$(host)
+	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nix#$(host)
 
 darwin-update:
-	nix flake update --flake path:$(HOME)/dotfiles/nixos
-	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nixos#$(host)
+	nix flake update --flake path:$(HOME)/dotfiles/nix
+	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nix#$(host)
 
 install: check-host stow nixos-cp-hardware nixos-boot
 

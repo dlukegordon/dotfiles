@@ -13,5 +13,5 @@
 .config/zsh/gitignored.sh
 history.sqlite*
 history.txt
-nixos/os/hardware-configuration.nix
+nix/os/hardware-configuration.nix
 node_modules

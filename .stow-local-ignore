@@ -5,4 +5,4 @@ Makefile
 README.org
 README.md
 README-old.md
-nixos
+nix
