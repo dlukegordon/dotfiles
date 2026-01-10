@@ -9,7 +9,6 @@
   imports = [
     ./modules/general.nix
     # ./modules/plasma.nix
-    ./modules/stylix.nix
     ./modules/wm.nix
   ];
 

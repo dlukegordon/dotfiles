@@ -16,11 +16,6 @@
       inputs.home-manager.follows = "home-manager";
     };
 
-    stylix = {
-      url = "github:nix-community/stylix/release-25.05";
-      inputs.nixpkgs.follows = "nixpkgs";
-    };
-
     nix-darwin = {
       url = "github:nix-darwin/nix-darwin/nix-darwin-25.05";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -33,7 +28,6 @@
       nixpkgs-unstable,
       home-manager,
       plasma-manager,
-      stylix,
       nix-darwin,
       ...
     }:
@@ -54,7 +48,6 @@
 
             modules = [
               ./os/valhalla.nix
-              stylix.nixosModules.stylix
 
               home-manager.nixosModules.home-manager
               {
@@ -86,7 +79,6 @@
 
             modules = [
               ./os/asgard.nix
-              stylix.nixosModules.stylix
 
               home-manager.nixosModules.home-manager
               {

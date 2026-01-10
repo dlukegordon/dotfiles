@@ -25,9 +25,6 @@
     vlc
   ];
 
-  # Btop. We also add to os pkgs, but we also add here so Stylix will theme.
-  programs.btop.enable = true;
-
   # Helix
   programs.helix.enable = true;
   programs.helix.package = pkgsUnstable.helix;
