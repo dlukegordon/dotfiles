@@ -18,9 +18,7 @@
     pkgsUnstable.ghostty
     pkgsUnstable.signal-desktop
     pkgsUnstable.sparrow
-    pkgsUnstable.walker
     pkgsUnstable.wezterm
-    qalculate-qt
     transmission_4-qt
     vlc
   ];
