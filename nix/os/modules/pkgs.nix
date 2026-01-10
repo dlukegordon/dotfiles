@@ -130,6 +130,7 @@
   # Steam / games
   programs.steam = {
     enable = true;
+    package = pkgsUnstable.steam;
     gamescopeSession.enable = true;
     protontricks.enable = true;
     extraCompatPackages = [ pkgs.proton-ge-bin ];
@@ -137,6 +138,8 @@
     dedicatedServer.openFirewall = true;
     localNetworkGameTransfers.openFirewall = true;
   };
+  hardware.steam-hardware.enable = true;
+  services.udev.packages = [ pkgs.game-devices-udev-rules ];
   programs.gamescope = {
     enable = true;
     capSysNice = true;
