@@ -8,6 +8,7 @@
 {
   imports = [
     ./modules/general.nix
+    ./modules/plasma.nix
   ];
 
   # The rest of the git and jj configs are in modules/general.nix
