@@ -12,6 +12,6 @@
   ];
 
   # The rest of the git and jj configs are in modules/general.nix
-  programs.git.userEmail = "luke@valhalla";
+  programs.git.settings.user.email = "luke@valhalla";
   programs.jujutsu.settings.user.email = "luke@valhalla";
 }

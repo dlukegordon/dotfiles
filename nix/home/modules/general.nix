@@ -30,9 +30,9 @@
   # Git
   programs.git = {
     enable = true;
-    userName = "Lucas Gordon";
-    # Email is set in the home configs for each host
-    extraConfig = {
+    settings = {
+      # Email is set in the home configs for each host
+      user.name = "Lucas Gordon";
       push = {
         autoSetupRemote = true;
       };

@@ -14,9 +14,9 @@
   # Git
   programs.git = {
     enable = true;
-    userName = "Luke Gordon";
-    userEmail = "luke.gordon@mystenlabs.com";
-    extraConfig = {
+    settings = {
+      user.name = "Luke Gordon";
+      user.email = "luke.gordon@mystenlabs.com";
       push = {
         autoSetupRemote = true;
       };

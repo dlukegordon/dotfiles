@@ -10,14 +10,12 @@
 
   home.stateVersion = "24.11";
 
-  programs.git.userEmail = "nidavellir";
-
   # Git
   programs.git = {
     enable = true;
-    userName = "Lucas Gordon";
-    # Email is set in the home configs for each host
-    extraConfig = {
+    settings = {
+      user.name = "Lucas Gordon";
+      user.email = "nidavellir";
       push = {
         autoSetupRemote = true;
       };
