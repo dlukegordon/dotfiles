@@ -33,6 +33,7 @@ $env.config.menus = [
 # Path
 path add "~/bin"
 path add "~/.cargo/bin"
+path add "~/.npm-global/bin"
 if ($nu.os-info.name == "macos") {
     path add "/usr/local/bin"
     path add $"($nu.home-path)/.nix-profile/bin"
@@ -52,7 +53,7 @@ $env.BAT_PAGER = 'ov --quit-if-one-screen --exit-write'
 $env.FZF_DEFAULT_OPTS = "--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
 $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
-$env.OPENCODE_EXPERIMENTAL_LSP_TOOL = true
+# $env.OPENCODE_EXPERIMENTAL_LSP_TOOL = true
 
 # Defs
 def la [...pattern] {
@@ -90,7 +91,7 @@ def clc [] {
 def --wrapped oc [...args] {
     let path_string = $env.PATH | str join ':'
     let passed_args = $args | str join ' '
-    zsh -i -c $"export PATH='($path_string)'; opencode ($passed_args)"
+    zsh -i -c $"export PATH='($path_string)'; opencode --port ($passed_args)"
 }
 
 # Aliases
@@ -112,18 +113,6 @@ alias wat = hwatch --interval 2 --differences=word --color --exec nu --login -c
 alias wat1 = hwatch --interval 1 --differences=word --color --exec nu --login -c
 alias wat10 = hwatch --interval 10 --differences=word --color --exec nu --login -c
 alias wat5 = hwatch --interval 5 --differences=word --color --exec nu --login -c
-alias pr = gh pr view --web (jbr)
-alias prnew = gh pr new --head (jbr)
-alias prnewdraft = gh pr new --draft --head (jbr)
-alias prchecks = gh pr checks --web (jbr)
-alias prready = gh pr ready (jbr)
-alias prdraft = gh pr ready --undo (jbr)
-alias predit = gh pr edit (jbr)
-alias prcomment = gh pr comment (jbr)
-alias prreview = gh pr review (jbr)
-alias browse = gh browse
-alias browseb = gh browse --branch (jbr)
-alias repo = gh repo view --web
 
 # Jj defs
 def is-jj-repo [] {
@@ -180,6 +169,20 @@ alias js = jj squash
 alias jsf = jj squash --ignore-immutable
 alias jsi = jj squash --interactive
 alias ju = jj undo
+
+# Github aliases
+alias pr = gh pr view --web (jbr)
+alias prnew = gh pr new --head (jbr)
+alias prnewdraft = gh pr new --draft --head (jbr)
+alias prchecks = gh pr checks --web (jbr)
+alias prready = gh pr ready (jbr)
+alias prdraft = gh pr ready --undo (jbr)
+alias predit = gh pr edit (jbr)
+alias prcomment = gh pr comment (jbr)
+alias prreview = gh pr review (jbr)
+alias browse = gh browse
+alias browseb = gh browse --branch (jbr)
+alias repo = gh repo view --web
 
 # Direnv
 # From: https://github.com/nushell/nu_scripts/blob/main/nu-hooks/nu-hooks/direnv/config.nu
