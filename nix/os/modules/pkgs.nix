@@ -70,6 +70,7 @@
     pkgsUnstable.rustup
     pkgsUnstable.slack
     pkgsUnstable.spotify
+    pkgsUnstable.zoom-us
     psmisc
     rage
     ripgrep
