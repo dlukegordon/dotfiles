@@ -35,7 +35,11 @@
                 "applications:spotify.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:systemsettings.desktop"
+                "applications:steam.desktop"
               ];
+              behavior = {
+                minimizeActiveTaskOnClick = false;
+              };
             };
           }
 
@@ -50,8 +54,10 @@
 
     shortcuts = {
       kwin = {
+        # Free up Meta+0
+        "view_actual_size" = [ ];
         # Free up Meta+W
-        "Overview" = [ ];
+        "Overview" = [ "Meta+0" ];
         "Window Close" = [ "Meta+W" ];
         "Window Fullscreen" = [ "Meta+Z" ];
       };
