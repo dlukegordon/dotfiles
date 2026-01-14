@@ -88,10 +88,14 @@ def clc [] {
 }
 
 # Need to run like this so opencode gets the proper PATH
-def --wrapped oc [...args] {
-    let path_string = $env.PATH | str join ':'
-    let passed_args = $args | str join ' '
-    zsh -i -c $"export PATH='($path_string)'; opencode --port ($passed_args)"
+def --wrapped oc [...passed_args] {
+    let path_string = $env.PATH | str join (char esep)
+    let args = if ($passed_args | is-empty) {
+        "--port"
+    } else {
+        $passed_args | str join ' '
+    }
+    zsh -i -c $"export PATH='($path_string)'; opencode ($args)"
 }
 
 # Aliases
