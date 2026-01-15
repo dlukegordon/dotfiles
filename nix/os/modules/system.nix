@@ -79,6 +79,9 @@
     extraConfig = "font-dpi=192";
   };
 
+  # Dbus
+  services.dbus.implementation = "broker";
+
   # Enable CUPS to print documents.
   services.printing.enable = true;
 
