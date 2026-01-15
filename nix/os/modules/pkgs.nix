@@ -57,7 +57,10 @@
     opensc
     ouch
     pkgsUnstable.bat
+    pkgsUnstable.bitcoind
     pkgsUnstable.carapace
+    pkgsUnstable.cargo-binstall
+    pkgsUnstable.cargo-nextest
     pkgsUnstable.claude-code
     pkgsUnstable.gitu
     pkgsUnstable.jjui
