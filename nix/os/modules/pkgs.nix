@@ -41,6 +41,7 @@
     kdePackages.ksystemlog
     kdePackages.partitionmanager
     kdePackages.plasma-browser-integration
+    kdePackages.plasma-workspace-wallpapers
     kdePackages.sddm-kcm
     lazyjournal
     less
@@ -74,6 +75,8 @@
     pkgsUnstable.slack
     pkgsUnstable.spotify
     pkgsUnstable.zoom-us
+    pop-hp-wallpapers
+    pop-wallpapers
     psmisc
     rage
     ripgrep

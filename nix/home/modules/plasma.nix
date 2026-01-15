@@ -8,7 +8,6 @@
     enable = true;
     workspace.lookAndFeel = "org.kde.breezedark.desktop";
     session.sessionRestore.restoreOpenApplicationsOnLogin = "startWithEmptySession";
-    workspace.wallpaper = "${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/DarkestHour/contents/images/2560x1600.jpg";
     panels = [
       {
         location = "bottom";

@@ -62,6 +62,12 @@
     enable = true;
     wayland.enable = true;
   };
+  environment.systemPackages = [
+    (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
+      [General]
+      background=${pkgs.pop-hp-wallpapers}/share/backgrounds/pop-hp/tesseract-gold.png
+    '')
+  ];
 
   # Enable the KDE Plasma Desktop Environment.
   services.desktopManager.plasma6.enable = true;
