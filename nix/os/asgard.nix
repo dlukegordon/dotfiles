@@ -13,7 +13,7 @@
 
   networking.hostName = "asgard";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   # Fingerprint reader
   # For some reason this seems to cause a problem with kdewallet sometimes. If you keep getting

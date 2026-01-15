@@ -14,7 +14,7 @@
 
   networking.hostName = "valhalla";
 
-  boot.kernelPackages = pkgs.linuxPackages_latest;
+  boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
 
   # Sunshine game streaming server
   services.sunshine = {
