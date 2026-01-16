@@ -116,9 +116,9 @@
     isNormalUser = true;
     description = "Luke";
     extraGroups = [
+      "input"
       "networkmanager"
       "wheel"
-      "input"
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGh4an4vSJg76uIk1YpK2CfQxuFMtbDQ4aJMs+344vy"
