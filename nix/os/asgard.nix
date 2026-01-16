@@ -12,8 +12,9 @@
   ];
 
   networking.hostName = "asgard";
-
   boot.kernelPackages = pkgs.linuxPackages_xanmod_latest;
+  services.automatic-timezoned.enable = true;
+  services.geoclue2.geoProviderUrl = "https://api.beacondb.net/v1/geolocate";
 
   # Fingerprint reader
   # For some reason this seems to cause a problem with kdewallet sometimes. If you keep getting
