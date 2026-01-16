@@ -59,6 +59,7 @@
     ouch
     pkgsUnstable.bat
     pkgsUnstable.bitcoind
+    pkgsUnstable.buf
     pkgsUnstable.carapace
     pkgsUnstable.cargo-binstall
     pkgsUnstable.cargo-nextest
