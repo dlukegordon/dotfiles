@@ -28,4 +28,9 @@
 
   # Enable Intel Quick Sync Video
   hardware.graphics.extraPackages = [ pkgs.vpl-gpu-rt ];
+
+  boot.initrd.kernelModules = [ "i915" ];
+  boot.kernelParams = [
+    "i915.fastboot=1"
+  ];
 }
