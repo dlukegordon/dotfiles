@@ -97,6 +97,7 @@
       X11Forwarding = false;
     };
   };
+  programs.mosh.enable = true;
 
   # Tailscale
   services.tailscale = {

@@ -158,6 +158,7 @@
       X11Forwarding = false;
     };
   };
+  programs.mosh.enable = true;
 
   # Docker
   virtualisation.docker = {
