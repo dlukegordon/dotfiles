@@ -52,7 +52,6 @@
     lua-language-server
     marksman
     mosh
-    nautilus
     nixd
     nixfmt-rfc-style
     opensc

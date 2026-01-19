@@ -24,9 +24,25 @@
   # Allow unfree packages
   nixpkgs.config.allowUnfree = true;
 
-  # Bootloader.
-  boot.loader.systemd-boot.enable = true;
-  boot.loader.efi.canTouchEfiVariables = true;
+  # Booting
+  boot = {
+    consoleLogLevel = 3;
+    initrd.verbose = false;
+    loader.efi.canTouchEfiVariables = true;
+    loader.systemd-boot.enable = true;
+    plymouth = {
+      enable = true;
+      theme = "breeze";
+    };
+    kernelParams = [
+      "quiet"
+      "splash"
+      "boot.shell_on_fail"
+      "udev.log_priority=3"
+      "rd.systemd.show_status=auto"
+      "plymouth.use-simpledrm"
+    ];
+  };
 
   # networking.wireless.enable = true;  # Enables wireless support via wpa_supplicant.
 
