@@ -32,12 +32,7 @@
     loader.systemd-boot.enable = true;
     plymouth = {
       enable = true;
-      theme = "loader_2";
-      themePackages = with pkgs; [
-        (adi1090x-plymouth-themes.override {
-          selected_themes = [ "loader_2" ];
-        })
-      ];
+      theme = "script";
     };
     kernelParams = [
       "quiet"
