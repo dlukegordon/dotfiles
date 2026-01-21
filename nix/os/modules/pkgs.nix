@@ -74,6 +74,7 @@
     pkgsUnstable.rustup
     pkgsUnstable.slack
     pkgsUnstable.spotify
+    pkgsUnstable.tor-browser
     pkgsUnstable.zoom-us
     pop-hp-wallpapers
     pop-wallpapers
