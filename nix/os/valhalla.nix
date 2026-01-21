@@ -7,12 +7,7 @@
 let
   red-rgb = pkgs.writeScriptBin "red-rgb" ''
     #!/bin/sh
-    NUM_DEVICES=$(${pkgs.openrgb}/bin/openrgb --noautoconnect --list-devices | grep -E '^[0-9]+: ' | wc -l)
-
-    for i in $(seq 0 $(($NUM_DEVICES - 1))); do
-      ${pkgs.openrgb}/bin/openrgb --noautoconnect --device $i --mode static --color FF0000
-    done
-    ${pkgs.openrgb}/bin/openrgb --device "Z790 AORUS ELITE AX" --mode static --color FF0000
+    ${pkgs.openrgb}/bin/openrgb --mode static --color FF0000
   '';
 in
 {
@@ -41,12 +36,24 @@ in
     enable = true;
     package = pkgs.openrgb-with-all-plugins;
   };
+  boot.kernelModules = [
+    "i2c-dev"
+    "i2c-i801"
+  ];
   systemd.services.rgb = {
     description = "rgb";
+    after = [
+      "openrgb.service"
+      "suspend.target"
+    ];
+    requires = [ "openrgb.service" ];
     serviceConfig = {
       ExecStart = "${red-rgb}/bin/red-rgb";
       Type = "oneshot";
     };
-    wantedBy = [ "multi-user.target" ];
+    wantedBy = [
+      "multi-user.target"
+      "suspend.target"
+    ];
   };
 }
