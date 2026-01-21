@@ -103,7 +103,11 @@
   services.tailscale = {
     enable = true;
     package = pkgsUnstable.tailscale;
-    useRoutingFeatures = "client";
+    useRoutingFeatures = "both";
+    extraSetFlags = [
+      "--advertise-exit-node"
+      "--advertise-routes=192.168.1.0/24"
+    ];
   };
 
   # Gitea
