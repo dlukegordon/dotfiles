@@ -81,7 +81,9 @@ vim.api.nvim_create_autocmd("DiagnosticChanged", {
       current_diagnostic_win = nil
     end
 
-    show_diagnostics_on_hover()
+    if vim.fn.mode() ~= "i" then
+      show_diagnostics_on_hover()
+    end
   end,
 })
 
