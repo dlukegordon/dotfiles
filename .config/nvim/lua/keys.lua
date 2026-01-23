@@ -32,6 +32,7 @@ vim.keymap.set("n", "<leader>ww", function()
   end
 end, { desc = "Switch to last or next window" })
 vim.keymap.set("n", "<leader>wv", "<C-w>v", { desc = "Split window vertically" })
+vim.keymap.set("n", "<leader>wV", "<cmd>leftabove vsplit<cr>", { desc = "Split window vertically (left)" })
 vim.keymap.set("n", "<leader>wh", "<C-w>s", { desc = "Split window horizontally" })
 vim.keymap.set("n", "<leader>wd", "<C-w>q", { desc = "Delete window" })
 

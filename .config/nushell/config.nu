@@ -50,7 +50,7 @@ $env.EDITOR = $env.config.buffer_editor
 $env.VISUAL = $env.config.buffer_editor
 $env.PAGER = 'ov --exit-write'
 $env.BAT_PAGER = 'ov --quit-if-one-screen --exit-write'
-$env.FZF_DEFAULT_OPTS = "--pointer='>' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
+$env.FZF_DEFAULT_OPTS = "--pointer='>' --gutter=' ' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
 $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
 # $env.OPENCODE_EXPERIMENTAL_LSP_TOOL = true
