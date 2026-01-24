@@ -148,11 +148,6 @@
   system.activationScripts.steamvr-capset.text = ''
     ${pkgs.libcap}/bin/setcap CAP_SYS_NICE+ep /home/luke/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrcompositor-launcher 2>/dev/null || true
   '';
-  programs.alvr = {
-    enable = true;
-    openFirewall = true;
-    package = pkgsUnstable.alvr;
-  };
 
   # Other programs/services
   programs.appimage.enable = true;

@@ -15,6 +15,7 @@
   home.packages = with pkgs; [
     chromium
     google-chrome
+    inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
     keepassxc
     libreoffice-qt
     obsidian

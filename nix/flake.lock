@@ -138,7 +138,28 @@
         "nixpkgs": "nixpkgs",
         "nixpkgs-unstable": "nixpkgs-unstable",
         "opencode": "opencode",
-        "plasma-manager": "plasma-manager"
+        "plasma-manager": "plasma-manager",
+        "zen-browser": "zen-browser"
+      }
+    },
+    "zen-browser": {
+      "inputs": {
+        "nixpkgs": [
+          "nixpkgs"
+        ]
+      },
+      "locked": {
+        "lastModified": 1769228180,
+        "narHash": "sha256-94KY0JNjdd3CcSyKlHPCPswlqmUrWT6+MfOHektsdB8=",
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "rev": "ef1663c14b7c3c2b84bcf140232534be5a2a0257",
+        "type": "github"
+      },
+      "original": {
+        "owner": "youwen5",
+        "repo": "zen-browser-flake",
+        "type": "github"
       }
     }
   },

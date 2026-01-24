@@ -27,7 +27,7 @@
           {
             iconTasks = {
               launchers = [
-                "applications:app.zen_browser.zen.desktop"
+                "applications:zen.desktop"
                 "applications:com.mitchellh.ghostty.desktop"
                 "applications:slack.desktop"
                 "applications:signal.desktop"
