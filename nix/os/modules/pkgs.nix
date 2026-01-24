@@ -13,7 +13,6 @@
     bc
     btop
     ccid
-    chromium
     cmake
     fastfetch
     fd
@@ -23,7 +22,6 @@
     git
     gnumake
     gnupg
-    google-chrome
     hunspell
     hunspellDicts.en_US
     hwatch
@@ -45,7 +43,6 @@
     kdePackages.sddm-kcm
     lazyjournal
     less
-    libreoffice-qt
     libtool
     lsd
     lsof
@@ -63,19 +60,12 @@
     pkgsUnstable.cargo-binstall
     pkgsUnstable.cargo-nextest
     pkgsUnstable.claude-code
-    pkgsUnstable.gitu
-    pkgsUnstable.jjui
-    pkgsUnstable.lazyjj
     pkgsUnstable.neovim
     pkgsUnstable.nodejs
     pkgsUnstable.nushell
     pkgsUnstable.ov
     pkgsUnstable.python3
     pkgsUnstable.rustup
-    pkgsUnstable.slack
-    pkgsUnstable.spotify
-    pkgsUnstable.tor-browser
-    pkgsUnstable.zoom-us
     pop-hp-wallpapers
     pop-wallpapers
     psmisc

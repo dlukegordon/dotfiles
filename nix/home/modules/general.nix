@@ -13,19 +13,28 @@
   # Packages that should be installed to the user profile.
   # In general, GUI apps should be added here.
   home.packages = with pkgs; [
+    chromium
+    google-chrome
     keepassxc
+    libreoffice-qt
     obsidian
     pkgsUnstable.ghostty
     pkgsUnstable.signal-desktop
+    pkgsUnstable.slack
     pkgsUnstable.sparrow
+    pkgsUnstable.spotify
+    pkgsUnstable.tor-browser
     pkgsUnstable.wezterm
+    pkgsUnstable.zoom-us
     transmission_4-qt
     vlc
   ];
 
   # Helix
-  programs.helix.enable = true;
-  programs.helix.package = pkgsUnstable.helix;
+  programs.helix = {
+    enable = true;
+    package = pkgsUnstable.helix;
+  };
 
   # Git
   programs.git = {
