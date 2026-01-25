@@ -16,6 +16,7 @@ in
     ./modules/nvidia.nix
     ./modules/pkgs.nix
     ./modules/system.nix
+    ./modules/syncthing.nix
   ];
 
   networking.hostName = "valhalla";

@@ -124,6 +124,12 @@
     nix-direnv.enable = true;
   };
 
+  # Systray
+  services.syncthing.tray = {
+    enable = true;
+    package = pkgsUnstable.syncthingtray;
+  };
+
   # Make some directories
   home.activation.mkDirs = lib.hm.dag.entryAfter [ "writeBoundary" ] ''
     mkdir -p ${config.home.homeDirectory}/scratch
