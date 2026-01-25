@@ -34,6 +34,7 @@
                 "applications:spotify.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:systemsettings.desktop"
+                "applications:org.keepassxc.KeePassXC.desktop"
                 "applications:steam.desktop"
               ];
               behavior = {

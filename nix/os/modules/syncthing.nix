@@ -66,6 +66,22 @@
             };
           };
         };
+        "keepass" = {
+          path = "/home/luke/keepass";
+          devices = [
+            "valhalla"
+            "asgard"
+            "nidavellir"
+            "zfold7"
+          ];
+          versioning = {
+            type = "staggered";
+            params = {
+              cleanInterval = "3600"; # Clean interval in seconds (1 hour)
+              maxAge = "31536000"; # Keep versions for 1 year (in seconds)
+            };
+          };
+        };
       };
     };
   };
