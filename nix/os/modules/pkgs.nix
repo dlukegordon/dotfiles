@@ -116,6 +116,9 @@
     enable = true;
     enableSSHSupport = true;
   };
+  environment.etc."gnupg/scdaemon.conf".text = ''
+    disable-ccid
+  '';
 
   # Flatpak
   services.flatpak.enable = true;
