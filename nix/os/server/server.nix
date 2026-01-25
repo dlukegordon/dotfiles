@@ -87,6 +87,12 @@
   };
   security.sudo.wheelNeedsPassword = false;
 
+  # Link nushell to /usr/local/bin to make a single path for nixos and darwin
+  system.activationScripts.bin-nu.text = ''
+    mkdir -p /usr/local/bin
+    ln -sfn ${pkgs.nushell}/bin/nu /usr/local/bin/nu
+  '';
+
   # Ssh
   services.openssh = {
     enable = true;
