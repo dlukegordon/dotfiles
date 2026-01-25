@@ -259,6 +259,19 @@ return {
   {
     "kevinhwang91/nvim-bqf",
     event = "VeryLazy",
+    opts = {
+      preview = {
+        winblend = 0,
+      },
+    },
+  },
+
+  {
+    "stevearc/quicker.nvim",
+    ft = "qf",
+    ---@module "quicker"
+    ---@type quicker.SetupOptions
+    opts = {},
   },
 
   -- Better markdown rendering
@@ -280,7 +293,6 @@ return {
         enabled = false,
       },
     },
-
     ft = { "markdown", "Avante" },
   },
 

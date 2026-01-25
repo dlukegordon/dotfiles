@@ -31,17 +31,6 @@ return {
     "echasnovski/mini.nvim",
     config = function()
       require("mini.comment").setup()
-
-      require("mini.files").setup({
-        options = {
-          use_as_default_explorer = false,
-        },
-        windows = {
-          preview = true,
-          width_preview = 100,
-        },
-      })
-      vim.keymap.set("n", "_", ":lua MiniFiles.open()<CR>", { desc = "Open mini file browser" })
     end,
   },
 
