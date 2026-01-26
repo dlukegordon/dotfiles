@@ -37,6 +37,7 @@
     pkgs.zoxide
     pkgsUnstable.bat
     pkgsUnstable.gh
+    pkgsUnstable.nushell
     pkgsUnstable.ov
   ];
 
@@ -54,7 +55,6 @@
       "foundry"
       "marksman"
       "neovim"
-      "nushell"
       "opencode"
       "rustup"
       "starship"
@@ -88,7 +88,7 @@
 
   # Link nushell to /usr/local/bin to make a single path for nixos and darwin
   system.activationScripts.postActivation.text = ''
-    sudo ln -sfn /opt/homebrew/bin/nu /usr/local/bin/nu
+    sudo ln -sfn /run/current-system/sw/bin/nu /usr/local/bin/nu
   '';
 
   nix.enable = false; # For determinate nix

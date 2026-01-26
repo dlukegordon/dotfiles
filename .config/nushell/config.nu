@@ -36,11 +36,11 @@ path add "~/.cargo/bin"
 path add "~/.npm-global/bin"
 if ($nu.os-info.name == "macos") {
     path add "/usr/local/bin"
-    path add $"($nu.home-dir)/.nix-profile/bin"
+    path add $"($nu.home-path)/.nix-profile/bin"
     path add $"/etc/profiles/per-user/($env.user)/bin"
     path add "/run/current-system/sw/bin"
     path add "/nix/var/nix/profiles/default/bin"
-    path add $"($nu.home-dir)/.local/share/mise/shims"
+    path add $"($nu.home-path)/.local/share/mise/shims"
     path add "/opt/homebrew/bin/"
     path add "/opt/homebrew/opt/rustup/bin"
 }
