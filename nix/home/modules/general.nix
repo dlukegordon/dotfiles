@@ -28,6 +28,7 @@
     pkgsUnstable.tor-browser
     pkgsUnstable.wezterm
     pkgsUnstable.zoom-us
+    qalculate-qt
     transmission_4-qt
     vlc
   ];

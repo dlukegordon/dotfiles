@@ -31,7 +31,6 @@
     just
     kdePackages.discover
     kdePackages.isoimagewriter
-    kdePackages.kcalc
     kdePackages.kcharselect
     kdePackages.kclock
     kdePackages.kcolorchooser
