@@ -36,8 +36,8 @@
         };
       };
       folders = {
-        "scratch" = {
-          path = "/home/luke/scratch";
+        "notes" = {
+          path = "/home/luke/notes";
           devices = [
             "valhalla"
             "asgard"
@@ -45,9 +45,10 @@
             "zfold7"
           ];
           versioning = {
-            type = "trashcan";
+            type = "staggered";
             params = {
-              cleanoutDays = "30";
+              cleanInterval = "3600"; # Clean interval in seconds (1 hour)
+              maxAge = "31536000"; # Keep versions for 1 year (in seconds)
             };
           };
         };
