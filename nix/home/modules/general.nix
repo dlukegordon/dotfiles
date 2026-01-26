@@ -30,7 +30,6 @@
     pkgsUnstable.spotify
     pkgsUnstable.tor-browser
     pkgsUnstable.wezterm
-    pkgsUnstable.zoom-us
   ];
 
   # Helix
@@ -98,15 +97,6 @@
       };
     };
   };
-
-  # # Emacs
-  # programs.emacs = {
-  #   enable = true;
-  #   package = pkgs.emacs.override {
-  #     withPgtk = true;
-  #     withImageMagick = true;
-  #   };
-  # };
 
   # Direnv
   programs.direnv = {

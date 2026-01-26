@@ -148,14 +148,22 @@
     ${pkgs.libcap}/bin/setcap CAP_SYS_NICE+ep /home/luke/.local/share/Steam/steamapps/common/SteamVR/bin/linux64/vrcompositor-launcher 2>/dev/null || true
   '';
 
-  # Other programs/services
-  programs.appimage.enable = true;
-  programs.nix-ld.enable = true;
+  # Tailscale
   services.tailscale = {
     enable = true;
     package = pkgsUnstable.tailscale;
     useRoutingFeatures = "client";
   };
+
+  # Zoom
+  programs.zoom-us = {
+    enable = true;
+    package = pkgsUnstable.zoom-us;
+  };
+
+  # Other programs/services
+  programs.appimage.enable = true;
+  programs.nix-ld.enable = true;
 
   # Force some crappy Electron apps to use Wayland
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
