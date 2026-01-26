@@ -31,6 +31,7 @@
                 "applications:com.mitchellh.ghostty.desktop"
                 "applications:slack.desktop"
                 "applications:signal.desktop"
+                "applications:obsidian.desktop"
                 "applications:spotify.desktop"
                 "applications:org.kde.dolphin.desktop"
                 "applications:systemsettings.desktop"
