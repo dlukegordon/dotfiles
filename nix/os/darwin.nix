@@ -17,7 +17,6 @@
     pkgs.hwatch
     pkgs.just
     pkgs.lua-language-server
-    pkgs.marksman
     pkgs.mise
     pkgs.moreutils
     pkgs.mosh
@@ -31,6 +30,7 @@
     pkgs.stow
     pkgs.stylua
     pkgs.tokei
+    pkgs.tree-sitter
     pkgs.unzip
     pkgs.wget
     pkgs.yubikey-manager
@@ -48,11 +48,11 @@
       upgrade = true;
     };
     brews = [
-      "aichat"
       "bufbuild/buf/buf"
       "carapace"
       "cargo-nextest"
       "foundry"
+      "marksman"
       "neovim"
       "nushell"
       "opencode"
@@ -68,18 +68,21 @@
       "ghostty"
       "google-chrome"
       "iterm2"
-      "ivpn"
+      "karabiner-elements"
+      "keepassxc"
       "meetingbar"
-      "nikitabobko/tap/aerospace"
+      "obsidian"
       "raycast"
       "signal"
       "slack"
       "spotify"
+      "syncthing-app"
       "tailscale-app"
       "ungoogled-chromium"
       "zed"
       "zen"
       "zoom"
+      # "nikitabobko/tap/aerospace"
     ];
   };
 

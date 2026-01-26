@@ -92,7 +92,7 @@ return {
 
   -- Neovim's answer to the mouse
   {
-    "ggandor/leap.nvim",
+    "https://codeberg.org/andyg/leap.nvim",
     event = "VeryLazy",
     config = function()
       -- require("leap").create_default_mappings()

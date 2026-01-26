@@ -34,6 +34,10 @@
           id = "SRQHVGH-AZAZDIF-K5U3KBV-XKGDD4F-4NHQDJI-HCY2ZLM-FIQ2Q7H-GBEDEAQ";
           addresses = [ "tcp://zfold7" ];
         };
+        "mysten-mbp" = {
+          id = "BTAWWTS-C26EZEG-FY5JAYW-7NHGG4M-WAYD2UL-DMVNBU6-QVTJ44X-L6CJYAC";
+          addresses = [ "tcp://mysten-mbp" ];
+        };
       };
       folders = {
         "notes" = {
@@ -43,6 +47,7 @@
             "asgard"
             "nidavellir"
             "zfold7"
+            "mysten-mbp"
           ];
           versioning = {
             type = "staggered";
@@ -59,6 +64,7 @@
             "asgard"
             "nidavellir"
             "zfold7"
+            "mysten-mbp"
           ];
           versioning = {
             type = "trashcan";
@@ -74,6 +80,7 @@
             "asgard"
             "nidavellir"
             "zfold7"
+            "mysten-mbp"
           ];
           versioning = {
             type = "staggered";

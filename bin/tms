@@ -14,7 +14,7 @@ def main [...args] {
         let depth_1 = fd --exact-depth 1 --type d . ...$depth_1_dirs | lines
 
         # replace $home with ~ for brevity
-        let dirs = ($depth_0_dirs | append $depth_1 | each { |it| $it | str replace -r $"^($nu.home-path)" "~" })
+        let dirs = ($depth_0_dirs | append $depth_1 | each { |it| $it | str replace -r $"^($nu.home-dir)" "~" })
         ($dirs | to text | fzf | str trim)
     }
 
@@ -29,7 +29,7 @@ def main [...args] {
     if not $session_exists {
         # Tmux doesn't have this session, so create
         # Replace ~ back to $home so tmux can understand the path
-        let full_path = ($selected | str replace -r "^~" $nu.home-path)
+        let full_path = ($selected | str replace -r "^~" $nu.home-dir)
         tmux new-session -ds $selected_name -c $full_path
     }
 
