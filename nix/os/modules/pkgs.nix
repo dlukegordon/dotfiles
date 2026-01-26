@@ -8,50 +8,70 @@
 {
   # List packages installed in system profile. To search, run:
   # $ nix search wget
-  environment.systemPackages = with pkgs; [
-    bash-language-server
-    bc
-    btop
-    ccid
-    cmake
-    fastfetch
-    fd
-    fzf
-    gcc
-    gh
-    git
-    gnumake
-    gnupg
-    hunspell
-    hunspellDicts.en_US
-    hwatch
-    imagemagick
-    inetutils
+  environment.systemPackages = [
     inputs.opencode.packages.${pkgs.stdenv.hostPlatform.system}.default
-    just
-    kdePackages.discover
-    kdePackages.isoimagewriter
-    kdePackages.kcharselect
-    kdePackages.kclock
-    kdePackages.kcolorchooser
-    kdePackages.kolourpaint
-    kdePackages.ksystemlog
-    kdePackages.partitionmanager
-    kdePackages.plasma-browser-integration
-    kdePackages.plasma-workspace-wallpapers
-    kdePackages.sddm-kcm
-    lazyjournal
-    less
-    libtool
-    lsd
-    lsof
-    lua-language-server
-    marksman
-    mosh
-    nixd
-    nixfmt-rfc-style
-    opensc
-    ouch
+    pkgs.bash-language-server
+    pkgs.bc
+    pkgs.btop
+    pkgs.ccid
+    pkgs.cmake
+    pkgs.fastfetch
+    pkgs.fd
+    pkgs.fzf
+    pkgs.gcc
+    pkgs.gh
+    pkgs.git
+    pkgs.gnumake
+    pkgs.gnupg
+    pkgs.hwatch
+    pkgs.inetutils
+    pkgs.just
+    pkgs.kdePackages.discover
+    pkgs.kdePackages.isoimagewriter
+    pkgs.kdePackages.kcharselect
+    pkgs.kdePackages.kclock
+    pkgs.kdePackages.kcolorchooser
+    pkgs.kdePackages.kolourpaint
+    pkgs.kdePackages.ksystemlog
+    pkgs.kdePackages.partitionmanager
+    pkgs.kdePackages.plasma-browser-integration
+    pkgs.kdePackages.plasma-workspace-wallpapers
+    pkgs.kdePackages.sddm-kcm
+    pkgs.lazyjournal
+    pkgs.less
+    pkgs.libtool
+    pkgs.lsd
+    pkgs.lsof
+    pkgs.lua-language-server
+    pkgs.marksman
+    pkgs.mosh
+    pkgs.nixd
+    pkgs.nixfmt-rfc-style
+    pkgs.opensc
+    pkgs.ouch
+    pkgs.pop-hp-wallpapers
+    pkgs.pop-wallpapers
+    pkgs.psmisc
+    pkgs.rage
+    pkgs.ripgrep
+    pkgs.shellcheck
+    pkgs.shfmt
+    pkgs.starship
+    pkgs.stow
+    pkgs.stylua
+    pkgs.tmux
+    pkgs.tokei
+    pkgs.tree-sitter
+    pkgs.unzip
+    pkgs.usbutils
+    pkgs.uutils-coreutils
+    pkgs.wayland-utils
+    pkgs.wget
+    pkgs.wireguard-tools
+    pkgs.wl-clipboard-rs
+    pkgs.yazi
+    pkgs.yubikey-manager
+    pkgs.zoxide
     pkgsUnstable.bat
     pkgsUnstable.bitcoind
     pkgsUnstable.buf
@@ -65,42 +85,19 @@
     pkgsUnstable.ov
     pkgsUnstable.python3
     pkgsUnstable.rustup
-    pop-hp-wallpapers
-    pop-wallpapers
-    psmisc
-    rage
-    ripgrep
-    shellcheck
-    shfmt
-    starship
-    stow
-    stylua
-    tmux
-    tokei
-    tree-sitter
-    unzip
-    usbutils
-    uutils-coreutils
-    wayland-utils
-    wget
-    wireguard-tools
-    wl-clipboard-rs
-    yazi
-    yubikey-manager
-    zoxide
   ];
 
   # Shells
-  environment.shells = with pkgs; [
-    bash
-    zsh
+  environment.shells = [
+    pkgs.bash
+    pkgs.zsh
     pkgsUnstable.nushell
   ];
 
   # Link nushell to /usr/local/bin to make a single path for nixos and darwin
   system.activationScripts.bin-nu.text = ''
     mkdir -p /usr/local/bin
-    ln -sfn ${pkgs.nushell}/bin/nu /usr/local/bin/nu
+    ln -sfn ${pkgsUnstable.nushell}/bin/nu /usr/local/bin/nu
   '';
 
   # Zsh
@@ -164,29 +161,29 @@
   environment.sessionVariables.NIXOS_OZONE_WL = "1";
 
   # Fonts
-  fonts.packages = with pkgs; [
-    (callPackage ./etbembo.nix { })
-    _0xproto
-    caladea
-    cascadia-code
-    comic-mono
-    commit-mono
-    cozette
-    dejavu_fonts
-    fantasque-sans-mono
-    fira-code
-    font-awesome
-    garamond-libre
-    gelasio
-    iosevka
-    iosevka-comfy.comfy
-    jetbrains-mono
-    libre-baskerville
-    nerd-fonts.symbols-only
-    noto-fonts
-    noto-fonts-color-emoji
+  fonts.packages = [
+    (pkgs.callPackage ./etbembo.nix { })
+    pkgs._0xproto
+    pkgs.caladea
+    pkgs.cascadia-code
+    pkgs.comic-mono
+    pkgs.commit-mono
+    pkgs.cozette
+    pkgs.dejavu_fonts
+    pkgs.fantasque-sans-mono
+    pkgs.fira-code
+    pkgs.font-awesome
+    pkgs.garamond-libre
+    pkgs.gelasio
+    pkgs.iosevka
+    pkgs.iosevka-comfy.comfy
+    pkgs.jetbrains-mono
+    pkgs.libre-baskerville
+    pkgs.nerd-fonts.symbols-only
+    pkgs.noto-fonts
+    pkgs.noto-fonts-color-emoji
+    pkgs.roboto-mono
     pkgsUnstable.lilex
     pkgsUnstable.nerd-fonts.comic-shanns-mono
-    roboto-mono
   ];
 }

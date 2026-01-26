@@ -93,7 +93,7 @@ let
         Group = cfg.group;
         Type = "simple";
       };
-      path = with pkgs; [ electrs ];
+      path = [ pkgs.electrs ];
       script = ''
         electrs \
           --electrum-rpc-addr="${cfg.electrum_rpc_addr}" \
@@ -115,9 +115,7 @@ in
   };
 
   config = lib.mkIf (eachElectrs != { }) {
-    environment.systemPackages = with pkgs; [
-      electrs
-    ];
+    environment.systemPackages = [ pkgs.electrs ];
 
     systemd.services = lib.mapAttrs' electrs_instance eachElectrs;
 

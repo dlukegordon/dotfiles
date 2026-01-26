@@ -90,7 +90,7 @@
   # Link nushell to /usr/local/bin to make a single path for nixos and darwin
   system.activationScripts.bin-nu.text = ''
     mkdir -p /usr/local/bin
-    ln -sfn ${pkgs.nushell}/bin/nu /usr/local/bin/nu
+    ln -sfn ${pkgsUnstable.nushell}/bin/nu /usr/local/bin/nu
   '';
 
   # Ssh
@@ -135,33 +135,33 @@
     '';
   };
 
-  environment.systemPackages = with pkgs; [
-    btop
-    cmake
-    fastfetch
-    fd
-    fzf
-    gcc
-    git
-    gnumake
-    gnupg
-    inetutils
-    less
-    lsof
-    mosh
+  environment.systemPackages = [
+    pkgs.btop
+    pkgs.cmake
+    pkgs.fastfetch
+    pkgs.fd
+    pkgs.fzf
+    pkgs.gcc
+    pkgs.git
+    pkgs.gnumake
+    pkgs.gnupg
+    pkgs.inetutils
+    pkgs.less
+    pkgs.lsof
+    pkgs.mosh
+    pkgs.ripgrep
+    pkgs.starship
+    pkgs.stow
+    pkgs.tmux
+    pkgs.unzip
+    pkgs.usbutils
+    pkgs.wget
+    pkgs.zoxide
     pkgsUnstable.bat
     pkgsUnstable.carapace
     pkgsUnstable.neovim
     pkgsUnstable.nushell
     pkgsUnstable.ov
-    ripgrep
-    starship
-    stow
-    tmux
-    unzip
-    usbutils
-    wget
-    zoxide
   ];
 
 }

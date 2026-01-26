@@ -12,14 +12,17 @@
 
   # Packages that should be installed to the user profile.
   # In general, GUI apps should be added here.
-  home.packages = with pkgs; [
-    (pkgsUnstable.prismlauncher.override { jdks = [ zulu25 ]; })
-    chromium
-    google-chrome
+  home.packages = [
+    (pkgsUnstable.prismlauncher.override { jdks = [ pkgs.zulu25 ]; })
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
-    keepassxc
-    libreoffice-qt
-    obsidian
+    pkgs.chromium
+    pkgs.google-chrome
+    pkgs.keepassxc
+    pkgs.libreoffice-qt
+    pkgs.obsidian
+    pkgs.qalculate-qt
+    pkgs.transmission_4-qt
+    pkgs.vlc
     pkgsUnstable.ghostty
     pkgsUnstable.signal-desktop
     pkgsUnstable.slack
@@ -28,9 +31,6 @@
     pkgsUnstable.tor-browser
     pkgsUnstable.wezterm
     pkgsUnstable.zoom-us
-    qalculate-qt
-    transmission_4-qt
-    vlc
   ];
 
   # Helix

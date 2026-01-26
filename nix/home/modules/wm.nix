@@ -13,14 +13,14 @@
 
   services.swaync.enable = true;
 
-  home.packages = with pkgs; [
-    brightnessctl
+  home.packages = [
+    pkgs.brightnessctl
+    pkgs.hyprshot
+    pkgs.hyprsunset
+    pkgs.networkmanagerapplet
+    pkgs.pasystray
+    pkgs.pavucontrol
     pkgsUnstable.hyprlock
-    hyprshot
-    hyprsunset
-    networkmanagerapplet
-    pavucontrol
-    pasystray
   ];
 
   programs.waybar = {
