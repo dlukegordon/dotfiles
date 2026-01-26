@@ -13,6 +13,7 @@
   # Packages that should be installed to the user profile.
   # In general, GUI apps should be added here.
   home.packages = with pkgs; [
+    (pkgsUnstable.prismlauncher.override { jdks = [ zulu25 ]; })
     chromium
     google-chrome
     inputs.zen-browser.packages.${pkgs.stdenv.hostPlatform.system}.default
