@@ -136,6 +136,8 @@ def --wrapped jd [...args] {
     PAGER='ov' jj diff ...$args
 }
 
+def jum [] { jj git fetch; jj new 'trunk()' }
+
 # Jj aliases
 alias j = jj status
 alias ja = jj abandon
