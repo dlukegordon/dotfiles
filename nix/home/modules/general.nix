@@ -44,12 +44,8 @@
     settings = {
       # Email is set in the home configs for each host
       user.name = "Lucas Gordon";
-      push = {
-        autoSetupRemote = true;
-      };
-      pull = {
-        rebase = true;
-      };
+      push.autoSetupRemote = true;
+      pull.rebase = true;
     };
   };
 

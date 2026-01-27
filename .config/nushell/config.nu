@@ -52,8 +52,9 @@ $env.PAGER = 'ov --exit-write'
 $env.BAT_PAGER = 'ov --quit-if-one-screen --exit-write'
 $env.FZF_DEFAULT_OPTS = "--pointer='>' --gutter=' ' --color=bg+:#30363F,fg+:white,gutter:-1,hl:#C98E56,hl+:#C98E56,pointer:#C98E56"
 $env.LESS = '--mouse --wheel-lines=1'
-$env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
-# $env.OPENCODE_EXPERIMENTAL_LSP_TOOL = true
+if (which gpgconf | is-not-empty) {
+    $env.SSH_AUTH_SOCK = (gpgconf --list-dirs agent-ssh-socket | str trim)
+}
 
 # Defs
 def la [...pattern] {
@@ -113,10 +114,15 @@ alias nsc = nix-shell ~/dotfiles/nix/shells/rust-c.nix --command /usr/local/bin/
 alias sha = hash sha256
 alias t = tms ~/scratch
 alias v = nvim
+alias vc = nvim --clean
 alias wat = hwatch --interval 2 --differences=word --color --exec nu --login -c
 alias wat1 = hwatch --interval 1 --differences=word --color --exec nu --login -c
 alias wat10 = hwatch --interval 10 --differences=word --color --exec nu --login -c
 alias wat5 = hwatch --interval 5 --differences=word --color --exec nu --login -c
+alias valhalla = mosh luke@valhalla
+alias asgard = mosh luke@asgard
+alias mysten-mbp = mosh luke@mysten-mbp
+alias nidavellir = mosh luke@nidavellir
 
 # Jj defs
 def is-jj-repo [] {
@@ -206,6 +212,9 @@ $env.config.hooks.env_change.PWD = [
   }
 ]
 
+# Create vendor autoload directory
+mkdir ($nu.data-dir | path join "vendor/autoload")
+
 # Zoxide
 zoxide init nushell | save -f ($nu.data-dir | path join "vendor/autoload/zoxide.nu")
 
@@ -214,13 +223,16 @@ $env.CARAPACE_BRIDGES = 'zsh,fish,bash,inshellisense'
 carapace _carapace nushell | save -f ($nu.data-dir | path join "vendor/autoload/carapace.nu")
 
 # Prompt
-mkdir ($nu.data-dir | path join "vendor/autoload")
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 $env.TRANSIENT_PROMPT_COMMAND = {||
-    let dir = match (do -i { $env.PWD | path relative-to $nu.home-path }) {
-        null => $env.PWD
-        '' => '~'
-        $relative_pwd => ([~ $relative_pwd] | path join)
+    # $nu.home-path was renamed to $nu.home-dir in nushell 0.110.0
+    let home = if 'home-dir' in ($nu | columns) { $nu.home-dir } else { $nu.home-path }
+    let dir = if $env.PWD == $home {
+        '~'
+    } else if ($env.PWD | str starts-with $"($home)/") {
+        $env.PWD | str replace $home '~'
+    } else {
+        $env.PWD
     }
 
     let time = date now | format date '%I:%M%P '

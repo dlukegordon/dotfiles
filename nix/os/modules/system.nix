@@ -138,6 +138,7 @@
     ];
     openssh.authorizedKeys.keys = [
       "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIKGh4an4vSJg76uIk1YpK2CfQxuFMtbDQ4aJMs+344vy"
+      "ssh-ed25519 AAAAC3NzaC1lZDI1NTE5AAAAIA8udx9Rzy7eKwYuz25MeXKqTG+IYPhLZknjiATWYdiF luke@zfold7"
     ];
     shell = pkgsUnstable.nushell;
   };
