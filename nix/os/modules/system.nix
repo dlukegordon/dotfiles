@@ -81,7 +81,7 @@
   environment.systemPackages = [
     (pkgs.writeTextDir "share/sddm/themes/breeze/theme.conf.user" ''
       [General]
-      background=${pkgs.pop-hp-wallpapers}/share/backgrounds/pop-hp/flow-state-navy+gold-gradient.png
+      background=${pkgs.kdePackages.plasma-workspace-wallpapers}/share/wallpapers/Cluster/contents/images/3840x2160.png
     '')
   ];
 
