@@ -1,5 +1,10 @@
 vim.loader.enable()
 
+-- Exit early on nix-on-droid (Android) for a lightweight config
+if vim.fn.isdirectory("/data/data/com.termux.nix") == 1 then
+  return
+end
+
 vim.g.mapleader = " "
 vim.g.maplocalleader = ","
 

@@ -15,6 +15,12 @@
       inputs.nixpkgs.follows = "nixpkgs";
     };
 
+    nix-on-droid = {
+      url = "github:nix-community/nix-on-droid/master";
+      inputs.nixpkgs.follows = "nixpkgs";
+      inputs.home-manager.follows = "home-manager";
+    };
+
     plasma-manager = {
       url = "github:nix-community/plasma-manager";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -38,6 +44,7 @@
       home-manager,
       plasma-manager,
       nix-darwin,
+      nix-on-droid,
       ...
     }:
     {
@@ -161,5 +168,35 @@
             }
           ];
         };
+
+      # Phone, nix-on-droid
+      nixOnDroidConfigurations.default =
+        let
+          system = "aarch64-linux";
+          pkgsUnstable = import nixpkgs-unstable {
+            inherit system;
+            config.allowUnfree = true;
+          };
+        in
+        nix-on-droid.lib.nixOnDroidConfiguration {
+          pkgs = import nixpkgs {
+            inherit system;
+            config.allowUnfree = true;
+          };
+          extraSpecialArgs = { inherit pkgsUnstable inputs; };
+
+          modules = [
+            ./os/droid.nix
+
+            {
+              home-manager = {
+                useGlobalPkgs = true;
+                extraSpecialArgs = { inherit pkgsUnstable inputs; };
+                config = ./home/droid.nix;
+              };
+            }
+          ];
+        };
+
     };
 }

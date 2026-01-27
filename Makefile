@@ -39,6 +39,9 @@ darwin-update: stow
 	nix flake update --flake path:$(HOME)/dotfiles/nix
 	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nix#$(host)
 
+droid-switch: stow
+	nix-on-droid switch --flake path:$(HOME)/dotfiles/nix
+
 install: check-host stow nixos-cp-hardware nixos-boot
 
 install-server: check-host nixos-cp-hardware nixos-boot
