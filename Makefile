@@ -28,9 +28,13 @@ nixos-switch: check-host stow
 nixos-boot: check-host stow
 	sudo nixos-rebuild boot --flake path:$(HOME)/dotfiles/nix#$(host)
 
-nixos-update: check-host stow
+nixos-update-boot: check-host stow
 	nix flake update --flake path:$(HOME)/dotfiles/nix
 	sudo nixos-rebuild boot --upgrade --flake path:$(HOME)/dotfiles/nix#$(host)
+
+nixos-update: check-host stow
+	nix flake update --flake path:$(HOME)/dotfiles/nix
+	sudo nixos-rebuild switch --upgrade --flake path:$(HOME)/dotfiles/nix#$(host)
 
 darwin-switch: stow
 	sudo darwin-rebuild switch --flake path:$(HOME)/dotfiles/nix#$(host)
