@@ -52,16 +52,20 @@ return {
       end, { expr = true, desc = "Add line to opencode" })
 
       vim.keymap.set("n", "<leader>ed", function()
-        require("opencode").prompt("Explain @diagnostics", { clear = true, submit = true })
+        require("opencode").prompt("Please explain @diagnostics", { clear = true, submit = true })
       end, { expr = true, desc = "Explain diagnostics" })
 
       vim.keymap.set({ "n", "x" }, "<leader>ex", function()
-        require("opencode").prompt("Explain @this and its context", { clear = true, submit = true })
+        require("opencode").prompt("Please explain @this and its context", { clear = true, submit = true })
       end, { expr = true, desc = "Explain this" })
 
       vim.keymap.set({ "n", "x" }, "<leader>ef", function()
-        require("opencode").prompt("Fix @diagnostics", { clear = true, submit = true })
+        require("opencode").prompt("Please fix @diagnostics", { clear = true, submit = true })
       end, { expr = true, desc = "Fix diagnostics" })
+
+      vim.keymap.set({ "n", "x" }, "<leader>ec", function()
+        require("opencode").prompt("Please fix the conflicts in @buffer", { clear = true, submit = true })
+      end, { expr = true, desc = "Fix conflicts" })
     end,
   },
 }

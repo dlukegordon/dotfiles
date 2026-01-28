@@ -59,6 +59,9 @@ return {
           -- Most Language Servers support renaming across files, etc.
           map("<leader>r", vim.lsp.buf.rename, "Rename")
 
+          -- Restart LSP
+          map("<leader>R", ":LspRestart<CR>", "Restart LSP")
+
           -- WARN: This is not Goto Definition, this is Goto Declaration.
           --  For example, in C this would take you to the header.
           map("gl", vim.lsp.buf.declaration, "Goto declaration")
