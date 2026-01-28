@@ -75,15 +75,6 @@ def lad [...pattern] {
     ls -ladt ...$pattern | sort-by type name
 }
 
-def wbrl [] {
-    pkill waybar
-    hyprctl dispatch exec waybar
-}
-def wbrln [] {
-    pkill waybar
-    niri msg action spawn -- waybar
-}
-
 def clc [] {
     history | last 2 | get 0.command | c
 }
@@ -97,6 +88,33 @@ def --wrapped oc [...passed_args] {
         $passed_args | str join ' '
     }
     zsh -i -c $"export PATH='($path_string)'; opencode ($args)"
+}
+
+# Set up tmux layout
+def tl [] {
+    if ($env.TMUX? | is-empty) {
+        print "Error: You must be inside a tmux session to run this."
+        return
+    }
+
+    print "Setting up tmux layout..."
+
+    # Must spawn as background task to avoid opencode stealing focus
+    job spawn {
+        tmux new-window
+        tmux send-keys "mj" Enter
+        tmux split-window -h
+
+        tmux select-window -t 1
+        tmux send-keys "oc" Enter
+        tmux split-window -h
+        tmux send-keys "v" Enter
+
+        tmux select-pane -t 1
+        # Wait for opencode to finish loading to avoid it stealing focus
+        sleep 1sec
+        tmux select-pane -t 2
+    } | ignore
 }
 
 # Aliases

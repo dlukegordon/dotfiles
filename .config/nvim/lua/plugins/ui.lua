@@ -50,7 +50,7 @@ return {
               },
               color = color,
               alignment = "center",
-              vertical_padding = 20,
+              vertical_padding = 29,
             },
           },
         },
