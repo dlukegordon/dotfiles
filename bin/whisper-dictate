@@ -1,0 +1,175 @@
+#!/usr/bin/env bash
+
+# Toggle-based push-to-talk whisper dictation
+# Press hotkey once to start recording, press again to stop and transcribe
+
+set -euo pipefail
+
+PID_FILE="/tmp/whisper-dictate.pid"
+NOTIFY_ID_FILE="/tmp/whisper-dictate.notify-id"
+AUDIO_FILE="/tmp/whisper-dictate.wav"
+MAX_RECORDING_SECONDS=60
+
+WHISPER_SERVER="${WHISPER_SERVER:-localhost:8080}"
+
+SOUND_START="/run/current-system/sw/share/sounds/freedesktop/stereo/device-added.oga"
+SOUND_STOP="/run/current-system/sw/share/sounds/freedesktop/stereo/device-removed.oga"
+
+ICON_RECORDING="audio-on"
+ICON_TRANSCRIBING="audio-ready"
+ICON_DONE="audio-ready"
+ICON_ERROR="dialog-error"
+
+cleanup() {
+    rm -f "$PID_FILE" "$NOTIFY_ID_FILE" "$AUDIO_FILE"
+}
+
+show_error() {
+    local notify_id="$1"
+    local message="$2"
+    if [[ -n "$notify_id" ]]; then
+        notify-send --app-name="Whisper Dictate" --icon="$ICON_ERROR" --replace-id="$notify_id" "Error" "$message"
+    else
+        notify-send --app-name="Whisper Dictate" --icon="$ICON_ERROR" "Error" "$message"
+    fi
+}
+
+transcribe() {
+    local notify_id=""
+    if [[ -f "$NOTIFY_ID_FILE" ]]; then
+        notify_id=$(cat "$NOTIFY_ID_FILE")
+    fi
+
+    # Play stop sound
+    if [[ -f "$SOUND_STOP" ]]; then
+        pw-play "$SOUND_STOP" &
+    fi
+
+    # Update notification
+    if [[ -n "$notify_id" ]]; then
+        notify-send --app-name="Whisper Dictate" --icon="$ICON_TRANSCRIBING" --replace-id="$notify_id" "Transcribing..." "Sending audio to Whisper"
+    fi
+
+    # Check if we have audio
+    if [[ ! -f "$AUDIO_FILE" ]]; then
+        show_error "$notify_id" "No audio recorded"
+        cleanup
+        exit 1
+    fi
+
+    local file_size
+    file_size=$(stat -c%s "$AUDIO_FILE")
+    if [[ "$file_size" -lt 1000 ]]; then
+        show_error "$notify_id" "Recording too short"
+        cleanup
+        exit 1
+    fi
+
+    # Send to whisper server
+    local result
+    if ! result=$(curl -s -X POST "http://$WHISPER_SERVER/inference" -F "file=@$AUDIO_FILE" -F "response_format=text" 2>&1); then
+        show_error "$notify_id" "Server error: $result"
+        cleanup
+        exit 1
+    fi
+
+    # Trim leading/trailing whitespace
+    result="${result#"${result%%[![:space:]]*}"}"
+    result="${result%"${result##*[![:space:]]}"}"
+
+    if [[ -z "$result" ]]; then
+        show_error "$notify_id" "No speech detected"
+        cleanup
+        exit 1
+    fi
+
+    # Copy result to clipboard (most reliable method on Wayland/KDE)
+    printf '%s' "$result" | wl-copy
+
+    # Auto-paste using ydotool if available
+    if pgrep -x ydotoold >/dev/null; then
+        sleep 0.1
+        # Get the focused window class (KDE-specific)
+        local window_class
+        window_class=$(kdotool getactivewindow getwindowclassname 2>/dev/null || echo "")
+
+        if [[ "$window_class" == "com.mitchellh.ghostty" ]]; then
+            # Ghostty uses Meta+V (Super+V)
+            # Key codes: 125=Left Meta, 47=V, :1=down, :0=up
+            ydotool key 125:1 47:1 47:0 125:0
+        else
+            # Other apps use Ctrl+V (xremap maps Meta+V -> Ctrl+V, but ydotool bypasses xremap)
+            # Key codes: 29=Left Ctrl, 47=V
+            ydotool key 29:1 47:1 47:0 29:0
+        fi
+    fi
+
+    # Show success notification
+    if [[ -n "$notify_id" ]]; then
+        local preview="${result:0:50}"
+        if [[ ${#result} -gt 50 ]]; then
+            preview="${preview}..."
+        fi
+        notify-send --app-name="Whisper Dictate" --icon="$ICON_DONE" --replace-id="$notify_id" --expire-time=2000 "Copied to clipboard: $preview"
+    fi
+
+    cleanup
+}
+
+start_recording() {
+    # Clean up any old audio file
+    rm -f "$AUDIO_FILE"
+
+    # Play start sound
+    if [[ -f "$SOUND_START" ]]; then
+        pw-play "$SOUND_START" &
+    fi
+
+    # Show recording notification
+    local notify_id
+    notify_id=$(notify-send --app-name="Whisper Dictate" --icon="$ICON_RECORDING" --print-id "Recording..." "Press hotkey again to stop")
+    echo "$notify_id" >"$NOTIFY_ID_FILE"
+
+    # Start recording in background
+    pw-record "$AUDIO_FILE" &
+    local record_pid=$!
+    echo "$record_pid" >"$PID_FILE"
+
+    # Wait for recording to be killed (by second invocation) or timeout
+    local seconds=0
+    while kill -0 "$record_pid" 2>/dev/null; do
+        sleep 0.1
+        seconds=$((seconds + 1))
+        if [[ $seconds -ge $((MAX_RECORDING_SECONDS * 10)) ]]; then
+            kill "$record_pid" 2>/dev/null || true
+            break
+        fi
+    done
+    wait "$record_pid" 2>/dev/null || true
+
+    # Transcribe
+    transcribe
+}
+
+main() {
+    # Check if already recording
+    if [[ -f "$PID_FILE" ]]; then
+        local old_pid
+        old_pid=$(cat "$PID_FILE")
+
+        # Check if process is still running
+        if kill -0 "$old_pid" 2>/dev/null; then
+            # Kill the recording process - this will cause the first instance to proceed to transcribe
+            kill "$old_pid" 2>/dev/null || true
+            exit 0
+        else
+            # Stale PID file, clean up
+            cleanup
+        fi
+    fi
+
+    # Start recording mode
+    start_recording
+}
+
+main "$@"

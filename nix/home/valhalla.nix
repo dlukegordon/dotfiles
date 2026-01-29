@@ -9,6 +9,7 @@
   imports = [
     ./modules/general.nix
     ./modules/plasma.nix
+    ./modules/whisper-dictate.nix
   ];
 
   programs.plasma.powerdevil.AC.powerProfile = "performance";
