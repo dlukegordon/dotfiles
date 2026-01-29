@@ -5,7 +5,6 @@ window-padding-x = 2
 window-padding-y = 2,0
 window-padding-balance = false
 window-padding-color = extend-always
-#window-decoration = none
 maximize = true
 confirm-close-surface = false
 mouse-scroll-multiplier = 1
@@ -15,6 +14,9 @@ initial-command = /usr/local/bin/nu -il -c "tms ~/dotfiles"
 
 keybind = super+c=copy_to_clipboard
 keybind = super+v=paste_from_clipboard
+keybind = super+==increase_font_size:1
+keybind = super+-=decrease_font_size:1
+keybind = super+\=text:\x1b\\
 keybind = shift+enter=text:\x1b\r
 
 custom-shader = shaders/cursor_smear_fade_custom.glsl

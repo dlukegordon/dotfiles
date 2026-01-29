@@ -52,17 +52,35 @@
 
     shortcuts = {
       kwin = {
-        # Free up Meta+0
-        "view_actual_size" = [ ];
-        # Free up Meta+W
-        "Overview" = [ "Meta+0" ];
-        "Window Close" = [ "Meta+W" ];
-        "Window Fullscreen" = [ "Meta+Z" ];
+        "Edit Tiles" = [ ]; # Free up Meta+T
+        "view_actual_size" = [ ]; # Was Meta+0
+        "Window Fullscreen" = [ ]; # Free up Meta+Z
+        "Window Quick Tile Bottom" = [ "Ctrl+Alt+Down" ]; # Changed from Meta+Down
+        "Window Quick Tile Top" = [ "Ctrl+Alt+Up" ]; # Changed from Meta+Up
+        "Window Quick Tile Left" = [ "Ctrl+Alt+Left" ]; # Changed from Meta+Left
+        "Window Quick Tile Right" = [ "Ctrl+Alt+Right" ]; # Changed from Meta+Right
+        "Suspend Compositing" = [ ]; # Free up Meta+Shift+F12
+        "Switch to Next Desktop" = [ ]; # Free up Meta+N
+        "view_zoom_in" = [ ]; # Free up Meta+Plus
+        "view_zoom_out" = [ ]; # Free up Meta+Minus
+        "MoveMouseToCenter" = [ ]; # Free up Meta+F6
+        "MoveMouseToFocus" = [ ]; # Free up Meta+F5
+        "Overview" = [ "Meta+0" ]; # Moved from Meta+W
+        "Window Close" = [ "Meta+Q" ]; # Mac-like quit
+        "Toggle Grid View" = [ ]; # Free up Meta+G
+        "Show Desktop" = [ ]; # Free up Meta+D
       };
       plasmashell = {
-        # Free up Meta+V
-        "show-on-mouse-pos" = [ ];
+        "show-on-mouse-pos" = [ ]; # Was Meta+V
+        "stop current activity" = [ ]; # Free up Meta+S
+        "manage activities" = [ ]; # Free up Meta+Q
         "activate application launcher" = [ "Meta+Space" ];
+      };
+      org_kde_powerdevil = {
+        "powerProfile" = [ ]; # Free up Meta+B
+      };
+      ksmserver = {
+        "Lock Session" = [ "Ctrl+Alt+L" ]; # Changed from Meta+L
       };
     };
 

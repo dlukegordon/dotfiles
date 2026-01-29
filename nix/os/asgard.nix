@@ -7,8 +7,9 @@
 {
   imports = [
     ./hardware-configuration.nix
-    ./modules/pkgs.nix
     ./modules/system.nix
+    ./modules/pkgs.nix
+    ./modules/xremap.nix
     ./modules/syncthing.nix
   ];
 

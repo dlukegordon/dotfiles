@@ -21,6 +21,10 @@
       inputs.home-manager.follows = "home-manager";
     };
 
+    xremap-flake = {
+      url = "github:xremap/nix-flake";
+    };
+
     zen-browser = {
       url = "github:youwen5/zen-browser-flake";
       inputs.nixpkgs.follows = "nixpkgs";
@@ -58,6 +62,7 @@
             modules = [
               ./os/valhalla.nix
 
+              inputs.xremap-flake.nixosModules.default
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
@@ -89,6 +94,7 @@
             modules = [
               ./os/asgard.nix
 
+              inputs.xremap-flake.nixosModules.default
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
