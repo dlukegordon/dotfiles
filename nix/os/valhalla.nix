@@ -13,9 +13,10 @@ in
 {
   imports = [
     ./hardware-configuration.nix
+    ./modules/system.nix
     ./modules/nvidia.nix
     ./modules/pkgs.nix
-    ./modules/system.nix
+    ./modules/xremap.nix
     ./modules/syncthing.nix
   ];
 
