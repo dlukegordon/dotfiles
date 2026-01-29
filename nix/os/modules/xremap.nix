@@ -1,9 +1,12 @@
 {
   config,
   pkgs,
+  inputs,
   ...
 }:
 {
+  imports = [ inputs.xremap-flake.nixosModules.default ];
+
   services.xremap = {
     enable = true;
     serviceMode = "user";

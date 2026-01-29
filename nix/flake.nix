@@ -40,7 +40,6 @@
       nixpkgs,
       nixpkgs-unstable,
       home-manager,
-      plasma-manager,
       nix-darwin,
       ...
     }:
@@ -62,16 +61,12 @@
             modules = [
               ./os/valhalla.nix
 
-              inputs.xremap-flake.nixosModules.default
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   users.luke = import ./home/valhalla.nix;
-                  sharedModules = [
-                    plasma-manager.homeModules.plasma-manager
-                  ];
                   extraSpecialArgs = { inherit pkgsUnstable inputs; };
                 };
               }
@@ -94,16 +89,12 @@
             modules = [
               ./os/asgard.nix
 
-              inputs.xremap-flake.nixosModules.default
               home-manager.nixosModules.home-manager
               {
                 home-manager = {
                   useGlobalPkgs = true;
                   useUserPackages = true;
                   users.luke = import ./home/asgard.nix;
-                  sharedModules = [
-                    plasma-manager.homeModules.plasma-manager
-                  ];
                   extraSpecialArgs = { inherit pkgsUnstable inputs; };
                 };
               }
