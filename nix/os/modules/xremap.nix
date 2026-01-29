@@ -7,6 +7,11 @@
 {
   imports = [ inputs.xremap-flake.nixosModules.default ];
 
+  # Stop xremap when graphical session ends so it starts fresh on next login
+  systemd.user.services.xremap.unitConfig = {
+    PartOf = [ "graphical-session.target" ];
+  };
+
   services.xremap = {
     enable = true;
     serviceMode = "user";
