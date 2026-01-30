@@ -12,6 +12,22 @@
     PartOf = [ "graphical-session.target" ];
   };
 
+  # Restart xremap when keyboard devices are added/removed
+  # This fixes the issue where xremap gets into a broken state after USB hot-plug
+  services.udev.extraRules = ''
+    ACTION=="add|remove", SUBSYSTEM=="input", ENV{ID_INPUT_KEYBOARD}=="1", ATTR{name}!="*virtual*", ATTR{name}!="*ydotool*", ATTR{name}!="*xremap*", TAG+="systemd", ENV{SYSTEMD_USER_WANTS}="xremap-restart.service"
+  '';
+
+  systemd.user.services.xremap-restart = {
+    description = "Restart xremap after keyboard hot-plug";
+    serviceConfig = {
+      Type = "oneshot";
+      ExecStart = "${pkgs.systemd}/bin/systemctl --user restart xremap.service";
+      # Delay slightly to let the device settle
+      ExecStartPre = "${pkgs.coreutils}/bin/sleep 1";
+    };
+  };
+
   services.xremap = {
     enable = true;
     serviceMode = "user";
