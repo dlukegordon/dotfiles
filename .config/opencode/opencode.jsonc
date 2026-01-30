@@ -5,5 +5,24 @@
   "server": {
     "port": 4096,
     "hostname": "0.0.0.0"
+  },
+  "provider": {
+    "ollama": {
+      "npm": "@ai-sdk/openai-compatible",
+      "name": "Ollama (Valhalla)",
+      "options": {
+        "baseURL": "http://valhalla:11434/v1"
+      },
+      "models": {
+        "qwen3-coder:30b": {
+          "name": "Qwen3 Coder 30B",
+          "tools": true,
+          "limit": {
+            "context": 65536,
+            "output": 32768
+          }
+        }
+      }
+    }
   }
 }

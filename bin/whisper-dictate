@@ -10,7 +10,7 @@ NOTIFY_ID_FILE="/tmp/whisper-dictate.notify-id"
 AUDIO_FILE="/tmp/whisper-dictate.wav"
 MAX_RECORDING_SECONDS=60
 
-WHISPER_SERVER="${WHISPER_SERVER:-localhost:8080}"
+WHISPER_SERVER="${WHISPER_SERVER:-localhost:8089}"
 
 SOUND_START="/run/current-system/sw/share/sounds/freedesktop/stereo/device-added.oga"
 SOUND_STOP="/run/current-system/sw/share/sounds/freedesktop/stereo/device-removed.oga"

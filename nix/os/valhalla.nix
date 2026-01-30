@@ -18,6 +18,7 @@ in
     ./modules/pkgs.nix
     ./modules/xremap.nix
     ./modules/syncthing.nix
+    ./modules/ai.nix
   ];
 
   networking.hostName = "valhalla";

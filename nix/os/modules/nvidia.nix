@@ -31,4 +31,7 @@
   };
   nixpkgs.config.cudaSupport = true;
 
+  environment.systemPackages = [
+    pkgs.nvitop
+  ];
 }

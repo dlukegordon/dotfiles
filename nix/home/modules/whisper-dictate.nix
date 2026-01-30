@@ -42,7 +42,7 @@
             ${pkgs.whisper-cpp}/bin/whisper-cpp-download-ggml-model ${modelName} "$MODEL_DIR"
           fi
         ''}";
-        ExecStart = "${pkgs.whisper-cpp}/bin/whisper-server --model ${modelFile} --host 0.0.0.0 --port 8080";
+        ExecStart = "${pkgs.whisper-cpp}/bin/whisper-server --model ${modelFile} --host 0.0.0.0 --port 8089";
         Restart = "on-failure";
         RestartSec = 5;
         Environment = [
