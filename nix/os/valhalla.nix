@@ -34,28 +34,28 @@ in
   };
 
   # Control RGB
-  services.hardware.openrgb = {
-    enable = true;
-    package = pkgs.openrgb-with-all-plugins;
-  };
-  boot.kernelModules = [
-    "i2c-dev"
-    "i2c-i801"
-  ];
-  systemd.services.rgb = {
-    description = "rgb";
-    after = [
-      "openrgb.service"
-      "suspend.target"
-    ];
-    requires = [ "openrgb.service" ];
-    serviceConfig = {
-      ExecStart = "${red-rgb}/bin/red-rgb";
-      Type = "oneshot";
-    };
-    wantedBy = [
-      "multi-user.target"
-      "suspend.target"
-    ];
-  };
+  # services.hardware.openrgb = {
+  #   enable = true;
+  #   package = pkgs.openrgb-with-all-plugins;
+  # };
+  # boot.kernelModules = [
+  #   "i2c-dev"
+  #   "i2c-i801"
+  # ];
+  # systemd.services.rgb = {
+  #   description = "rgb";
+  #   after = [
+  #     "openrgb.service"
+  #     "suspend.target"
+  #   ];
+  #   requires = [ "openrgb.service" ];
+  #   serviceConfig = {
+  #     ExecStart = "${red-rgb}/bin/red-rgb";
+  #     Type = "oneshot";
+  #   };
+  #   wantedBy = [
+  #     "multi-user.target"
+  #     "suspend.target"
+  #   ];
+  # };
 }
