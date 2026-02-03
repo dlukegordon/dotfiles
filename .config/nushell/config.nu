@@ -36,11 +36,11 @@ path add "~/.cargo/bin"
 path add "~/.npm-global/bin"
 if ($nu.os-info.name == "macos") {
     path add "/usr/local/bin"
-    path add $"($nu.home-path)/.nix-profile/bin"
+    path add $"($nu.home-dir)/.nix-profile/bin"
     path add $"/etc/profiles/per-user/($env.user)/bin"
     path add "/run/current-system/sw/bin"
     path add "/nix/var/nix/profiles/default/bin"
-    path add $"($nu.home-path)/.local/share/mise/shims"
+    path add $"($nu.home-dir)/.local/share/mise/shims"
     path add "/opt/homebrew/bin/"
     path add "/opt/homebrew/opt/rustup/bin"
 }
@@ -243,12 +243,10 @@ carapace _carapace nushell | save -f ($nu.data-dir | path join "vendor/autoload/
 # Prompt
 starship init nu | save -f ($nu.data-dir | path join "vendor/autoload/starship.nu")
 $env.TRANSIENT_PROMPT_COMMAND = {||
-    # $nu.home-path was renamed to $nu.home-dir in nushell 0.110.0
-    let home = if 'home-dir' in ($nu | columns) { $nu.home-dir } else { $nu.home-path }
-    let dir = if $env.PWD == $home {
+    let dir = if $env.PWD == $nu.home-dir {
         '~'
-    } else if ($env.PWD | str starts-with $"($home)/") {
-        $env.PWD | str replace $home '~'
+    } else if ($env.PWD | str starts-with $"($nu.home-dir)/") {
+        $env.PWD | str replace $nu.home-dir '~'
     } else {
         $env.PWD
     }
