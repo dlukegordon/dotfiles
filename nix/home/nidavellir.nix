@@ -33,7 +33,7 @@
     settings = {
       user = {
         name = "luke";
-        email = "luke@nidavellir";
+        email = "luke@earth";
       };
       ui = {
         default-command = "log";

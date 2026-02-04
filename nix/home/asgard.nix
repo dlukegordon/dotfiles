@@ -16,6 +16,6 @@
   programs.plasma.powerdevil.lowBattery.powerProfile = "powerSaving";
 
   # The rest of the git and jj configs are in modules/general.nix
-  programs.git.settings.user.email = "luke@asgard";
-  programs.jujutsu.settings.user.email = "luke@asgard";
+  programs.git.settings.user.email = "luke@earth";
+  programs.jujutsu.settings.user.email = "luke@earth";
 }
