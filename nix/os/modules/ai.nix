@@ -21,6 +21,9 @@
       "qwen3:30b-a3b"
     ];
   };
+  # Don't start automatically
+  systemd.services.ollama.wantedBy = pkgs.lib.mkForce [ ];
+  systemd.services.ollama-model-loader.wantedBy = pkgs.lib.mkForce [ ];
 
   services.open-webui = {
     enable = true;
@@ -28,4 +31,6 @@
     openFirewall = true;
     host = "0.0.0.0";
   };
+  # Don't start automatically
+  systemd.services.open-webui.wantedBy = pkgs.lib.mkForce [ ];
 }
