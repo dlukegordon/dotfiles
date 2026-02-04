@@ -31,7 +31,7 @@ $env.config.menus = [
 ]
 
 # Path
-path add "~/bin"
+path add "~/.local/bin"
 path add "~/.cargo/bin"
 path add "~/.npm-global/bin"
 if ($nu.os-info.name == "macos") {
