@@ -25,9 +25,7 @@
       };
     };
     ignores = [
-      "/shell.nix"
-      "/opencode.jsonc"
-      "/AGENTS.md"
+      "/AGENTS-GI.md"
     ];
   };
 

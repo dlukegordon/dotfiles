@@ -47,6 +47,9 @@
       push.autoSetupRemote = true;
       pull.rebase = true;
     };
+    ignores = [
+      "/AGENTS-GI.md"
+    ];
   };
 
   # Jj
