@@ -90,7 +90,7 @@ $container\
 $shell\
 $character"""
 
-command_timeout = 100
+command_timeout = 500
 palette = 'my'
 
 [palettes.my]
